@@ -12,9 +12,12 @@ jobs:
         runs-on: ubuntu-22.04
 
         steps:
-            - name: Install Dependencies
+            - name: Install System Updates
+              run: sudo apt-get update
+
+            - name: Print Dependency Versions
               run: |
-                  sudo apt-get update
+                  cat /etc/os-release
                   gcc --version
 
             - name: Checkout
