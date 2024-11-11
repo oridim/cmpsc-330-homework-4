@@ -15,7 +15,7 @@ int main()
 
      PlayerTurn playerTurn(3, 2, 4, 'D');
 
-     GameBoardSlot undefinedSlot(0, 0);
+     GameBoardSlot undefinedSlot(0, 0); //
 
      GameBoardSlot dotSlot(0, 1, GameBoardSlot::SLOT_KIND::dot);
      GameBoardSlot scorableSlot(2, 1, GameBoardSlot::SLOT_KIND::scorable);
