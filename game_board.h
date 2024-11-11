@@ -1,0 +1,172 @@
+#ifndef _GAME_BOARD_H_
+#define _GAME_BOARD_H_
+
+#include "simple_vector.h"
+#include "simple_hash_map.h"
+#include "player_turn.h"
+#include "game_board_slot.h"
+
+// `class GameBoard`
+//
+// Represents structured data containing the state about a Dots and Boxes
+// gameboard grid.
+class GameBoard
+{
+private:
+    // `int GameBoard._columns`
+    //
+    // Represents how many columns of dots there are in the Dots and Boxes
+    // gameboard grid.
+    int _columns;
+
+    // `int GameBoard._rows`
+    //
+    // Represents how many rows of dots there are in the Dots and Boxes
+    // gameboard grid.
+    int _rows;
+
+    // `SimpleVector<SimpleVector<GameBoardSlot *> *> GameBoard.*_grid`
+    //
+    // Represents a two-dimensional `SimpleVector` of gameboard grid slots.
+    //
+    // The `GameBoard` instance is only initialized with the amount of dots
+    // in the gameboard grid with no space for player lines or scorable boxes.
+    //
+    // So, we need to expand the supplied grid size to provide space. That is
+    // done by taking the M rows x N columns and then increasing them by
+    // computing expanded M rows = `M + (M - 1)` and N columns = `N + (N - 1)`.
+    //
+    // ex. Thus 3x6 grid:
+    //
+    // ```
+    // ......
+    // ......
+    // ......
+    // ```
+    //
+    // Is expanded into this `(3 + (3 - 1))x(6 + (6 - 1))` = 5 x 11 grid:
+    //
+    // ```
+    // . . . . . .
+    //
+    // . . . . . .
+    //
+    // . . . . . .
+    // ```
+    SimpleVector<SimpleVector<GameBoardSlot>> *_grid;
+
+    // `SimpleHashMap<bool, 128> *GameBoard._participatingPlayers;
+    //
+    // **NOTE**: We only need to test the ASCII character codes since we are
+    // only suppose to recieve initials as player identifiers.
+    SimpleHashMap<char, bool, 128> *_participatingPlayers;
+
+    const PlayerTurn *_determineCapturePriorityTurn(int rowIndex, int columnIndex);
+
+public:
+    GameBoard(int rows, int columns);
+
+    ~GameBoard();
+
+    bool operator==(const GameBoard &rightHandBoard) const;
+    bool operator!=(const GameBoard &rightHandBoard) const;
+
+    int columns() const { return this->_columns; }
+    int rows() const { return this->_rows; }
+
+    // `int GameBoard.columnPadding()`
+    //
+    // Returns how much column padding is needs to be applied to the MxN
+    // gameboard grid to provide space for line spacers and scorable boxes.
+    int columnPadding() const;
+
+    // `int GameBoard.rowPadding()`
+    //
+    // Returns how much row padding is needs to be applied to the MxN
+    // gameboard grid to provide space for line spacers and scorable boxes.
+    int rowPadding() const;
+
+    // `int GameBoard.expandedColumns()`
+    //
+    // Returns the column size of the gameboard grid expanded with the column
+    // padding to provide space for line spacers and scorable boxes.
+    int expandedColumns() const;
+
+    // `int GameBoard.expandedRows()`
+    //
+    // Returns the row size of the gameboard grid expanded with the row
+    // padding to provide space for line spacers and scorable boxes.
+    int expandedRows() const;
+
+    // `void GameBoard.applyScorableCaptures`
+    //
+    // Computes available `GameBoardSlot`'s instances in the gameboard grid
+    // that have their `GameBoardSlot.kind` set to `GameBoardSlot::SLOT_KIND::scorable`.
+    //
+    // Then, each found `GameBoardSlot` is lopped has their horizontal and
+    // vertical adjacent `GameBoardSlot` instances checked for being
+    // `GameBoardSlot::SLOT_KIND::line`.
+    //
+    // If all four adjacent `GameBoardSlot` instances are scored lines, then
+    // the slot with their `GameBoardSlot.turnIndex` being the highest has
+    // their `GameBoardSlot.playerInitial` applied to the scorable box slot.
+    //
+    // Finally, the scorable box slot has its `GameBoardSlot.kind` updated
+    // to `GameBoardSlot::SLOT_KIND::initial`.
+    void applyScorableCaptures();
+
+    // `void GameBoard.applyTurn(const PlayerTurn &turn)`
+    //
+    // Applies the given `turn` to the gameboard grid if the `turn`'s
+    // `PlayerTurn.columnIndex` and `PlayerTurn.rowIndex` are legal.
+    //
+    // Otherwise, an exception is thrown if not legal.
+    void applyTurn(const PlayerTurn &playerTurn);
+
+    // `SimpleVector<GameBoardSlot> *GameBoard.computeKindSlots(GameBoardSlot::SLOT_KIND kind)`
+    //
+    // Returns a new `SimpleVector` with all the available `GameBoardSlot`
+    // instances in the gameboard grid that have their `GameBoardSlot._kind`
+    // set to the supplied `kind`.
+    SimpleVector<GameBoardSlot> *computeKindSlots(
+        GameBoardSlot::SLOT_KIND slotKind) const;
+
+    // `SimpleVector<GameBoardSlot> *GameBoard.computeLegalSlots()`
+    //
+    // Returns a new `SimpleVector` with all the available `GameBoardSlot`
+    // instances in the gameboard grid that are legal moves with an optimized
+    // algorithm.
+    SimpleVector<GameBoardSlot> *computeLegalSlots() const;
+
+    // `SimpleVector<GameBoardSlot> *GameBoard.computeParticipatingPlayers()`
+    //
+    // Returns a new `SimpleVector` with all the available `GameBoardSlot`
+    // instances in the gameboard grid that are legal moves with an optimized
+    // algorithm.
+    SimpleVector<char> *computeParticipatingPlayers() const;
+
+    // `SimpleVector<GameBoardSlot> *GameBoard.computeScorableSlots()`
+    //
+    // Returns a new `SimpleVector` with all the available `GameBoardSlot`
+    // instances in the gameboard grid that have their `GameBoardSlot._kind`
+    // `GameBoardSlot::SLOT_KIND::initial` or `GameBoardSlot::SLOT_KIND::scorable`
+    // with an optimized algorithm.
+    SimpleVector<GameBoardSlot> *computeScorableSlots(
+        GameBoardSlot::SLOT_KIND slotKind = GameBoardSlot::SLOT_KIND::scorable) const;
+
+    // `GameBoardSlot *GameBoard.getSlot(int rowIndex, int columnIndex)`
+    //
+    // Returns the `GameBoardSlot` instance assigned to the queried row
+    // and column in the gameboard grid.
+    //
+    // If the slot of out of bounds of the gameboard grid, an exception is
+    // then thrown.
+    const GameBoardSlot &getSlot(int rowIndex, int columnIndex) const;
+
+    // `void GameBoard.renderGameBoard()`
+    //
+    // Renders the gameboard grid to the terminal with pretty printing.
+    void renderGameBoard() const;
+};
+
+#endif

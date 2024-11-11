@@ -1,0 +1,18 @@
+   0         1  
+   0123456789012
+00 .d.d.a.b.b.a.
+ 1 dDcDdAaBcAbDc
+ 2 .d.d.d.b.a.d.
+ 3 cDdBbBcBbBdBb
+ 4 .b.a.c.c.a.b.
+ 5 cDdDbBaBdDcBa
+ 6 .c.a.a.b.d.d.
+ 7 aCcAaAdBbDcAa
+ 8 .b.c.c.d.c.d.
+ 9 aDdDaBbBcBbAa
+10 .d.d.b.b.b.a.
+
+Player A has 6 boxes.
+Player B has 13 boxes (win).
+Player C has 1 box.
+Player D has 10 boxes.

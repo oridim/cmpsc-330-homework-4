@@ -1,0 +1,10 @@
+   0    
+   01234
+00 .r. .
+ 1 b    
+ 2 . . .
+ 3      
+ 4 . . .
+
+Player B has 0 boxes (no contest).
+Player R has 0 boxes (no contest).

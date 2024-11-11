@@ -1,0 +1,44 @@
+{
+  "[cpp]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[jsonc]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "ostream": "cpp",
+    "cmath": "cpp",
+    "limits": "cpp",
+    "deque": "cpp",
+    "string": "cpp",
+    "vector": "cpp",
+    "stdexcept": "cpp",
+    "new": "cpp",
+    "array": "cpp",
+    "*.tcc": "cpp",
+    "unordered_map": "cpp",
+    "functional": "cpp",
+    "iterator": "cpp",
+    "memory_resource": "cpp",
+    "fstream": "cpp",
+    "istream": "cpp",
+    "numeric": "cpp",
+    "streambuf": "cpp",
+    "tuple": "cpp",
+    "utility": "cpp",
+    "iosfwd": "cpp",
+    "random": "cpp",
+    "system_error": "cpp",
+    "typeinfo": "cpp",
+    "algorithm": "cpp",
+    "iostream": "cpp"
+  }
+}

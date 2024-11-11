@@ -1,0 +1,25 @@
+   0         1      
+   01234567890123456
+00 .b.b.m.b.m.m.b.d.
+ 1 aAaMmDdBdDdDmMmDm
+ 2 .a.m.a.b.b.c.m.b.
+ 3 dDdMcMmBaDaDdMmBb
+ 4 .c.d.m.d.d.b.a.d.
+ 5 dDmBcMbMmMmMdDcCc
+ 6 .a.b.a.a.a.m.b.b.
+ 7 aAdBdDaAaAmBaDdBb
+ 8 .a.m.m.c.c.b.a.b.
+ 9 dMmMmAaCaAmBbBbBd
+10 .m.a.b.a.a.a.a.b.
+ 1 bBaAdCcCmBbAcDcBb
+ 2 .b.c.a.c.m.a.d.b.
+ 3 dBaCcBdDcMbAdDdMa
+ 4 .b.b.b.b.a.c.m.m.
+ 5 cBdDbBcCcDbBaBbMc
+ 6 .a.d.d.a.d.d.b.c.
+
+Player A has 9 boxes.
+Player B has 19 boxes (win).
+Player C has 6 boxes.
+Player D has 16 boxes.
+Player M has 14 boxes.

@@ -1,0 +1,11 @@
+   0    
+   01234
+00 .a.a.
+ 1 bAbBb
+ 2 .b.b.
+ 3 bAbCc
+ 4 .a.b.
+
+Player A has 2 boxes (win).
+Player B has 1 box.
+Player C has 1 box.

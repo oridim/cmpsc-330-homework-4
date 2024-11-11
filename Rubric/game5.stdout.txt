@@ -1,0 +1,11 @@
+   0    
+   01234
+00 .a.a.
+ 1 bAeBb
+ 2 .b.b.
+ 3 aBaAa
+ 4 .b.b.
+
+Player A has 2 boxes (tie).
+Player B has 2 boxes (tie).
+Player E has 0 boxes.

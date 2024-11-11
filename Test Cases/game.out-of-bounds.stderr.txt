@@ -1,0 +1,1 @@
+./run-tests.sh: line 39: 126232 Segmentation fault      (core dumped) ./dotsandboxes "./Test Cases/game.out-of-bounds.txt"

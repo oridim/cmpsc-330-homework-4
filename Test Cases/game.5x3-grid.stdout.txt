@@ -1,0 +1,14 @@
+   0    
+   01234
+00 .r.r.
+ 1 bBbBb
+ 2 .b.r.
+ 3   bRr
+ 4 .r.b.
+ 5 b    
+ 6 . . .
+ 7      
+ 8 . . .
+
+Player B has 2 boxes (win).
+Player R has 1 box.

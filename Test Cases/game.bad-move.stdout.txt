@@ -1,0 +1,10 @@
+   0    
+   01234
+00 .r. .
+ 1 b    
+ 2 . X .
+ 3      
+ 4 . . .
+
+Player B has 0 boxes (tie).
+Player R has 0 boxes (tie).

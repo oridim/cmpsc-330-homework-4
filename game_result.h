@@ -1,0 +1,83 @@
+#ifndef _GAME_RESULT_H_
+#define _GAME_RESULT_H_
+
+#include "simple_vector.h"
+#include "player_result.h"
+#include "game_board.h"
+
+// `class GameResult`
+//
+// Represents structured data containing the player results data of a
+// Dots and Boxes game session.
+class GameResult
+{
+public:
+    // `enum int GameResult::WIN_KIND`
+    //
+    // Represents an enumeration of all possible win states a Dots and Boxes
+    // game can finish as.
+    enum class WIN_KIND
+    {
+        // `GameResult::WIN_KIND::undefined`
+        //
+        // Represents that the game has an undefined win state.
+        undefined,
+
+        // `GameResult::WIN_KIND::nocontest`
+        //
+        // Represents that the game had no scoring winners.
+        nocontest,
+
+        // `GameResult::WIN_KIND::singular`
+        //
+        // Represents that the game has a singular winner.
+        singular,
+
+        // `GameResult::WIN_KIND::multiple`
+        //
+        // Represents that the game is has multiple winners.
+        multiple
+    };
+
+    static GameResult *computeGameResult(const GameBoard &gameBoard);
+
+private:
+    // `char GameResult._highestScore`
+    //
+    // Represents the initial used by the player as their identifier.
+    int _highestScore;
+
+    // `GameResult::WIN_KIND GameResult._winKind`
+    //
+    // Represents the winning state of the player.
+    //
+    // **SEE**: `WIND_KIND` for more details.
+    WIN_KIND _winKind;
+
+    // `SimpleVector<PlayerResult> *GameResult._playerResults`
+    //
+    // Represents results for each individual player.
+    SimpleVector<PlayerResult> *_playerResults;
+
+public:
+    GameResult(
+        SimpleVector<PlayerResult> *playerResults, WIN_KIND winKind, int highestScore);
+
+    GameResult(const GameResult &gameResult);
+
+    ~GameResult();
+
+    bool operator==(const GameResult &rightHandResult) const;
+    bool operator!=(const GameResult &rightHandResult) const;
+
+    int highestScore() const { return this->_highestScore; }
+    const SimpleVector<PlayerResult> &playerResults() const { return *this->_playerResults; }
+    WIN_KIND winKind() const { return this->_winKind; }
+
+    // `void GameResult.renderGameBoard()`
+    //
+    // Renders a Dots and Boxes game result to the terminal with pretty printing.
+    void renderGameResult() const;
+};
+
+#endif

@@ -1,0 +1,10 @@
+   0        
+   012345678
+00 . . .a. .
+ 1     aBb  
+ 2 . . .X.b.
+ 3          
+ 4 . . . . .
+
+Player A has 0 boxes.
+Player B has 1 box (win).

@@ -1,0 +1,15 @@
+   0        
+   012345678
+00 .c.c.b.c.
+ 1 bCbCaAbAa
+ 2 .a.b.c.a.
+ 3 bAaAaCbCb
+ 4 .c.c.a.c.
+ 5 aAbCaCbAa
+ 6 .b.c.c.a.
+ 7 bAaAbCaAb
+ 8 .a.a.c.b.
+
+Player A has 9 boxes (win).
+Player B has 0 boxes.
+Player C has 7 boxes.
