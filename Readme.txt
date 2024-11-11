@@ -12,7 +12,7 @@ Build Commands:
 
 Run Commands:
 
-    * `...directory.../dotsandboxes beepis.txt`
+    * `...directory.../dotsandboxes boopis.txt`
 
 Acknowledgments:
 
