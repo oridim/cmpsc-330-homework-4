@@ -10,7 +10,7 @@ using namespace std;
 
 // TODO: redo `SimpleVector` to utilize a `V **SimpleVector._elements` like
 // `SimpleHashTable`. Otherwise, expensive operations like `SimpleVector.sort`
-// will perform potentially cloning reallocations instead of being able to
+// will perform potentially expensive cloning reallocations instead of being able to
 // just swap pointers.
 
 template <typename V>
