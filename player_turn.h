@@ -3,7 +3,7 @@
 
 // `class PlayerTurn`
 //
-// Represents structured data containing a singular turn completed by a player.
+// Represents structured data containing a turn completed by a player.
 class PlayerTurn
 {
 private:
