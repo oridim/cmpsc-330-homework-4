@@ -35,8 +35,7 @@ int main()
      cout << "*gameData1 = GameData::readGameData(inputStream ['./Test Cases/game.professor-supplied.txt']): " << endl
           << endl
           << "\tgameData1->rows()\t\t= " << gameData1->rows() << "\t(SHOULD BE: 3)" << endl
-          << "\tgameData1->columns()\t\t= " << gameData1->columns() << "\t(SHOULD BE: 8)" << endl
-          << endl;
+          << "\tgameData1->columns()\t\t= " << gameData1->columns() << "\t(SHOULD BE: 8)" << endl;
 
      cout << endl
           << "gameData1->turns():" << endl
