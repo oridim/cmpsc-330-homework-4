@@ -6,6 +6,15 @@
 #include "player_turn.h"
 #include "game_board_slot.h"
 
+// **NOTE**: `GameBoard._grid` could be made more memory efficient by implementing
+// a custom `SimpleFixedVector<V>` where the size is fixed and operations more limited.
+//
+// As it stands now, `SimpleVector<SimpleVector<GameBoardSlot>>` is slightly wasteful
+// do its dynamic growth nature.
+//
+// There is a plus side how ever! I do not need to have like a `GameBoard._gridSize`
+// to track the size... 
+
 // `class GameBoard`
 //
 // Represents structured data containing the state about a Dots and Boxes
