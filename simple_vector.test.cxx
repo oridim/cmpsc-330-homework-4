@@ -81,6 +81,9 @@ int main()
 
      cout
           << endl
+          << "SORT SimpleVector BY NUMBER SIZE"
+          << endl
+          << endl
           << "integersCopy LIST ELEMENTS:" << "\t(SHOULD BE: 5, 24, 42, 255)" << endl;
 
      integersCopy.sort([](const int &a, const int &b)
