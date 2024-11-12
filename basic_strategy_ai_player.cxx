@@ -99,18 +99,19 @@ PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(const GameBoard &gameBoard)
     switch (highestLineCount)
     {
     case 3:
-    {
-        // If the highest line count IS scorable boxes surrounded by 3 lines,
-        // pick it that category of boxes.
-        scorableBoardSlots = &lineCountLookup.at(3);
-        break;
-    }
-
     case 0:
+        // If the highest line count IS scorable boxes surrounded by 3 or no
+        // lines, then prioritize scoring from a 3 surrounding.
+        //
+        // Likewise, if nothing available has any lines surrounding it,
+        // default to picking from that pool of boxes.
+        scorableBoardSlots = &lineCountLookup.at(highestLineCount);
+        break;
+
     case 1:
     {
-        // If the highest line count IS scorable boxes surrounded by no or
-        // 1 lines, randomly select from either grouping.
+        // If the highest line count IS scorable boxes surrounded by 1 line,
+        // then randomly select from the 1 line or no line pool of boxes.
         int index = rand() % 2;
 
         scorableBoardSlots = &lineCountLookup.at(index);
@@ -128,7 +129,10 @@ PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(const GameBoard &gameBoard)
     case 2:
     {
         // If the highest line count IS scorable boxes surrounded by 2
-        // lines, then we want to priority 1, no, and 2 lines in that order.
+        // lines, then we want to prioritize 1, no, and 2 lines in that order.
+        //
+        // Also we do not want a random choice here since we want the `BasicStrategyAIPlayer`
+        // to try to get ahead of the `RandomAIPlayer`.
         scorableBoardSlots = &lineCountLookup.at(1);
         if (scorableBoardSlots->size() == 0)
         {
