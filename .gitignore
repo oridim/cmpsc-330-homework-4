@@ -10,4 +10,5 @@
 /game_data.test
 /game_result.test
 
+/basic_strategy_ai_player.test
 /random_ai_player.test
