@@ -20,6 +20,7 @@ set -e
 
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_result.test.cxx' -o './game_result.test'
 
+/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './basic_strategy_ai_player.test.cxx' -o './basic_strategy_ai_player.test'
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './random_ai_player.test.cxx' -o './random_ai_player.test'
 
 # Run Unit Tests
@@ -36,4 +37,5 @@ set -e
 
 ./game_result.test
 
+./basic_strategy_ai_player.test
 ./random_ai_player.test
