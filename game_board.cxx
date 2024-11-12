@@ -182,7 +182,7 @@ void GameBoard::applyTurn(const PlayerTurn &playerTurn)
 }
 
 SimpleVector<GameBoardSlot> *GameBoard::computeKindSlots(
-    GameBoardSlot::SLOT_KIND kind) const
+    GameBoardSlot::SLOT_KIND slotKind) const
 {
     SimpleVector<SimpleVector<GameBoardSlot>> *gridRows = this->_grid;
     SimpleVector<GameBoardSlot> *kindSlots = new SimpleVector<GameBoardSlot>();
@@ -194,7 +194,7 @@ SimpleVector<GameBoardSlot> *GameBoard::computeKindSlots(
         for (int columnIndex = 0; columnIndex < gridColumns.size(); columnIndex++)
         {
             GameBoardSlot &gameBoardSlot = gridColumns.at(columnIndex);
-            if (gameBoardSlot.slotKind() == kind)
+            if (gameBoardSlot.slotKind() == slotKind)
             {
                 kindSlots->push_back(gameBoardSlot);
             }
