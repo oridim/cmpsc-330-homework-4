@@ -13,7 +13,7 @@
 // player controllers without having to be explicitly typed for them.
 class Player
 {
-private:
+protected:
     // `char Player._playerInitial`
     //
     // Represents the initial that identifies the given player.
