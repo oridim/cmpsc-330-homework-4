@@ -25,7 +25,7 @@ int main()
      // so our strategic AI players always generating the same moves.
      //
      // This allows us to check for correctness in the unit tests.
-     //srand(time(0));
+     // srand(time(0));
      srand(0);
 
      GameBoard gameBoard1(3, 5);
@@ -38,8 +38,8 @@ int main()
      cout << "*playerTurn1 = basicStrategyAIPlayer1.computePlayerTurn(gameBoard1): " << endl
           << endl
           << "\tplayerTurn1.turnIndex()\t\t= " << playerTurn1->turnIndex() << "\t(SHOULD BE: 0)" << endl
-          << "\tplayerTurn1.row()\t\t= " << playerTurn1->rowIndex() << "\t(SHOULD BE: 3)" << endl
-          << "\tplayerTurn1.column()\t\t= " << playerTurn1->columnIndex() << "\t(SHOULD BE: 0)" << endl
+          << "\tplayerTurn1.row()\t\t= " << playerTurn1->rowIndex() << "\t(SHOULD BE: 2)" << endl
+          << "\tplayerTurn1.column()\t\t= " << playerTurn1->columnIndex() << "\t(SHOULD BE: 7)" << endl
           << "\tplayerTurn1.playerInitial()\t= '" << playerTurn1->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
      gameBoard1.applyTurn(*playerTurn1);
@@ -54,8 +54,8 @@ int main()
           << "   012345678" << endl
           << "00 . . . . ." << endl
           << " 1          " << endl
-          << " 2 . . . . ." << endl
-          << " 3 d        " << endl
+          << " 2 . . . .d." << endl
+          << " 3          " << endl
           << " 4 . . . . ." << endl
           << endl;
 
@@ -71,8 +71,8 @@ int main()
           << "*playerTurn2 = basicStrategyAIPlayer2.computePlayerTurn(gameBoard1): " << endl
           << endl
           << "\tplayerTurn2.turnIndex()\t\t= " << playerTurn2->turnIndex() << "\t(SHOULD BE: 1)" << endl
-          << "\tplayerTurn2.row()\t\t= " << playerTurn2->rowIndex() << "\t(SHOULD BE: 2)" << endl
-          << "\tplayerTurn2.column()\t\t= " << playerTurn2->columnIndex() << "\t(SHOULD BE: 1)" << endl
+          << "\tplayerTurn2.row()\t\t= " << playerTurn2->rowIndex() << "\t(SHOULD BE: 3)" << endl
+          << "\tplayerTurn2.column()\t\t= " << playerTurn2->columnIndex() << "\t(SHOULD BE: 6)" << endl
           << "\tplayerTurn2.playerInitial()\t= '" << playerTurn2->playerInitial() << "'" << "\t(SHOULD BE: 'O')" << endl;
 
      gameBoard1.applyTurn(*playerTurn2);
@@ -97,8 +97,8 @@ int main()
           << "   012345678" << endl
           << "00 . . . . ." << endl
           << " 1          " << endl
-          << " 2 .o. . . ." << endl
-          << " 3 d        " << endl
+          << " 2 . . . .d." << endl
+          << " 3       o  " << endl
           << " 4 . . . . ." << endl
           << endl;
 
@@ -130,8 +130,8 @@ int main()
           << "   012345678" << endl
           << "00 . . . . ." << endl
           << " 1          " << endl
-          << " 2 .o. . . ." << endl
-          << " 3 d   d    " << endl
+          << " 2 . . . .d." << endl
+          << " 3     d o  " << endl
           << " 4 . . . . ." << endl
           << endl;
 
