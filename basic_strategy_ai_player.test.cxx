@@ -54,8 +54,8 @@ int main()
           << "   012345678" << endl
           << "00 . . . . ." << endl
           << " 1          " << endl
-          << " 2 . . . .d." << endl
-          << " 3          " << endl
+          << " 2 . . . . ." << endl
+          << " 3       d  " << endl
           << " 4 . . . . ." << endl
           << endl;
 
@@ -95,8 +95,8 @@ int main()
           << "   012345678" << endl
           << "00 . . . . ." << endl
           << " 1          " << endl
-          << " 2 . . . .d." << endl
-          << " 3       o  " << endl
+          << " 2 . . . . ." << endl
+          << " 3       d o" << endl
           << " 4 . . . . ." << endl
           << endl;
 
@@ -126,10 +126,10 @@ int main()
           << endl
           << "   0        " << endl
           << "   012345678" << endl
-          << "00 . . . .d." << endl
-          << " 1          " << endl
-          << " 2 . . . .d." << endl
-          << " 3       o  " << endl
+          << "00 . . . . ." << endl
+          << " 1         d" << endl
+          << " 2 . . . . ." << endl
+          << " 3       d o" << endl
           << " 4 . . . . ." << endl
           << endl;
 
