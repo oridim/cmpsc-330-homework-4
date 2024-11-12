@@ -48,7 +48,7 @@ const GameBoardSlot &BasicStrategyAIPlayer::_determineLegalSlot(const GameBoard 
     // But until the refactor comes, we some what want to randomize our pick.
 
     // We using the parity of our randomly generated number to determine if we
-    // search vertically or horizontally first.
+    // search vertically or horizontally first in a 50-50% chance split.
     if ((rand() % 2) == 0)
     {
         for (int deltaRowIndex = -1; deltaRowIndex <= 1; deltaRowIndex += 2)
