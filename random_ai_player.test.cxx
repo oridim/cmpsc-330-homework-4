@@ -78,14 +78,12 @@ int main()
      gameBoard1.applyTurn(*playerTurn2);
 
      cout << endl
-          << endl
           << "RandomAIPlayer::operator==, RandomAIPlayer::operator!=" << endl
           << endl
           << "\trandomAIPlayer1 == randomAIPlayer1:\t" << ((randomAIPlayer1 == randomAIPlayer1) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
           << "\trandomAIPlayer1 != randomAIPlayer1:\t" << ((randomAIPlayer1 != randomAIPlayer1) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
           << "\trandomAIPlayer1 == randomAIPlayer2:\t" << ((randomAIPlayer1 == randomAIPlayer2) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
-          << "\trandomAIPlayer1 != randomAIPlayer2:\t" << ((randomAIPlayer1 != randomAIPlayer2) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
-          << endl;
+          << "\trandomAIPlayer1 != randomAIPlayer2:\t" << ((randomAIPlayer1 != randomAIPlayer2) ? "true" : "false") << "\t(SHOULD BE: true)" << endl;
 
      cout << endl
           << "gameBoard1.renderGameBoard():" << endl
