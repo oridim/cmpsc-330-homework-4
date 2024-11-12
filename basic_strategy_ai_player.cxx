@@ -10,11 +10,8 @@
 #include "player.h"
 #include "basic_strategy_ai_player.h"
 
-// TODO: Refactor `BasicStrategyAIPlayer.computePlayerTurn` to use cache
-// the legal on the first loop so we do not have to loop again and properly
-// randomize our picks.
-
-int BasicStrategyAIPlayer::_computeSurroundingLineCount(const GameBoard &gameBoard, int rowIndex, int columnIndex)
+int BasicStrategyAIPlayer::_computeSurroundingLineCount(
+    const GameBoard &gameBoard, int rowIndex, int columnIndex, SimpleHashMap<int, SimpleVector<const GameBoardSlot *>, 99 * 99> &legalSlotsLookup)
 {
     int lineCount = 0;
 
@@ -22,7 +19,16 @@ int BasicStrategyAIPlayer::_computeSurroundingLineCount(const GameBoard &gameBoa
     {
         const GameBoardSlot &deltaBoardSlot = gameBoard.getSlot(rowIndex + deltaRowIndex, columnIndex);
 
-        if (deltaBoardSlot.slotKind() == GameBoardSlot::SLOT_KIND::line)
+        if (deltaBoardSlot.isLegalMove())
+        {
+            // We are approximating a unique identifier for the `GameBoardSlot`
+            // so we can look its legal moves up later.
+            int boardSlotID = columnIndex + ',' + rowIndex;
+            SimpleVector<const GameBoardSlot *> &legalSlots = legalSlotsLookup.at(boardSlotID);
+
+            legalSlots.push_back(&deltaBoardSlot);
+        }
+        else if (deltaBoardSlot.slotKind() == GameBoardSlot::SLOT_KIND::line)
         {
             lineCount += 1;
         }
@@ -32,71 +38,20 @@ int BasicStrategyAIPlayer::_computeSurroundingLineCount(const GameBoard &gameBoa
     {
         const GameBoardSlot &deltaBoardSlot = gameBoard.getSlot(rowIndex, columnIndex + deltaColumnIndex);
 
-        if (deltaBoardSlot.slotKind() == GameBoardSlot::SLOT_KIND::line)
+        if (deltaBoardSlot.isLegalMove())
+        {
+            int boardSlotID = columnIndex + ',' + rowIndex;
+            SimpleVector<const GameBoardSlot *> &legalSlots = legalSlotsLookup.at(boardSlotID);
+
+            legalSlots.push_back(&deltaBoardSlot);
+        }
+        else if (deltaBoardSlot.slotKind() == GameBoardSlot::SLOT_KIND::line)
         {
             lineCount += 1;
         }
     }
 
     return lineCount;
-}
-
-const GameBoardSlot &BasicStrategyAIPlayer::_determineLegalSlot(const GameBoard &gameBoard, int rowIndex, int columnIndex)
-{
-    // HACK: Yeah... duplicate code, crappy code, meh code...
-    //
-    // But until the refactor comes, we some what want to randomize our pick.
-
-    // We using the parity of our randomly generated number to determine if we
-    // search vertically or horizontally first in a 50-50% chance split.
-    if ((rand() % 2) == 0)
-    {
-        for (int deltaRowIndex = -1; deltaRowIndex <= 1; deltaRowIndex += 2)
-        {
-            const GameBoardSlot &deltaBoardSlot = gameBoard.getSlot(rowIndex + deltaRowIndex, columnIndex);
-
-            if (deltaBoardSlot.isLegalMove())
-            {
-                return deltaBoardSlot;
-            }
-        }
-
-        for (int deltaColumnIndex = -1; deltaColumnIndex <= 1; deltaColumnIndex += 2)
-        {
-            const GameBoardSlot &deltaBoardSlot = gameBoard.getSlot(rowIndex, columnIndex + deltaColumnIndex);
-
-            if (deltaBoardSlot.isLegalMove())
-            {
-                return deltaBoardSlot;
-            }
-        }
-    }
-    else
-    {
-        for (int deltaColumnIndex = -1; deltaColumnIndex <= 1; deltaColumnIndex += 2)
-        {
-            const GameBoardSlot &deltaBoardSlot = gameBoard.getSlot(rowIndex, columnIndex + deltaColumnIndex);
-
-            if (deltaBoardSlot.isLegalMove())
-            {
-                return deltaBoardSlot;
-            }
-        }
-
-        for (int deltaRowIndex = -1; deltaRowIndex <= 1; deltaRowIndex += 2)
-        {
-            const GameBoardSlot &deltaBoardSlot = gameBoard.getSlot(rowIndex + deltaRowIndex, columnIndex);
-
-            if (deltaBoardSlot.isLegalMove())
-            {
-                return deltaBoardSlot;
-            }
-        }
-    }
-
-    // **NOTE**: We do not have a base case return here. But, since
-    // `_determineSlotPick` was called, that means at least ONE
-    // surrounding grid slot was available... should... anyway...
 }
 
 PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(const GameBoard &gameBoard) const
@@ -108,7 +63,16 @@ PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(const GameBoard &gameBoard)
     }
 
     int highestLineCount = 0;
+
+    // **HACK**: Preallocating a 99x99 hash table is, uh, stupidly inefficient to
+    // say the least. But, that is the max grid size given to us by Dr. Na.
+    //
+    // And... I am currently too lazy to make `SimpleHashMap` have an internal
+    // elements allocation that can grow in size.
+    //
+    // Need to remake it using a bucket system.
     SimpleHashMap<int, SimpleVector<GameBoardSlot *>, 3> lineCountLookup;
+    SimpleHashMap<int, SimpleVector<const GameBoardSlot *>, 99 * 99> legalSlotsLookup;
 
     for (int index = 0; index < scorableSlots->size(); index++)
     {
@@ -118,7 +82,7 @@ PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(const GameBoard &gameBoard)
         int columnIndex = gameBoardSlot.columnIndex();
 
         int surroundingLineCount = _computeSurroundingLineCount(
-            gameBoard, rowIndex, columnIndex);
+            gameBoard, rowIndex, columnIndex, legalSlotsLookup);
 
         SimpleVector<GameBoardSlot *> &lineCountCache = lineCountLookup.at(surroundingLineCount);
 
@@ -134,13 +98,30 @@ PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(const GameBoard &gameBoard)
 
     switch (highestLineCount)
     {
-    case 0:
-    case 1:
     case 3:
     {
-        // If the highest line count IS scorable boxes surrounded by 3, 1, or no
-        // lines, then we just pick one of those.
-        scorableBoardSlots = &lineCountLookup.at(highestLineCount);
+        // If the highest line count IS scorable boxes surrounded by 3 lines,
+        // pick it that category of boxes.
+        scorableBoardSlots = &lineCountLookup.at(3);
+        break;
+    }
+
+    case 0:
+    case 1:
+    {
+        // If the highest line count IS scorable boxes surrounded by no or
+        // 1 lines, randomly select from either grouping.
+        int index = rand() % 2;
+
+        scorableBoardSlots = &lineCountLookup.at(index);
+        if (scorableBoardSlots->size() == 0)
+        {
+            // Since there are no moves available we need to switch from the
+            // pool of 0 lines -> 1 lines surrounded boxes or 1 -> 0 lines
+            // surrounded boxes.
+            scorableBoardSlots = &lineCountLookup.at(1 - index);
+        }
+
         break;
     }
 
@@ -164,14 +145,18 @@ PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(const GameBoard &gameBoard)
     }
 
     // Humans think randomly! So, let's emulate potential poor life choices!
-    int index = rand() % scorableBoardSlots->size();
-    GameBoardSlot *scorableBoardSlot = scorableBoardSlots->at(index);
+    int scorableIndex = rand() % scorableBoardSlots->size();
+    GameBoardSlot *scorableBoardSlot = scorableBoardSlots->at(scorableIndex);
 
-    const GameBoardSlot &legalBoardSlot = _determineLegalSlot(
-        gameBoard, scorableBoardSlot->rowIndex(), scorableBoardSlot->columnIndex());
+    int boardSlotID = scorableBoardSlot->columnIndex() + ',' + scorableBoardSlot->rowIndex();
+    SimpleVector<const GameBoardSlot *> &legalBoardSlots = legalSlotsLookup.at(boardSlotID);
 
-    int columnIndex = legalBoardSlot.columnIndex();
-    int rowIndex = legalBoardSlot.rowIndex();
+    // Yay, poor choices again! Woo!
+    int legalIndex = rand() % legalBoardSlots.size();
+    const GameBoardSlot *legalBoardSlot = legalBoardSlots.at(legalIndex);
+
+    int columnIndex = legalBoardSlot->columnIndex();
+    int rowIndex = legalBoardSlot->rowIndex();
     int turnIndex = gameBoard.turnIndex() + 1;
 
     PlayerTurn *playerTurn = new PlayerTurn(turnIndex, rowIndex, columnIndex, this->_playerInitial);

@@ -15,9 +15,8 @@
 class BasicStrategyAIPlayer : public Player
 {
 private:
-    static int _computeSurroundingLineCount(const GameBoard &gameBoard, int rowIndex, int columnIndex);
-
-    static const GameBoardSlot& _determineLegalSlot(const GameBoard &gameBoard, int rowIndex, int columnIndex);
+    static int _computeSurroundingLineCount(
+        const GameBoard &gameBoard, int rowIndex, int columnIndex, SimpleHashMap<int, SimpleVector<const GameBoardSlot *>, 99 * 99> &legalSlotsLookup);
 
 public:
     using Player::Player;
