@@ -25,7 +25,8 @@
         "system_error": "cpp",
         "typeinfo": "cpp",
         "algorithm": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "string_view": "cpp"
     },
 
     "[cpp]": {
