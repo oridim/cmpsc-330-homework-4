@@ -126,10 +126,10 @@ int main()
           << endl
           << "   0        " << endl
           << "   012345678" << endl
-          << "00 . . . . ." << endl
+          << "00 . . . .d." << endl
           << " 1          " << endl
           << " 2 . . . .d." << endl
-          << " 3     d o  " << endl
+          << " 3       o  " << endl
           << " 4 . . . . ." << endl
           << endl;
 
