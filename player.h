@@ -37,7 +37,7 @@ public:
     // gameboard state.
     //
     // Otherwise, a `nullptr` is returned.
-    PlayerTurn *computePlayerTurn(const GameBoard &gameBoard) const;
+    virtual PlayerTurn *computePlayerTurn(const GameBoard &gameBoard) const;
 };
 
 #endif
