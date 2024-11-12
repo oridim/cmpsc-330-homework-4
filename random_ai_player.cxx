@@ -1,7 +1,10 @@
 #include <random>
 #include <string>
 
+#include "simple_vector.h"
+
 #include "player_turn.h"
+#include "game_board_slot.h"
 #include "game_board.h"
 
 #include "player.h"
