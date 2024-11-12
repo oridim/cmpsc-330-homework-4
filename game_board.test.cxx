@@ -26,6 +26,8 @@ int main()
 
      cout << "gameBoard1 = GameBoard(3, 5): " << endl
           << endl
+          << "\tgameBoard1.turnIndex()\t\t= " << gameBoard1.turnIndex() << "\t(SHOULD BE: -1)" << endl
+          << endl
           << "\tgameBoard1.rows()\t\t= " << gameBoard1.rows() << "\t(SHOULD BE: 3)" << endl
           << "\tgameBoard1.columns()\t\t= " << gameBoard1.columns() << "\t(SHOULD BE: 5)" << endl
           << endl
@@ -122,6 +124,10 @@ int main()
      gameBoard1.applyTurn(playerTurn4);
      gameBoard1.applyTurn(playerTurn5);
      gameBoard1.applyTurn(playerTurn6);
+
+     cout
+          << endl
+          << "\tgameBoard1.turnIndex()\t= " << gameBoard1.turnIndex() << "\t(SHOULD BE: 5)" << endl;
 
      cout << endl
           << "legalSlots2 = gameBoard1.computeLegalSlots()" << endl

@@ -19,6 +19,7 @@ GameBoard::GameBoard(int rows, int columns)
     // data getters! Otherwise they will calculate garbage values!
     this->_columns = columns;
     this->_rows = rows;
+    this->_turnIndex = -1;
 
     int expandedRows = this->expandedRows();
     int expandedColumns = this->expandedColumns();
@@ -179,6 +180,8 @@ void GameBoard::applyTurn(const PlayerTurn &playerTurn)
 
     oldBoardSlot._applyUpdate(GameBoardSlot::SLOT_KIND::line, playerTurn);
     this->_participatingPlayers->at(playerTurn.playerInitial()) = true;
+
+    this->_turnIndex = playerTurn.turnIndex();
 }
 
 SimpleVector<GameBoardSlot> *GameBoard::computeKindSlots(

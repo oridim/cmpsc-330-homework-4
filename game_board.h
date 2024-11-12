@@ -34,6 +34,17 @@ private:
     // gameboard grid.
     int _rows;
 
+    // `int GameBoard._turnIndex`
+    //
+    // Represents the index of the last turn performed.
+    //
+    // **NOTE**: This is strictly going off `PlayerTurn` instances used in
+    // `GameBoard.applyTurn`.
+    //
+    // So whenever a `PlayerTurn` is applied, the `PlayerTurn._turnIndex` is
+    // used. Meaning, `GameBoard` is not the authoritive source of this data!
+    int _turnIndex;
+
     // `SimpleVector<SimpleVector<GameBoardSlot *> *> GameBoard.*_grid`
     //
     // Represents a two-dimensional `SimpleVector` of gameboard grid slots.
@@ -82,6 +93,7 @@ public:
 
     int columns() const { return this->_columns; }
     int rows() const { return this->_rows; }
+    int turnIndex() const { return this->_turnIndex; }
 
     // `int GameBoard.columnPadding()`
     //
