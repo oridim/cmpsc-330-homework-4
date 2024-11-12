@@ -92,7 +92,7 @@ int main()
          << "gameResult2 = GameResult::computeGameResult(*gameBoard2):" << endl
          << endl
          << "\tgameResult2.winKind()\t\t= " << static_cast<int>(gameResult2->winKind()) << "\t(SHOULD BE: 3) [GameResult::WIN_KIND::multiple]" << endl
-         << "\tgameResult2.highestScore()\t= " << gameResult2->highestScore() << "\t(SHOULD BE: 3)" << endl;
+         << "\tgameResult2.highestScore()\t= " << gameResult2->highestScore() << "\t(SHOULD BE: 2)" << endl;
 
      cout << endl
           << "playerResults2 = gameResult2->playerResults()" << endl
