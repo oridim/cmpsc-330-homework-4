@@ -1,5 +1,4 @@
 #include <random>
-#include <string>
 
 #include "simple_vector.h"
 
