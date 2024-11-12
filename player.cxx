@@ -1,3 +1,8 @@
+#include <string>
+
+#include "player_turn.h"
+#include "game_board.h"
+
 #include "player.h"
 
 Player::Player()
@@ -28,4 +33,9 @@ bool Player::operator!=(const Player &rightHandPlayer) const
 {
     // See `Player::operator==` for reasoning.
     return this != &rightHandPlayer;
+}
+
+PlayerTurn *Player::computePlayerTurn(const GameBoard &gameBoard) const
+{
+    throw string("bad dispatch to 'Player.computePlayerTurn(const GameBoard &)' (not implemented)");
 }

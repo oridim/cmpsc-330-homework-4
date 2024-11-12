@@ -1,6 +1,9 @@
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
 
+#include "player_turn.h"
+#include "game_board.h"
+
 // `class Player`
 //
 // Represents a common interface that different types of player controllers
@@ -26,6 +29,15 @@ public:
     bool operator!=(const Player &rightHandPlayer) const;
 
     char playerInitial() const { return this->_playerInitial; }
+
+    // `PlayerTurn.computePlayerTurn(const GameBoard &gameBoard)`
+    //
+    // Returns a `PlayerTurn` instance pointer if the player controller
+    // was available to calculate an action it could take with the given
+    // gameboard state.
+    //
+    // Otherwise, a `nullptr` is returned.
+    PlayerTurn *computePlayerTurn(const GameBoard &gameBoard) const;
 };
 
 #endif
