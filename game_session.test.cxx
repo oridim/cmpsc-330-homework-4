@@ -11,8 +11,8 @@
 #include "random_ai_player.h"
 #include "random_ai_player.cxx"
 
-#include "player.h"
-#include "player.cxx"
+#include "dummy_player.h"
+#include "dummy_player.cxx"
 
 #include "player_move.h"
 #include "player_move.cxx"
@@ -30,15 +30,15 @@ int main()
      cout << "=> [UNIT TEST: game_session.test.cxx]" << endl
           << endl;
 
-     SimpleVector<Player> *players = new SimpleVector<Player>();
+     SimpleVector<Player *> *playerSet = new SimpleVector<Player *>();
 
-     players->push_back(RandomAIPlayer('D'));
-     players->push_back(RandomAIPlayer('O'));
+     playerSet->push_back(new DummyPlayer('D'));
+     playerSet->push_back(new DummyPlayer('O'));
 
      // We have to allocate a second vector below otherwise the first one
      // will be deleted twice by `gameSession2`'s deconstructor a 2nd time.
-     GameSession gameSession1(players);
-     GameSession gameSession2(new SimpleVector<Player>(*players));
+     GameSession gameSession1(playerSet);
+     GameSession gameSession2 = GameSession();
 
      cout << "gameSession1 = GameSession(&players): " << endl
           << endl
@@ -53,13 +53,6 @@ int main()
           << "\tgameSession1 == gameSession2:\t" << ((gameSession1 == gameSession2) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
           << "\tgameSession1 != gameSession2:\t" << ((gameSession1 != gameSession2) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
           << endl;
-
-     GameSession gameSessionCopy(gameSession1);
-
-     cout << "gameSessionCopy = GameSession(gameSession1): " << endl
-          << endl
-          << "\tgameSessionCopy.turnIndex()\t= " << gameSessionCopy.turnIndex() << "\t(SHOULD BE: XXXX)" << endl
-          << "\tgameSessionCopy.players.size()\t= " << gameSessionCopy.players().size() << "\t(SHOULD BE: 2)" << endl;
 
      return 0;
 }

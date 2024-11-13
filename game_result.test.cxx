@@ -10,8 +10,8 @@
 #include "game_board.h"
 #include "game_board.cxx"
 
-#include "player.h"
-#include "player.cxx"
+#include "dummy_player.h"
+#include "dummy_player.cxx"
 
 #include "game_data.h"
 #include "game_data.cxx"
@@ -56,19 +56,19 @@ int main()
      GameBoard *gameBoard2 = gameData2->makeGameBoard();
      GameBoard *gameBoard3 = gameData3->makeGameBoard();
 
-     SimpleVector<Player> *playerSet1 = new SimpleVector<Player>();
-     SimpleVector<Player> *playerSet2 = new SimpleVector<Player>();
-     SimpleVector<Player> *playerSet3 = new SimpleVector<Player>();
+     SimpleVector<Player *> *playerSet1 = new SimpleVector<Player *>();
+     SimpleVector<Player *> *playerSet2 = new SimpleVector<Player *>();
+     SimpleVector<Player *> *playerSet3 = new SimpleVector<Player *>();
 
-     playerSet1->push_back(Player('B'));
-     playerSet1->push_back(Player('R'));
+     playerSet1->push_back(new DummyPlayer('B'));
+     playerSet1->push_back(new DummyPlayer('R'));
 
-     playerSet2->push_back(Player('B'));
-     playerSet2->push_back(Player('G'));
-     playerSet2->push_back(Player('R'));
+     playerSet2->push_back(new DummyPlayer('B'));
+     playerSet2->push_back(new DummyPlayer('G'));
+     playerSet2->push_back(new DummyPlayer('R'));
 
-     playerSet3->push_back(Player('B'));
-     playerSet3->push_back(Player('R'));
+     playerSet3->push_back(new DummyPlayer('B'));
+     playerSet3->push_back(new DummyPlayer('R'));
 
      GameSession gameSession1(playerSet1, gameData1->turns().size());
      GameSession gameSession2(playerSet2, gameData2->turns().size());
