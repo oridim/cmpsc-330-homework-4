@@ -7,7 +7,6 @@
 #include "game_session.cxx"
 
 #include "player.h"
-#include "player.cxx"
 
 #include "player_move.h"
 #include "player_move.cxx"
@@ -36,26 +35,24 @@ int main()
 
      GameBoard gameBoard(3, 5);
 
-     RandomAIPlayer randomAIPlayer1('D');
-     RandomAIPlayer randomAIPlayer2('O');
+     RandomAIPlayer *randomAIPlayer1 = new RandomAIPlayer('D');
+     RandomAIPlayer *randomAIPlayer2 = new RandomAIPlayer('O');
 
-     SimpleVector<Player> *playerSet = new SimpleVector<Player>();
+     SimpleVector<Player *> *playerSet = new SimpleVector<Player *>();
 
      playerSet->push_back(randomAIPlayer1);
      playerSet->push_back(randomAIPlayer2);
 
      GameSession gameSession(playerSet);
 
-     PlayerTurn *playerTurn1 = randomAIPlayer1.computePlayerTurn(gameSession, gameBoard);
+     PlayerTurn *playerTurn1 = gameSession.applyNextPlayerTurn(gameBoard);
 
      cout << "*playerTurn1 = randomAIPlayer1.computePlayerTurn(gameBoard1): " << endl
           << endl
-          << "\tplayerTurn1.turnIndex()\t\t= " << playerTurn1->turnIndex() << "\t(SHOULD BE: 1)" << endl
+          << "\tplayerTurn1.turnIndex()\t\t= " << playerTurn1->turnIndex() << "\t(SHOULD BE: 0)" << endl
           << "\tplayerTurn1.row()\t\t= " << playerTurn1->rowIndex() << "\t(SHOULD BE: 3)" << endl
           << "\tplayerTurn1.column()\t\t= " << playerTurn1->columnIndex() << "\t(SHOULD BE: 0)" << endl
           << "\tplayerTurn1.playerInitial()\t= '" << playerTurn1->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
-
-     gameBoard.applyTurn(*playerTurn1);
 
      cout << endl
           << "gameBoard1.renderGameBoard():" << endl
@@ -77,7 +74,7 @@ int main()
 
      gameBoard.renderGameBoard();
 
-     PlayerTurn *playerTurn2 = randomAIPlayer2.computePlayerTurn(gameSession, gameBoard);
+     PlayerTurn *playerTurn2 = gameSession.applyNextPlayerTurn(gameBoard);
 
      cout << endl
           << endl
@@ -87,8 +84,6 @@ int main()
           << "\tplayerTurn2.row()\t\t= " << playerTurn2->rowIndex() << "\t(SHOULD BE: 2)" << endl
           << "\tplayerTurn2.column()\t\t= " << playerTurn2->columnIndex() << "\t(SHOULD BE: 1)" << endl
           << "\tplayerTurn2.playerInitial()\t= '" << playerTurn2->playerInitial() << "'" << "\t(SHOULD BE: 'O')" << endl;
-
-     gameBoard.applyTurn(*playerTurn2);
 
      cout << endl
           << "gameBoard1.renderGameBoard():" << endl
@@ -110,18 +105,16 @@ int main()
 
      gameBoard.renderGameBoard();
 
-     PlayerTurn *playerTurn3 = randomAIPlayer1.computePlayerTurn(gameSession, gameBoard);
+     PlayerTurn *playerTurn3 = gameSession.applyNextPlayerTurn(gameBoard);
 
      cout << endl
           << endl
           << "*playerTurn3 = randomAIPlayer1.computePlayerTurn(gameBoard1): " << endl
           << endl
-          << "\tplayerTurn3.turnIndex()\t\t= " << playerTurn3->turnIndex() << "\t(SHOULD BE: 1)" << endl
+          << "\tplayerTurn3.turnIndex()\t\t= " << playerTurn3->turnIndex() << "\t(SHOULD BE: 2)" << endl
           << "\tplayerTurn3.row()\t\t= " << playerTurn3->rowIndex() << "\t(SHOULD BE: 3)" << endl
           << "\tplayerTurn3.column()\t\t= " << playerTurn3->columnIndex() << "\t(SHOULD BE: 4)" << endl
           << "\tplayerTurn3.playerInitial()\t= '" << playerTurn3->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
-
-     gameBoard.applyTurn(*playerTurn3);
 
      cout << endl
           << "gameBoard1.renderGameBoard():" << endl
@@ -143,16 +136,9 @@ int main()
 
      gameBoard.renderGameBoard();
 
-     cout << endl
-          << endl
-          << "RandomAIPlayer::operator==, RandomAIPlayer::operator!=" << endl
-          << endl
-          << "\trandomAIPlayer1 == randomAIPlayer1:\t" << ((randomAIPlayer1 == randomAIPlayer1) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
-          << "\trandomAIPlayer1 != randomAIPlayer1:\t" << ((randomAIPlayer1 != randomAIPlayer1) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
-          << "\trandomAIPlayer1 == randomAIPlayer2:\t" << ((randomAIPlayer1 == randomAIPlayer2) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
-          << "\trandomAIPlayer1 != randomAIPlayer2:\t" << ((randomAIPlayer1 != randomAIPlayer2) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
-          << endl;
+     cout << endl;
 
+     delete playerTurn3;
      delete playerTurn2;
      delete playerTurn1;
 
