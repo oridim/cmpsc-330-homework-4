@@ -10,10 +10,10 @@ GameSession::GameSession()
     this->_turnIndex = -1;
 }
 
-GameSession::GameSession(const SimpleVector<Player> *players)
+GameSession::GameSession(const SimpleVector<Player> *players, int turnIndex)
 {
     this->_players = players;
-    this->_turnIndex = 0;
+    this->_turnIndex = turnIndex;
 }
 
 GameSession::GameSession(const GameSession &gameSession)

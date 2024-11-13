@@ -2,8 +2,10 @@
 #define _GAME_RESULT_H_
 
 #include "simple_vector.h"
+
 #include "player_result.h"
 #include "game_board.h"
+#include "game_session.h"
 
 // `class GameResult`
 //
@@ -39,7 +41,8 @@ public:
         multiple
     };
 
-    static GameResult *computeGameResult(const GameBoard &gameBoard);
+    static GameResult *computeGameResult(
+        const GameSession &gameSession, const GameBoard &gameBoard);
 
 private:
     // `char GameResult._highestScore`

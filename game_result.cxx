@@ -3,29 +3,34 @@
 
 #include "simple_vector.h"
 #include "simple_hash_map.h"
+
 #include "player_result.h"
 #include "player_turn.h"
 #include "game_board_slot.h"
 #include "game_board.h"
+#include "game_session.h"
 
 #include "game_result.h"
 
-GameResult *GameResult::computeGameResult(const GameBoard &gameBoard)
+GameResult *GameResult::computeGameResult(
+    const GameSession &gameSession, const GameBoard &gameBoard)
 {
     int highestScore = 0;
 
     // **NOTE**: We only need to test the ASCII character codes since we are
     // only suppose to recieve initials as player identifiers.
 
-    SimpleVector<char> *participatingPlayers = gameBoard.computeParticipatingPlayers();
+    const SimpleVector<Player> &participatingPlayers = gameSession.players();
     SimpleHashMap<char, PlayerResult, 128> *resultLookup = new SimpleHashMap<char, PlayerResult, 128>();
 
     // Some players may not even capture a scorable box. So, we need to loop through
     // each player that was flagged as participating so we can initialize their
     // data in our lookup.
-    for (int index = 0; index < participatingPlayers->size(); index++)
+    for (int index = 0; index < participatingPlayers.size(); index++)
     {
-        char playerInitial = participatingPlayers->at(index);
+        const Player &player = participatingPlayers.get(index);
+        char playerInitial = player.playerInitial();
+
         PlayerResult &playerResult = resultLookup->at(playerInitial);
 
         playerResult._playerInitial = playerInitial;
@@ -73,18 +78,17 @@ GameResult *GameResult::computeGameResult(const GameBoard &gameBoard)
     }
 
     playerResults->sort([](const PlayerResult &a, const PlayerResult &b)
-        {
-            char aPlayerInitial = a.playerInitial();
-            char bPlayerInitial = b.playerInitial();
+    {
+        char aPlayerInitial = a.playerInitial();
+        char bPlayerInitial = b.playerInitial();
 
-            if (aPlayerInitial > bPlayerInitial) {
-                return 1;
-            }
+        if (aPlayerInitial > bPlayerInitial) {
+            return 1;
+        }
 
-            return 0;
-        });
+        return 0;
+    });
 
-    delete participatingPlayers;
     delete resultLookup;
 
     return new GameResult(playerResults, winKind, highestScore);

@@ -19,7 +19,6 @@ GameBoard::GameBoard(int rows, int columns)
     // data getters! Otherwise they will calculate garbage values!
     this->_columns = columns;
     this->_rows = rows;
-    this->_turnIndex = -1;
 
     int expandedRows = this->expandedRows();
     int expandedColumns = this->expandedColumns();
@@ -45,13 +44,11 @@ GameBoard::GameBoard(int rows, int columns)
     }
 
     this->_grid = gridRows;
-    this->_participatingPlayers = new SimpleHashMap<char, bool, 128>();
 }
 
 GameBoard::~GameBoard()
 {
     delete this->_grid;
-    delete this->_participatingPlayers;
 }
 
 bool GameBoard::operator==(const GameBoard &rightHandBoard) const
@@ -179,9 +176,6 @@ void GameBoard::applyTurn(const PlayerTurn &playerTurn)
     }
 
     oldBoardSlot._applyUpdate(GameBoardSlot::SLOT_KIND::line, playerTurn);
-    this->_participatingPlayers->at(playerTurn.playerInitial()) = true;
-
-    this->_turnIndex = playerTurn.turnIndex();
 }
 
 SimpleVector<GameBoardSlot> *GameBoard::computeKindSlots(
@@ -252,11 +246,6 @@ SimpleVector<GameBoardSlot> *GameBoard::computeLegalSlots() const
     }
 
     return legalSlots;
-}
-
-SimpleVector<char> *GameBoard::computeParticipatingPlayers() const
-{
-    return this->_participatingPlayers->keys();
 }
 
 SimpleVector<GameBoardSlot> *GameBoard::computeScorableSlots(

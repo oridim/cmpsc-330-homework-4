@@ -4,6 +4,18 @@
 #include "player_turn.h"
 #include "game_board.h"
 
+// **HACK**: We have a circular dependency here `GameSession` and `Player` both
+// needing to know about each other.
+//
+// To get around this, we simply need to forward declare `GameSession` as a
+// "dummy" class here.
+//
+// `player.cxx` can include the real `game_session.h` to get the proper
+// shape of the class without errors.
+//
+// One of the benefits of seperating class definitions from class implmentations ^^.
+class GameSession;
+
 // `class Player`
 //
 // Represents a common interface that different types of player controllers
@@ -37,7 +49,7 @@ public:
     // gameboard state.
     //
     // Otherwise, a `nullptr` is returned.
-    virtual PlayerTurn *computePlayerTurn(const GameBoard &gameBoard) const;
+    virtual PlayerTurn *computePlayerTurn(const GameSession &gameSession, const GameBoard &gameBoard) const;
 };
 
 #endif

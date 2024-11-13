@@ -21,7 +21,8 @@ private:
 public:
     using Player::Player;
 
-    PlayerTurn *computePlayerTurn(const GameBoard &gameBoard) const;
+    PlayerTurn *computePlayerTurn(
+        const GameSession &gameSession, const GameBoard &gameBoard) const;
 };
 
 #endif

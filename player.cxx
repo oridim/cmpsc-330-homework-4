@@ -2,6 +2,7 @@
 
 #include "player_turn.h"
 #include "game_board.h"
+#include "game_session.h"
 
 #include "player.h"
 
@@ -35,7 +36,7 @@ bool Player::operator!=(const Player &rightHandPlayer) const
     return this != &rightHandPlayer;
 }
 
-PlayerTurn *Player::computePlayerTurn(const GameBoard &gameBoard) const
+PlayerTurn *Player::computePlayerTurn(const GameSession &gameSession, const GameBoard &gameBoard) const
 {
     throw string("bad dispatch to 'Player.computePlayerTurn(const GameBoard &)' (not implemented)");
 }

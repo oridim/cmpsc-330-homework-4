@@ -9,7 +9,8 @@
 #include "player.h"
 #include "random_ai_player.h"
 
-PlayerTurn *RandomAIPlayer::computePlayerTurn(const GameBoard &gameBoard) const
+PlayerTurn *RandomAIPlayer::computePlayerTurn(
+    const GameSession &gameSession, const GameBoard &gameBoard) const
 {
     SimpleVector<GameBoardSlot> *legalSlots = gameBoard.computeLegalSlots();
     if (legalSlots->size() == 0)
@@ -22,7 +23,7 @@ PlayerTurn *RandomAIPlayer::computePlayerTurn(const GameBoard &gameBoard) const
 
     int columnIndex = gameBoardSlot.columnIndex();
     int rowIndex = gameBoardSlot.rowIndex();
-    int turnIndex = gameBoard.turnIndex() + 1;
+    int turnIndex = gameSession.turnIndex() + 1;
 
     PlayerTurn *playerTurn = new PlayerTurn(turnIndex, rowIndex, columnIndex, this->_playerInitial);
 

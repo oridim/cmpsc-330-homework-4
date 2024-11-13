@@ -23,12 +23,12 @@ protected:
 
     // `int GameSession._turnIndex`
     //
-    // Represents the index of the current turn.
+    // Represents the index of the current turn to be yet performed.
     int _turnIndex;
 
 public:
     GameSession();
-    GameSession(const SimpleVector<Player> *players);
+    GameSession(const SimpleVector<Player> *players, int turnIndex = 0);
 
     GameSession(const GameSession &gameSession);
 

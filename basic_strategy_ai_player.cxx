@@ -54,7 +54,8 @@ int BasicStrategyAIPlayer::_computeSurroundingLineCount(
     return lineCount;
 }
 
-PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(const GameBoard &gameBoard) const
+PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(
+    const GameSession &gameSession, const GameBoard &gameBoard) const
 {
     SimpleVector<GameBoardSlot> *scorableSlots = gameBoard.computeScorableSlots();
     if (scorableSlots->size() == 0)
@@ -161,7 +162,7 @@ PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(const GameBoard &gameBoard)
 
     int columnIndex = legalBoardSlot->columnIndex();
     int rowIndex = legalBoardSlot->rowIndex();
-    int turnIndex = gameBoard.turnIndex() + 1;
+    int turnIndex = gameSession.turnIndex() + 1;
 
     PlayerTurn *playerTurn = new PlayerTurn(turnIndex, rowIndex, columnIndex, this->_playerInitial);
 

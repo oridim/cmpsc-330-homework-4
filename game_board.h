@@ -34,17 +34,6 @@ private:
     // gameboard grid.
     int _rows;
 
-    // `int GameBoard._turnIndex`
-    //
-    // Represents the index of the last turn performed.
-    //
-    // **NOTE**: This is strictly going off `PlayerTurn` instances used in
-    // `GameBoard.applyTurn`.
-    //
-    // So whenever a `PlayerTurn` is applied, the `PlayerTurn._turnIndex` is
-    // used. Meaning, `GameBoard` is not the authoritive source of this data!
-    int _turnIndex;
-
     // `SimpleVector<SimpleVector<GameBoardSlot *> *> GameBoard.*_grid`
     //
     // Represents a two-dimensional `SimpleVector` of gameboard grid slots.
@@ -75,12 +64,6 @@ private:
     // ```
     SimpleVector<SimpleVector<GameBoardSlot>> *_grid;
 
-    // `SimpleHashMap<bool, 128> *GameBoard._participatingPlayers;
-    //
-    // **NOTE**: We only need to test the ASCII character codes since we are
-    // only suppose to recieve initials as player identifiers.
-    SimpleHashMap<char, bool, 128> *_participatingPlayers;
-
     const PlayerTurn *_determineCapturePriorityTurn(int rowIndex, int columnIndex);
 
 public:
@@ -93,7 +76,6 @@ public:
 
     int columns() const { return this->_columns; }
     int rows() const { return this->_rows; }
-    int turnIndex() const { return this->_turnIndex; }
 
     // `int GameBoard.columnPadding()`
     //
@@ -158,13 +140,6 @@ public:
     // instances in the gameboard grid that are legal moves with an optimized
     // algorithm.
     SimpleVector<GameBoardSlot> *computeLegalSlots() const;
-
-    // `SimpleVector<GameBoardSlot> *GameBoard.computeParticipatingPlayers()`
-    //
-    // Returns a new `SimpleVector` with all the available `GameBoardSlot`
-    // instances in the gameboard grid that are legal moves with an optimized
-    // algorithm.
-    SimpleVector<char> *computeParticipatingPlayers() const;
 
     // `SimpleVector<GameBoardSlot> *GameBoard.computeScorableSlots()`
     //
