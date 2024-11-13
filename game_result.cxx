@@ -21,7 +21,7 @@ GameResult *GameResult::computeGameResult(
     // **NOTE**: We only need to test the ASCII character codes since we are
     // only suppose to recieve initials as player identifiers.
 
-    const SimpleVector<Player> &participatingPlayers = gameSession.players();
+    const SimpleVector<Player *> &participatingPlayers = gameSession.players();
     SimpleHashMap<char, PlayerResult, 128> *resultLookup = new SimpleHashMap<char, PlayerResult, 128>();
 
     // Some players may not even capture a scorable box. So, we need to loop through
@@ -29,8 +29,8 @@ GameResult *GameResult::computeGameResult(
     // data in our lookup.
     for (int index = 0; index < participatingPlayers.size(); index++)
     {
-        const Player &player = participatingPlayers.get(index);
-        char playerInitial = player.playerInitial();
+        const Player *player = participatingPlayers.get(index);
+        char playerInitial = player->playerInitial();
 
         PlayerResult &playerResult = resultLookup->at(playerInitial);
 
