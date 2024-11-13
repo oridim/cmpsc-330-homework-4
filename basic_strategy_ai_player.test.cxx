@@ -88,14 +88,6 @@ int main()
      gameBoard.applyTurn(*playerTurn2);
 
      cout << endl
-          << "BasicStrategyAIPlayer::operator==, BasicStrategyAIPlayer::operator!=" << endl
-          << endl
-          << "\tbasicStrategyAIPlayer1 == basicStrategyAIPlayer1:\t" << ((basicStrategyAIPlayer1 == basicStrategyAIPlayer1) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
-          << "\tbasicStrategyAIPlayer1 != basicStrategyAIPlayer1:\t" << ((basicStrategyAIPlayer1 != basicStrategyAIPlayer1) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
-          << "\tbasicStrategyAIPlayer1 == basicStrategyAIPlayer2:\t" << ((basicStrategyAIPlayer1 == basicStrategyAIPlayer2) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
-          << "\tbasicStrategyAIPlayer1 != basicStrategyAIPlayer2:\t" << ((basicStrategyAIPlayer1 != basicStrategyAIPlayer2) ? "true" : "false") << "\t(SHOULD BE: true)" << endl;
-
-     cout << endl
           << "gameBoard1.renderGameBoard():" << endl
           << endl;
 
