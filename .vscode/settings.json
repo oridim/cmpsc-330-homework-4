@@ -26,7 +26,8 @@
         "typeinfo": "cpp",
         "algorithm": "cpp",
         "iostream": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "initializer_list": "cpp"
     },
 
     "[cpp]": {
