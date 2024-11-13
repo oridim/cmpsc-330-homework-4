@@ -39,12 +39,12 @@ int main()
      BasicStrategyAIPlayer *basicStrategyAIPlayer1 = new BasicStrategyAIPlayer('D');
      BasicStrategyAIPlayer *basicStrategyAIPlayer2 = new BasicStrategyAIPlayer('O');
 
-     SimpleVector<const Player *> *playerSet = new SimpleVector<const Player *>();
+     SimpleVector<const Player *> *playersBlah = new SimpleVector<const Player *>();
 
-     playerSet->push_back(basicStrategyAIPlayer1);
-     playerSet->push_back(basicStrategyAIPlayer2);
+     playersBlah->push_back(basicStrategyAIPlayer1);
+     playersBlah->push_back(basicStrategyAIPlayer2);
 
-     GameSession gameSession(playerSet);
+     GameSession gameSession(playersBlah);
 
      PlayerTurn *playerTurn1 = gameSession.applyNextPlayerTurn(gameBoard);
 
