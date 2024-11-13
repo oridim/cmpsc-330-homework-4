@@ -1,8 +1,8 @@
 #include <string>
 
-#include "player_turn.h"
-
 #include "game_board_slot.h"
+
+#include "player_turn.h"
 
 using namespace std;
 

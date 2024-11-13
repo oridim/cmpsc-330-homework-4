@@ -2,9 +2,11 @@
 
 #include "simple_vector.h"
 
-#include "player_turn.h"
 #include "game_board_slot.h"
 #include "game_board.h"
+
+#include "game_session.h"
+#include "player_turn.h"
 
 #include "player.h"
 #include "random_ai_player.h"

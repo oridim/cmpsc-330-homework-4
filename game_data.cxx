@@ -2,8 +2,10 @@
 #include <string>
 
 #include "simple_vector.h"
-#include "player_turn.h"
+
 #include "game_board.h"
+
+#include "player_turn.h"
 
 #include "game_data.h"
 

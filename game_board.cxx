@@ -5,9 +5,11 @@
 
 #include "simple_hash_map.h"
 #include "simple_vector.h"
+
+#include "game_board_slot.h"
+
 #include "player_result.h"
 #include "player_turn.h"
-#include "game_board_slot.h"
 
 #include "game_board.h"
 
