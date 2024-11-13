@@ -1,10 +1,5 @@
 #include <iostream>
 
-#include "player_turn.h"
-#include "player_turn.cxx"
-
-#include "game_board_slot.cxx"
-
 #include "game_board.h"
 #include "game_board.cxx"
 
@@ -13,6 +8,14 @@
 
 #include "player.h"
 #include "player.cxx"
+
+#include "player_move.h"
+#include "player_move.cxx"
+
+#include "player_turn.h"
+#include "player_turn.cxx"
+
+#include "game_board_slot.cxx"
 
 #include "random_ai_player.h"
 #include "random_ai_player.cxx"
@@ -28,7 +31,7 @@ int main()
      // so our random AI players always generating the same moves.
      //
      // This allows us to check for correctness in the unit tests.
-     //srand(time(0));
+     // srand(time(0));
      srand(0);
 
      GameBoard gameBoard(3, 5);

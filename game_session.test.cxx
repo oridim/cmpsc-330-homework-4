@@ -2,20 +2,23 @@
 
 #include "simple_vector.h"
 
-#include "player_turn.h"
-#include "player_turn.cxx"
-
 #include "game_board_slot.h"
 #include "game_board_slot.cxx"
 
 #include "game_board.h"
 #include "game_board.cxx"
 
+#include "random_ai_player.h"
+#include "random_ai_player.cxx"
+
 #include "player.h"
 #include "player.cxx"
 
-#include "random_ai_player.h"
-#include "random_ai_player.cxx"
+#include "player_move.h"
+#include "player_move.cxx"
+
+#include "player_turn.h"
+#include "player_turn.cxx"
 
 #include "game_session.h"
 #include "game_session.cxx"

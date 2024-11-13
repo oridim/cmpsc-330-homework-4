@@ -1,8 +1,6 @@
 #include <iostream>
 
-#include "player_turn.h"
-#include "player_turn.cxx"
-
+#include "game_board_slot.h"
 #include "game_board_slot.cxx"
 
 #include "game_board.h"
@@ -13,6 +11,12 @@
 
 #include "player.h"
 #include "player.cxx"
+
+#include "player_move.h"
+#include "player_move.cxx"
+
+#include "player_turn.h"
+#include "player_turn.cxx"
 
 #include "basic_strategy_ai_player.h"
 #include "basic_strategy_ai_player.cxx"
