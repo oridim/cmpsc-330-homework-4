@@ -3,8 +3,10 @@
 
 #include "simple_vector.h"
 #include "simple_hash_map.h"
-#include "player_turn.h"
+
 #include "game_board_slot.h"
+
+#include "player_turn.h"
 
 // **NOTE**: `GameBoard._grid` could be made more memory efficient by implementing
 // a custom `SimpleFixedVector<V>` where the size is fixed and operations more limited.

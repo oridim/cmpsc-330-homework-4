@@ -30,6 +30,7 @@ public:
     PlayerTurn();
     PlayerTurn(int turnIndex, int row, int column, char playerInitial);
 
+    PlayerTurn(const PlayerMove &playerMove, int turnIndex, char playerInitial);
     PlayerTurn(const PlayerTurn &playerTurn);
 
     bool operator==(const PlayerTurn &rightHandTurn) const;

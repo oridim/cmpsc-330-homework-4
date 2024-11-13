@@ -1,3 +1,5 @@
+#include "player_move.h"
+
 #include "player_turn.h"
 
 PlayerTurn::PlayerTurn()
@@ -12,6 +14,14 @@ PlayerTurn::PlayerTurn(int turnIndex, int rowIndex, int columnIndex, char player
 {
     this->_columnIndex = columnIndex;
     this->_rowIndex = rowIndex;
+    this->_playerInitial = playerInitial;
+    this->_turnIndex = turnIndex;
+}
+
+PlayerTurn::PlayerTurn(const PlayerMove &playerMove, int turnIndex, char playerInitial)
+{
+    this->_columnIndex = playerMove.columnIndex();
+    this->_rowIndex = playerMove.rowIndex();
     this->_playerInitial = playerInitial;
     this->_turnIndex = turnIndex;
 }
