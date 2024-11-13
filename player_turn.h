@@ -1,29 +1,21 @@
 #ifndef _PLAYER_TURN_H_
 #define _PLAYER_TURN_H_
 
+#include "player_move.h"
+
 // `class PlayerTurn`
 //
 // Represents structured data containing a turn completed by a player.
-class PlayerTurn
+class PlayerTurn : public PlayerMove
 {
-private:
-    // `int PlayerTurn._columnIndex`
-    //
-    // Represents what column in the Dots and Boxes gameboard grid that this move
-    // was performed.
-    int _columnIndex;
+    using PlayerMove::PlayerMove;
 
+private:
     // `char PlayerTurn._playerInitial`
     //
     // Represents the initial of the player who placed the move onto the Dots and Boxes
     // gameboard grid.
     char _playerInitial;
-
-    // `int PlayerTurn._rowIndex`
-    //
-    // Represents what row in the Dots and Boxes gameboard grid that this move was
-    // performed.
-    int _rowIndex;
 
     // `int PlayerTurn._turnIndex`
     //
@@ -43,9 +35,7 @@ public:
     bool operator==(const PlayerTurn &rightHandTurn) const;
     bool operator!=(const PlayerTurn &rightHandTurn) const;
 
-    int columnIndex() const { return this->_columnIndex; }
     char playerInitial() const { return this->_playerInitial; }
-    int rowIndex() const { return this->_rowIndex; }
     int turnIndex() const { return this->_turnIndex; }
 };
 

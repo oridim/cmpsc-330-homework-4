@@ -1,6 +1,7 @@
 #include "player_turn.h"
 
-PlayerTurn::PlayerTurn() {
+PlayerTurn::PlayerTurn()
+{
     this->_columnIndex = -1;
     this->_turnIndex = -1;
     this->_rowIndex = -1;
@@ -15,7 +16,8 @@ PlayerTurn::PlayerTurn(int turnIndex, int rowIndex, int columnIndex, char player
     this->_turnIndex = turnIndex;
 }
 
-PlayerTurn::PlayerTurn(const PlayerTurn &playerTurn) {
+PlayerTurn::PlayerTurn(const PlayerTurn &playerTurn)
+{
     this->_columnIndex = playerTurn._columnIndex;
     this->_rowIndex = playerTurn._rowIndex;
     this->_playerInitial = playerTurn._playerInitial;
