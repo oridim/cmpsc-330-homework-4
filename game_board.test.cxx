@@ -24,9 +24,11 @@ int main()
      cout << "=> [UNIT TEST: game_board.test.cxx]" << endl
           << endl;
 
+     //Initialize two GameBoard objects with 3 rows and 5 columns
      GameBoard gameBoard1(3, 5);
      GameBoard gameBoard2(3, 5);
 
+     //Display gameBoard1 properties and check its expected values for dimensions and paddings
      cout << "gameBoard1 = GameBoard(3, 5): " << endl
           << endl
           << "\tgameBoard1.rows()\t\t= " << gameBoard1.rows() << "\t(SHOULD BE: 3)" << endl
@@ -39,6 +41,8 @@ int main()
           << "\tgameBoard1.expandedColumns()\t= " << gameBoard1.expandedColumns() << "\t(SHOULD BE: 9)" << endl
           << endl;
 
+     //Render and display the initial Gameboard layout
+     //Expected vs. Actual
      cout << "gameBoard1.renderGameBoard():" << endl
           << endl;
 
@@ -58,6 +62,7 @@ int main()
 
      gameBoard1.renderGameBoard();
 
+     //Test equality and inequality operators
      cout << endl
           << endl
           << "GameBoard::operator==, GameBoard::operator!=" << endl
@@ -70,6 +75,7 @@ int main()
 
      SimpleVector<GameBoardSlot> *legalSlots1 = gameBoard1.computeLegalSlots();
 
+     //Compute the legal slots for gameBoard1 and display
      cout << "legalSlots1 = gameBoard1.computeLegalSlots()" << endl
           << endl
           << "(SHOULD BE)" << endl
@@ -108,6 +114,7 @@ int main()
           cout << "(" << slot.rowIndex() << ", " << slot.columnIndex() << ")" << endl;
      }
 
+     //Applies turn to gameBoard1 and observes changes in legal slots
      cout << endl
           << "gameBoard1.applyTurn(playerTurn1...6)"
           << endl;
@@ -126,6 +133,7 @@ int main()
      gameBoard1.applyTurn(playerTurn5);
      gameBoard1.applyTurn(playerTurn6);
 
+     //Display the updates legal slots after turns have been applies
      cout << endl
           << "legalSlots2 = gameBoard1.computeLegalSlots()" << endl
           << endl
@@ -161,6 +169,7 @@ int main()
           cout << "(" << slot.rowIndex() << ", " << slot.columnIndex() << ")" << endl;
      }
 
+     //Render and display updated gameBoard1 layout after turns applied
      cout << endl
           << "gameBoard1.renderGameBoard():" << endl
           << endl;
@@ -181,6 +190,7 @@ int main()
 
      gameBoard1.renderGameBoard();
 
+     //Compute and display slots of GameBoard::SLOT_KIND::line kind
      cout << endl
           << endl
           << "lineSlots = gameBoard1.computeKindSlots(GameBoardSlot::SLOT_KIND::line)" << endl
@@ -207,6 +217,7 @@ int main()
           cout << "(" << slot.rowIndex() << ", " << slot.columnIndex() << ")" << endl;
      }
 
+     //Cleans up dynamically allocated memory for vectors
      delete legalSlots1;
      delete legalSlots2;
      delete lineSlots;
