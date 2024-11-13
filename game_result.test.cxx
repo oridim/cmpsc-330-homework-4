@@ -16,8 +16,14 @@
 #include "game_board.h"
 #include "game_board.cxx"
 
+#include "player.h"
+#include "player.cxx"
+
 #include "game_data.h"
 #include "game_data.cxx"
+
+#include "game_session.h"
+#include "game_session.cxx"
 
 #include "game_result.h"
 #include "game_result.cxx"
@@ -47,13 +53,31 @@ int main()
      GameBoard *gameBoard2 = gameData2->makeGameBoard();
      GameBoard *gameBoard3 = gameData3->makeGameBoard();
 
+     SimpleVector<Player> *playerSet1 = new SimpleVector<Player>();
+     SimpleVector<Player> *playerSet2 = new SimpleVector<Player>();
+     SimpleVector<Player> *playerSet3 = new SimpleVector<Player>();
+
+     playerSet1->push_back(Player('B'));
+     playerSet1->push_back(Player('R'));
+
+     playerSet2->push_back(Player('B'));
+     playerSet2->push_back(Player('G'));
+     playerSet2->push_back(Player('R'));
+
+     playerSet3->push_back(Player('B'));
+     playerSet3->push_back(Player('R'));
+
+     GameSession gameSession1(playerSet1, gameData1->turns().size());
+     GameSession gameSession2(playerSet2, gameData2->turns().size());
+     GameSession gameSession3(playerSet3, gameData3->turns().size());
+
      gameBoard1->applyScorableCaptures();
      gameBoard2->applyScorableCaptures();
      gameBoard3->applyScorableCaptures();
 
-     GameResult *gameResult1 = GameResult::computeGameResult(*gameBoard1);
-     GameResult *gameResult2 = GameResult::computeGameResult(*gameBoard2);
-     GameResult *gameResult3 = GameResult::computeGameResult(*gameBoard3);
+     GameResult *gameResult1 = GameResult::computeGameResult(gameSession1, *gameBoard1);
+     GameResult *gameResult2 = GameResult::computeGameResult(gameSession2, *gameBoard2);
+     GameResult *gameResult3 = GameResult::computeGameResult(gameSession3, *gameBoard3);
 
      cout << "gameResult1 = GameResult::computeGameResult(*gameBoard1):" << endl
           << endl

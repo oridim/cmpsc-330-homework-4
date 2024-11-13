@@ -8,6 +8,9 @@
 #include "game_board.h"
 #include "game_board.cxx"
 
+#include "game_session.h"
+#include "game_session.cxx"
+
 #include "player.h"
 #include "player.cxx"
 
@@ -28,12 +31,19 @@ int main()
      // srand(time(0));
      srand(0);
 
-     GameBoard gameBoard1(3, 5);
+     GameBoard gameBoard(3, 5);
 
      BasicStrategyAIPlayer basicStrategyAIPlayer1('D');
      BasicStrategyAIPlayer basicStrategyAIPlayer2('O');
 
-     PlayerTurn *playerTurn1 = basicStrategyAIPlayer1.computePlayerTurn(gameBoard1);
+     SimpleVector<Player> *playerSet = new SimpleVector<Player>();
+
+     playerSet->push_back(basicStrategyAIPlayer1);
+     playerSet->push_back(basicStrategyAIPlayer2);
+
+     GameSession gameSession(playerSet);
+
+     PlayerTurn *playerTurn1 = basicStrategyAIPlayer1.computePlayerTurn(gameSession, gameBoard);
 
      cout << "*playerTurn1 = basicStrategyAIPlayer1.computePlayerTurn(gameBoard1): " << endl
           << endl
@@ -42,7 +52,7 @@ int main()
           << "\tplayerTurn1.column()\t\t= " << playerTurn1->columnIndex() << "\t(SHOULD BE: 7)" << endl
           << "\tplayerTurn1.playerInitial()\t= '" << playerTurn1->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
-     gameBoard1.applyTurn(*playerTurn1);
+     gameBoard.applyTurn(*playerTurn1);
 
      cout << endl
           << "gameBoard1.renderGameBoard():" << endl
@@ -62,9 +72,9 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-     gameBoard1.renderGameBoard();
+     gameBoard.renderGameBoard();
 
-     PlayerTurn *playerTurn2 = basicStrategyAIPlayer2.computePlayerTurn(gameBoard1);
+     PlayerTurn *playerTurn2 = basicStrategyAIPlayer2.computePlayerTurn(gameSession, gameBoard);
 
      cout << endl
           << endl
@@ -75,7 +85,7 @@ int main()
           << "\tplayerTurn2.column()\t\t= " << playerTurn2->columnIndex() << "\t(SHOULD BE: 6)" << endl
           << "\tplayerTurn2.playerInitial()\t= '" << playerTurn2->playerInitial() << "'" << "\t(SHOULD BE: 'O')" << endl;
 
-     gameBoard1.applyTurn(*playerTurn2);
+     gameBoard.applyTurn(*playerTurn2);
 
      cout << endl
           << "BasicStrategyAIPlayer::operator==, BasicStrategyAIPlayer::operator!=" << endl
@@ -103,9 +113,9 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-     gameBoard1.renderGameBoard();
+     gameBoard.renderGameBoard();
 
-     PlayerTurn *playerTurn3 = basicStrategyAIPlayer1.computePlayerTurn(gameBoard1);
+     PlayerTurn *playerTurn3 = basicStrategyAIPlayer1.computePlayerTurn(gameSession, gameBoard);
 
      cout << endl
           << endl
@@ -116,7 +126,7 @@ int main()
           << "\tplayerTurn3.column()\t\t= " << playerTurn3->columnIndex() << "\t(SHOULD BE: 4)" << endl
           << "\tplayerTurn3.playerInitial()\t= '" << playerTurn3->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
-     gameBoard1.applyTurn(*playerTurn3);
+     gameBoard.applyTurn(*playerTurn3);
 
      cout << endl
           << "gameBoard1.renderGameBoard():" << endl
@@ -136,7 +146,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-     gameBoard1.renderGameBoard();
+     gameBoard.renderGameBoard();
 
      cout << endl
           << endl
