@@ -37,24 +37,25 @@ protected:
     // `GameSession`.
     //
     // It would just make new instances of `Player` instead of the subclass.
-    const SimpleVector<Player *> *_players;
+    const SimpleVector<const Player *> *_players;
 
-    // `int GameSession._turnIndex`
+    // `SimpleVector<const PlayerTurn *> GameSession._turns`
     //
-    // Represents the index of the current turn to be yet performed.
-    int _turnIndex;
+    // Represents the a vector of all the turns taken so far.
+    SimpleVector<const PlayerTurn *> *_turns;
 
 public:
     GameSession();
-    GameSession(const SimpleVector<Player *> *players, int turnIndex = 0);
+    GameSession(const SimpleVector<const Player *> *players);
+    GameSession(const SimpleVector<const Player *> *players, const SimpleVector<PlayerTurn> turns);
 
     ~GameSession();
 
     bool operator==(const GameSession &rightHandSession) const;
     bool operator!=(const GameSession &rightHandSession) const;
 
-    const SimpleVector<Player *> &players() const { return *this->_players; }
-    int turnIndex() const { return this->_turnIndex; }
+    const SimpleVector<const Player *> &players() const { return *this->_players; }
+    const SimpleVector<const PlayerTurn *> &turns() const { return *this->_turns; };
 
     // `PlayerTurn *GameSession.computeNextPlayerTurn(const GameBoard &gameBoard)`
     //
@@ -71,6 +72,11 @@ public:
     //
     // Otherwise, `nullptr` is returned.
     PlayerTurn *computeNextPlayerTurn(const GameBoard &gameBoard) const;
+
+    // `int GameSession.nextTurnIndex()`
+    //
+    // Represents the index of the next turn to be yet performed.
+    int nextTurnIndex() const;
 };
 
 #endif
