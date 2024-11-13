@@ -30,7 +30,7 @@ int main()
      cout << "=> [UNIT TEST: game_session.test.cxx]" << endl
           << endl;
 
-     SimpleVector<Player *> *playerSet = new SimpleVector<Player *>();
+     SimpleVector<const Player *> *playerSet = new SimpleVector<const Player *>();
 
      playerSet->push_back(new DummyPlayer('D'));
      playerSet->push_back(new DummyPlayer('O'));
@@ -40,10 +40,11 @@ int main()
      GameSession gameSession1(playerSet);
      GameSession gameSession2 = GameSession();
 
-     cout << "gameSession1 = GameSession(&players): " << endl
+     cout << "gameSession1 = GameSession(playerSet): " << endl
           << endl
-          << "\tgameSession1.turnIndex()\t= " << gameSession1.turnIndex() << "\t(SHOULD BE: 0)" << endl
-          << "\tgameSession1.players.size()\t= " << gameSession1.players().size() << "\t(SHOULD BE: 2)" << endl;
+          << "\tgameSession1.turnIndex()\t= " << gameSession1.nextTurnIndex() << "\t(SHOULD BE: 0)" << endl
+          << "\tgameSession1.players.size()\t= " << gameSession1.players().size() << "\t(SHOULD BE: 2)" << endl
+          << "\tgameSession1.nextTurnIndex()\t= " << gameSession1.nextTurnIndex() << "\t(SHOULD BE: 0)" << endl;
 
      cout << endl
           << "GameSession::operator==, GameSession::operator!=" << endl

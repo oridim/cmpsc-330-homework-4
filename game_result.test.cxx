@@ -56,9 +56,9 @@ int main()
      GameBoard *gameBoard2 = gameData2->makeGameBoard();
      GameBoard *gameBoard3 = gameData3->makeGameBoard();
 
-     SimpleVector<Player *> *playerSet1 = new SimpleVector<Player *>();
-     SimpleVector<Player *> *playerSet2 = new SimpleVector<Player *>();
-     SimpleVector<Player *> *playerSet3 = new SimpleVector<Player *>();
+     SimpleVector<const Player *> *playerSet1 = new SimpleVector<const Player *>();
+     SimpleVector<const Player *> *playerSet2 = new SimpleVector<const Player *>();
+     SimpleVector<const Player *> *playerSet3 = new SimpleVector<const Player *>();
 
      playerSet1->push_back(new DummyPlayer('B'));
      playerSet1->push_back(new DummyPlayer('R'));

@@ -38,7 +38,7 @@ int main()
      RandomAIPlayer *randomAIPlayer1 = new RandomAIPlayer('D');
      RandomAIPlayer *randomAIPlayer2 = new RandomAIPlayer('O');
 
-     SimpleVector<Player *> *playerSet = new SimpleVector<Player *>();
+     SimpleVector<const Player *> *playerSet = new SimpleVector<const Player *>();
 
      playerSet->push_back(randomAIPlayer1);
      playerSet->push_back(randomAIPlayer2);
@@ -137,10 +137,6 @@ int main()
      gameBoard.renderGameBoard();
 
      cout << endl;
-
-     delete playerTurn3;
-     delete playerTurn2;
-     delete playerTurn1;
 
      return 0;
 }

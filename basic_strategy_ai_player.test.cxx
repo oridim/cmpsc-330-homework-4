@@ -39,7 +39,7 @@ int main()
      BasicStrategyAIPlayer *basicStrategyAIPlayer1 = new BasicStrategyAIPlayer('D');
      BasicStrategyAIPlayer *basicStrategyAIPlayer2 = new BasicStrategyAIPlayer('O');
 
-     SimpleVector<Player *> *playerSet = new SimpleVector<Player *>();
+     SimpleVector<const Player *> *playerSet = new SimpleVector<const Player *>();
 
      playerSet->push_back(basicStrategyAIPlayer1);
      playerSet->push_back(basicStrategyAIPlayer2);
@@ -138,10 +138,6 @@ int main()
      gameBoard.renderGameBoard();
 
      cout << endl;
-
-     delete playerTurn3;
-     delete playerTurn2;
-     delete playerTurn1;
 
      return 0;
 }
