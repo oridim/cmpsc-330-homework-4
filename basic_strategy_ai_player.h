@@ -5,6 +5,7 @@
 #include "game_board.h"
 
 #include "player.h"
+#include "player_turn.h"
 
 // `class BasicStrategyAIPlayer`
 //

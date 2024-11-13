@@ -2,6 +2,7 @@
 #define _RANDOM_AI_PLAYER_H_
 
 #include "player.h"
+#include "player_turn.h"
 
 // `class RandomAIPlayer`
 //

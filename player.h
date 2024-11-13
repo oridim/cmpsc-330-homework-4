@@ -1,8 +1,9 @@
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
 
-#include "player_turn.h"
 #include "game_board.h"
+
+#include "player_turn.h"
 
 // **HACK**: We have a circular dependency here `GameSession` and `Player` both
 // needing to know about each other.
