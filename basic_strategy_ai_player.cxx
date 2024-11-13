@@ -57,6 +57,10 @@ int BasicStrategyAIPlayer::_computeSurroundingLineCount(
     return lineCount;
 }
 
+BasicStrategyAIPlayer::BasicStrategyAIPlayer(char playerInitial) {
+    this->_playerInitial = playerInitial;
+}
+
 PlayerMove *BasicStrategyAIPlayer::computePlayerMove(
     const GameSession &gameSession, const GameBoard &gameBoard) const
 {
@@ -165,7 +169,6 @@ PlayerMove *BasicStrategyAIPlayer::computePlayerMove(
 
     int columnIndex = legalBoardSlot->columnIndex();
     int rowIndex = legalBoardSlot->rowIndex();
-    int turnIndex = gameSession.turnIndex() + 1;
 
     PlayerMove *playerMove = new PlayerMove(rowIndex, columnIndex);
 

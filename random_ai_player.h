@@ -13,8 +13,10 @@ class RandomAIPlayer : public Player
 public:
     using Player::Player;
 
-    PlayerMove *computePlayerMove(
-        const GameSession &gameSession, const GameBoard &gameBoard) const;
+    RandomAIPlayer(char playerInitial);
+
+    virtual PlayerMove *computePlayerMove(
+        const GameSession &gameSession, const GameBoard &gameBoard) const override;
 };
 
 #endif

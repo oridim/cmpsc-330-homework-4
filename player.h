@@ -19,8 +19,8 @@ class GameSession;
 
 // `class Player`
 //
-// Represents a common interface that different types of player controllers
-// inherit from.
+// Represents a common abstract class interface that different types of player
+// controllers inherit from.
 //
 // This allows for `GameSession` to generically handle different types of
 // player controllers without having to be explicitly typed for them.
@@ -33,24 +33,21 @@ protected:
     char _playerInitial;
 
 public:
-    Player();
-    Player(char playerInitial);
-
-    Player(const Player &Player);
-
-    bool operator==(const Player &rightHandPlayer) const;
-    bool operator!=(const Player &rightHandPlayer) const;
-
     char playerInitial() const { return this->_playerInitial; }
 
-    // `PlayerMove *Player.computePlayerMove(const GameBoard &gameBoard)`
+    virtual ~Player() = 0;
+
+    // `PlayerMove *Player.computePlayerMove(const GameSession &gameSession, const GameBoard &gameBoard)`
     //
-    // Returns a `PlayerTurn` instance pointer if the player controller
-    // was available to calculate an action it could take with the given
-    // gameboard state.
+    // Returns a `PlayerMove` instance pointer if the player controller
+    // was available to calculate a move it could take with the given
+    // game state.
     //
     // Otherwise, a `nullptr` is returned.
-    virtual PlayerMove *computePlayerMove(const GameSession &gameSession, const GameBoard &gameBoard) const;
+    virtual PlayerMove *computePlayerMove(
+        const GameSession &gameSession, const GameBoard &gameBoard) const = 0;
 };
+
+Player::~Player() {}
 
 #endif

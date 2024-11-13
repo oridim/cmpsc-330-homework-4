@@ -12,6 +12,11 @@
 
 #include "random_ai_player.h"
 
+RandomAIPlayer::RandomAIPlayer(char playerInitial)
+{
+    this->_playerInitial = playerInitial;
+}
+
 PlayerMove *RandomAIPlayer::computePlayerMove(
     const GameSession &gameSession, const GameBoard &gameBoard) const
 {
@@ -26,7 +31,6 @@ PlayerMove *RandomAIPlayer::computePlayerMove(
 
     int columnIndex = gameBoardSlot.columnIndex();
     int rowIndex = gameBoardSlot.rowIndex();
-    int turnIndex = gameSession.turnIndex() + 1;
 
     PlayerMove *playerTurn = new PlayerMove(rowIndex, columnIndex);
 

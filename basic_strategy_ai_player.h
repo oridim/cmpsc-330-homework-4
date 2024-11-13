@@ -22,8 +22,10 @@ private:
 public:
     using Player::Player;
 
-    PlayerMove *computePlayerMove(
-        const GameSession &gameSession, const GameBoard &gameBoard) const;
+    BasicStrategyAIPlayer(char playerInitial);
+
+    virtual PlayerMove *computePlayerMove(
+        const GameSession &gameSession, const GameBoard &gameBoard) const override;
 };
 
 #endif
