@@ -16,8 +16,9 @@ set -e
 
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_board_slot.test.cxx' -o './game_board_slot.test'
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_board.test.cxx' -o './game_board.test'
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_data.test.cxx' -o './game_data.test'
 
+/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_data.test.cxx' -o './game_data.test'
+/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_session.test.cxx' -o './game_session.test'
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_result.test.cxx' -o './game_result.test'
 
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './basic_strategy_ai_player.test.cxx' -o './basic_strategy_ai_player.test'
@@ -33,8 +34,9 @@ set -e
 
 ./game_board_slot.test
 ./game_board.test
-./game_data.test
 
+./game_data.test
+./game_session.test
 ./game_result.test
 
 ./basic_strategy_ai_player.test
