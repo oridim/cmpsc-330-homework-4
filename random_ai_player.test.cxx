@@ -121,7 +121,7 @@ int main()
           << endl
           << "*playerTurn3 = randomAIPlayer1.computePlayerTurn(gameBoard1): " << endl
           << endl
-          << "\tplayerTurn3.turnIndex()\t\t= " << playerTurn3->turnIndex() << "\t(SHOULD BE: 2)" << endl
+          << "\tplayerTurn3.turnIndex()\t\t= " << playerTurn3->turnIndex() << "\t(SHOULD BE: 1)" << endl
           << "\tplayerTurn3.row()\t\t= " << playerTurn3->rowIndex() << "\t(SHOULD BE: 3)" << endl
           << "\tplayerTurn3.column()\t\t= " << playerTurn3->columnIndex() << "\t(SHOULD BE: 4)" << endl
           << "\tplayerTurn3.playerInitial()\t= '" << playerTurn3->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;

@@ -48,8 +48,8 @@ int main()
      cout << "*playerTurn1 = basicStrategyAIPlayer1.computePlayerTurn(gameBoard1): " << endl
           << endl
           << "\tplayerTurn1.turnIndex()\t\t= " << playerTurn1->turnIndex() << "\t(SHOULD BE: 0)" << endl
-          << "\tplayerTurn1.row()\t\t= " << playerTurn1->rowIndex() << "\t(SHOULD BE: 2)" << endl
-          << "\tplayerTurn1.column()\t\t= " << playerTurn1->columnIndex() << "\t(SHOULD BE: 7)" << endl
+          << "\tplayerTurn1.row()\t\t= " << playerTurn1->rowIndex() << "\t(SHOULD BE: 3)" << endl
+          << "\tplayerTurn1.column()\t\t= " << playerTurn1->columnIndex() << "\t(SHOULD BE: 6)" << endl
           << "\tplayerTurn1.playerInitial()\t= '" << playerTurn1->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
      gameBoard.applyTurn(*playerTurn1);
@@ -82,7 +82,7 @@ int main()
           << endl
           << "\tplayerTurn2.turnIndex()\t\t= " << playerTurn2->turnIndex() << "\t(SHOULD BE: 1)" << endl
           << "\tplayerTurn2.row()\t\t= " << playerTurn2->rowIndex() << "\t(SHOULD BE: 3)" << endl
-          << "\tplayerTurn2.column()\t\t= " << playerTurn2->columnIndex() << "\t(SHOULD BE: 6)" << endl
+          << "\tplayerTurn2.column()\t\t= " << playerTurn2->columnIndex() << "\t(SHOULD BE: 8)" << endl
           << "\tplayerTurn2.playerInitial()\t= '" << playerTurn2->playerInitial() << "'" << "\t(SHOULD BE: 'O')" << endl;
 
      gameBoard.applyTurn(*playerTurn2);
@@ -122,8 +122,8 @@ int main()
           << "*playerTurn3 = basicStrategyAIPlayer1.computePlayerTurn(gameBoard1): " << endl
           << endl
           << "\tplayerTurn3.turnIndex()\t\t= " << playerTurn3->turnIndex() << "\t(SHOULD BE: 2)" << endl
-          << "\tplayerTurn3.row()\t\t= " << playerTurn3->rowIndex() << "\t(SHOULD BE: 3)" << endl
-          << "\tplayerTurn3.column()\t\t= " << playerTurn3->columnIndex() << "\t(SHOULD BE: 4)" << endl
+          << "\tplayerTurn3.row()\t\t= " << playerTurn3->rowIndex() << "\t(SHOULD BE: 1)" << endl
+          << "\tplayerTurn3.column()\t\t= " << playerTurn3->columnIndex() << "\t(SHOULD BE: 8)" << endl
           << "\tplayerTurn3.playerInitial()\t= '" << playerTurn3->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
      gameBoard.applyTurn(*playerTurn3);
