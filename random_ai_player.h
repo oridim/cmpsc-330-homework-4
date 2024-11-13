@@ -2,7 +2,7 @@
 #define _RANDOM_AI_PLAYER_H_
 
 #include "player.h"
-#include "player_turn.h"
+#include "player_move.h"
 
 // `class RandomAIPlayer`
 //
@@ -13,7 +13,7 @@ class RandomAIPlayer : public Player
 public:
     using Player::Player;
 
-    PlayerTurn *computePlayerTurn(
+    PlayerMove *computePlayerMove(
         const GameSession &gameSession, const GameBoard &gameBoard) const;
 };
 

@@ -5,7 +5,7 @@
 #include "game_board.h"
 
 #include "player.h"
-#include "player_turn.h"
+#include "player_move.h"
 
 // `class BasicStrategyAIPlayer`
 //
@@ -22,7 +22,7 @@ private:
 public:
     using Player::Player;
 
-    PlayerTurn *computePlayerTurn(
+    PlayerMove *computePlayerMove(
         const GameSession &gameSession, const GameBoard &gameBoard) const;
 };
 

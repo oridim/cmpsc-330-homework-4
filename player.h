@@ -3,7 +3,7 @@
 
 #include "game_board.h"
 
-#include "player_turn.h"
+#include "player_move.h"
 
 // **HACK**: We have a circular dependency here `GameSession` and `Player` both
 // needing to know about each other.
@@ -43,14 +43,14 @@ public:
 
     char playerInitial() const { return this->_playerInitial; }
 
-    // `PlayerTurn.computePlayerTurn(const GameBoard &gameBoard)`
+    // `PlayerMove *Player.computePlayerMove(const GameBoard &gameBoard)`
     //
     // Returns a `PlayerTurn` instance pointer if the player controller
     // was available to calculate an action it could take with the given
     // gameboard state.
     //
     // Otherwise, a `nullptr` is returned.
-    virtual PlayerTurn *computePlayerTurn(const GameSession &gameSession, const GameBoard &gameBoard) const;
+    virtual PlayerMove *computePlayerMove(const GameSession &gameSession, const GameBoard &gameBoard) const;
 };
 
 #endif

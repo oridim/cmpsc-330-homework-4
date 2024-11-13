@@ -7,9 +7,10 @@
 #include "game_board_slot.h"
 
 #include "game_session.h"
-#include "player_turn.h"
 
 #include "player.h"
+#include "player_move.h"
+
 #include "basic_strategy_ai_player.h"
 
 int BasicStrategyAIPlayer::_computeSurroundingLineCount(
@@ -56,7 +57,7 @@ int BasicStrategyAIPlayer::_computeSurroundingLineCount(
     return lineCount;
 }
 
-PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(
+PlayerMove *BasicStrategyAIPlayer::computePlayerMove(
     const GameSession &gameSession, const GameBoard &gameBoard) const
 {
     SimpleVector<GameBoardSlot> *scorableSlots = gameBoard.computeScorableSlots();
@@ -166,9 +167,8 @@ PlayerTurn *BasicStrategyAIPlayer::computePlayerTurn(
     int rowIndex = legalBoardSlot->rowIndex();
     int turnIndex = gameSession.turnIndex() + 1;
 
-    PlayerTurn *playerTurn = new PlayerTurn(turnIndex, rowIndex, columnIndex, this->_playerInitial);
+    PlayerMove *playerMove = new PlayerMove(rowIndex, columnIndex);
 
     delete scorableSlots;
-
-    return playerTurn;
+    return playerMove;
 }

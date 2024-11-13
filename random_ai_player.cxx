@@ -6,12 +6,13 @@
 #include "game_board.h"
 
 #include "game_session.h"
-#include "player_turn.h"
 
 #include "player.h"
+#include "player_move.h"
+
 #include "random_ai_player.h"
 
-PlayerTurn *RandomAIPlayer::computePlayerTurn(
+PlayerMove *RandomAIPlayer::computePlayerMove(
     const GameSession &gameSession, const GameBoard &gameBoard) const
 {
     SimpleVector<GameBoardSlot> *legalSlots = gameBoard.computeLegalSlots();
@@ -27,7 +28,7 @@ PlayerTurn *RandomAIPlayer::computePlayerTurn(
     int rowIndex = gameBoardSlot.rowIndex();
     int turnIndex = gameSession.turnIndex() + 1;
 
-    PlayerTurn *playerTurn = new PlayerTurn(turnIndex, rowIndex, columnIndex, this->_playerInitial);
+    PlayerMove *playerTurn = new PlayerMove(rowIndex, columnIndex);
 
     delete legalSlots;
     return playerTurn;
