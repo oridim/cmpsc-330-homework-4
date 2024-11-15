@@ -80,7 +80,7 @@ private:
     // `char GameBoardSlot._displayCharacter`
     //
     // Represents the character used to render the gameboard slot when the
-    // Dots and Boxes gameboard grid is displayed the terminal.
+    // Dots and Boxes gameboard grid is serialized.
     char _displayCharacter;
 
     // `int GameBoardSlot._rowIndex`

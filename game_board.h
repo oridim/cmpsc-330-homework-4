@@ -163,10 +163,10 @@ public:
     // then thrown.
     const GameBoardSlot &getSlot(int rowIndex, int columnIndex) const;
 
-    // `void GameBoard.renderGameBoard(ostream &outputStream)`
+    // `void GameBoard.serializeGameBoard(ostream &outputStream)`
     //
-    // Renders the gameboard grid to the terminal with pretty printing.
-    void renderGameBoard(ostream &outputStream) const;
+    // Serializes the gameboard's state to the suuplied `outputStream`.
+    void serializeGameBoard(ostream &outputStream) const;
 };
 
 #endif

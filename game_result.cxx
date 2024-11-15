@@ -140,8 +140,8 @@ bool GameResult::operator!=(const GameResult &rightHandResult) const
     return this != &rightHandResult;
 }
 
-// Method to render the game result and print it to the console
-void GameResult::renderGameResult(ostream &outputStream) const
+// Method to serialize the game result and print it to the console
+void GameResult::serializeGameResult(ostream &outputStream) const
 {
     SimpleVector<PlayerResult> *playerResults = this->_playerResults;
 
@@ -172,7 +172,7 @@ void GameResult::renderGameResult(ostream &outputStream) const
                 break;
 
             default:
-                throw string("bad member 'GameResult._playerResults' in 'GameResult.renderGameResult()' (PlayerResult '") + to_string(playerInitial) + string("' cannot have winning state and game session be no contest or undefined win states)");
+                throw string("bad member 'GameResult._playerResults' in 'GameResult.serializeGameResult()' (PlayerResult '") + to_string(playerInitial) + string("' cannot have winning state and game session be no contest or undefined win states)");
             }
         }
         else if (

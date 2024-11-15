@@ -35,7 +35,7 @@ private:
     SimpleVector<PlayerTurn> *_turns;
 
 public:
-    static GameData *readGameData(istream &inputStream);
+    static GameData *deserializeGameData(istream &inputStream);
 
     GameData(int rows, int columns, SimpleVector<PlayerTurn> *turns);
 

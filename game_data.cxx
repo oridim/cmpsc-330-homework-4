@@ -10,7 +10,7 @@
 #include "game_data.h"
 
 // Function to read game data from input stream and create new GameData object.
-GameData *GameData::readGameData(istream &inputStream)
+GameData *GameData::deserializeGameData(istream &inputStream)
 {
     // Variables to store the number of columns and rows in the game board.
     // Creation of a new SimpleVector to store the sequence of player turns. 

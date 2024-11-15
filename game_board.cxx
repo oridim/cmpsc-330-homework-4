@@ -328,9 +328,9 @@ const GameBoardSlot &GameBoard::getSlot(int rowIndex, int columnIndex) const
     return gridColumns.at(columnIndex);
 }
 
-void GameBoard::renderGameBoard(ostream &outputStream) const
+void GameBoard::serializeGameBoard(ostream &outputStream) const
 {
-    //This method renders the entire game board, including row and column legends
+    //This method serialize the entire game board, including row and column legends
     //
     // We create a prefixing line that contains a legend along the top of columns of
     // the gameboard grid.
@@ -396,7 +396,7 @@ void GameBoard::renderGameBoard(ostream &outputStream) const
             outputStream << " " << rowLegend << " ";
         }
 
-        // Render the contents of the current row.
+        // Serialize the contents of the current row.
         SimpleVector<GameBoardSlot> &gridColumns = gridRows->at(rowIndex);
 
         for (int columnIndex = 0; columnIndex < gridColumns.size(); columnIndex++)

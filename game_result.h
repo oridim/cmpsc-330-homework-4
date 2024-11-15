@@ -79,10 +79,10 @@ public:
     const SimpleVector<PlayerResult> &playerResults() const { return *this->_playerResults; }
     WIN_KIND winKind() const { return this->_winKind; }
 
-    // `void GameResult.renderGameBoard(ostream &outputStream)`
+    // `void GameResult.serializeGameBoard(ostream &outputStream)`
     //
-    // Renders a Dots and Boxes game result to the terminal with pretty printing.
-    void renderGameResult(ostream &outputStream) const;
+    // Serializes the game result to the supplied `outputStream`.
+    void serializeGameResult(ostream &outputStream) const;
 };
 
 #endif
