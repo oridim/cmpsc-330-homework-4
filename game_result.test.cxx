@@ -41,15 +41,15 @@ int main()
      ifstream inputStream;
      inputStream.open("./Test Cases/game.professor-supplied.txt");
 
-     GameData *gameData1 = GameData::readGameData(inputStream);
+     GameData *gameData1 = GameData::deserializeGameData(inputStream);
      inputStream.close();
 
      inputStream.open("./Test Cases/game.two-winners.txt");
-     GameData *gameData2 = GameData::readGameData(inputStream);
+     GameData *gameData2 = GameData::deserializeGameData(inputStream);
      inputStream.close();
 
      inputStream.open("./Test Cases/game.no-contest.txt");
-     GameData *gameData3 = GameData::readGameData(inputStream);
+     GameData *gameData3 = GameData::deserializeGameData(inputStream);
      inputStream.close();
 
      GameBoard *gameBoard1 = gameData1->makeGameBoard();
@@ -184,7 +184,7 @@ int main()
      }
 
      cout << endl
-          << "gameResults1->renderGameResult()" << endl
+          << "gameResults1->serializeGameResult()" << endl
           << endl
           << "(SHOULD BE)" << endl
           << endl
@@ -194,11 +194,11 @@ int main()
           << "(ACTUAL)" << endl
           << endl;
 
-     gameResult1->renderGameResult();
+     gameResult1->serializeGameResult();
 
      cout << endl
           << endl
-          << "gameResults2->renderGameResult()" << endl
+          << "gameResults2->serializeGameResult()" << endl
           << endl
           << "(SHOULD BE)" << endl
           << endl
@@ -209,11 +209,11 @@ int main()
           << "(ACTUAL)" << endl
           << endl;
 
-     gameResult2->renderGameResult();
+     gameResult2->serializeGameResult();
 
      cout << endl
           << endl
-          << "gameResults3->renderGameResult()" << endl
+          << "gameResults3->serializeGameResult()" << endl
           << endl
           << "(SHOULD BE)" << endl
           << endl
@@ -223,7 +223,7 @@ int main()
           << "(ACTUAL)" << endl
           << endl;
 
-     gameResult3->renderGameResult();
+     gameResult3->serializeGameResult();
 
      cout << endl;
 

@@ -43,7 +43,7 @@ int main()
 
      //Render and display the initial Gameboard layout
      //Expected vs. Actual
-     cout << "gameBoard1.renderGameBoard(cout):" << endl
+     cout << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -60,7 +60,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-     gameBoard1.renderGameBoard(cout);
+     gameBoard1.serializeGameBoard(cout);
 
      //Test equality and inequality operators
      cout << endl
@@ -171,7 +171,7 @@ int main()
 
      //Render and display updated gameBoard1 layout after turns applied
      cout << endl
-          << "gameBoard1.renderGameBoard(cout):" << endl
+          << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -188,7 +188,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-     gameBoard1.renderGameBoard(cout);
+     gameBoard1.serializeGameBoard(cout);
 
      //Compute and display slots of GameBoard::SLOT_KIND::line kind
      cout << endl

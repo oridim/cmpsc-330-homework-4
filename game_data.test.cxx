@@ -28,14 +28,14 @@ int main()
      ifstream inputStream;
      inputStream.open("./Test Cases/game.professor-supplied.txt");
 
-     GameData *gameData1 = GameData::readGameData(inputStream);
+     GameData *gameData1 = GameData::deserializeGameData(inputStream);
      inputStream.close();
 
      SimpleVector<PlayerTurn> *turns2 = new SimpleVector<PlayerTurn>();
 
      GameData gameData2(0, 0, turns2);
 
-     cout << "*gameData1 = GameData::readGameData(inputStream ['./Test Cases/game.professor-supplied.txt']): " << endl
+     cout << "*gameData1 = GameData::deserializeGameData(inputStream ['./Test Cases/game.professor-supplied.txt']): " << endl
           << endl
           << "\tgameData1->rows()\t\t= " << gameData1->rows() << "\t(SHOULD BE: 3)" << endl
           << "\tgameData1->columns()\t\t= " << gameData1->columns() << "\t(SHOULD BE: 8)" << endl;
@@ -81,7 +81,7 @@ int main()
           << "\t*gameData1 != gameData2:\t" << ((*gameData1 != gameData2) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
           << endl;
 
-     cout << "gameBoard1.renderGameBoard(cout):" << endl
+     cout << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -99,12 +99,12 @@ int main()
           << endl;
 
      GameBoard *gameBoard1 = gameData1->makeGameBoard();
-     gameBoard1->renderGameBoard(cout);
+     gameBoard1->serializeGameBoard(cout);
 
      cout << endl
           << endl
           << "gameBoard1.applyScorableCaptures()" << endl
-          << "gameBoard1.renderGameBoard(cout)" << endl
+          << "gameBoard1.serializeGameBoard(cout)" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -122,7 +122,7 @@ int main()
           << endl;
 
      gameBoard1->applyScorableCaptures();
-     gameBoard1->renderGameBoard(cout);
+     gameBoard1->serializeGameBoard(cout);
 
      cout << endl;
 

@@ -55,7 +55,7 @@ int main()
           << "\tplayerTurn1.playerInitial()\t= '" << playerTurn1->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
      cout << endl
-          << "gameBoard1.renderGameBoard(cout):" << endl
+          << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -72,7 +72,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-     gameBoard.renderGameBoard(cout);
+     gameBoard.serializeGameBoard(cout);
 
      PlayerTurn *playerTurn2 = gameSession.applyNextPlayerTurn(gameBoard);
 
@@ -86,7 +86,7 @@ int main()
           << "\tplayerTurn2.playerInitial()\t= '" << playerTurn2->playerInitial() << "'" << "\t(SHOULD BE: 'O')" << endl;
 
      cout << endl
-          << "gameBoard1.renderGameBoard(cout):" << endl
+          << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -103,7 +103,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-     gameBoard.renderGameBoard(cout);
+     gameBoard.serializeGameBoard(cout);
 
      PlayerTurn *playerTurn3 = gameSession.applyNextPlayerTurn(gameBoard);
 
@@ -117,7 +117,7 @@ int main()
           << "\tplayerTurn3.playerInitial()\t= '" << playerTurn3->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
      cout << endl
-          << "gameBoard1.renderGameBoard(cout):" << endl
+          << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -134,7 +134,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-     gameBoard.renderGameBoard(cout);
+     gameBoard.serializeGameBoard(cout);
 
      cout << endl;
 
