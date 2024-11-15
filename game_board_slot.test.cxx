@@ -100,8 +100,10 @@ int main()
           << "\tundefinedSlot != dotSlot:\t" << ((undefinedSlot != dotSlot) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
           << endl;
 
+     // Create a copy of the given dotSlot object using the copy constructor
      GameBoardSlot copySlot(dotSlot);
 
+     // Display the properties of the copied slot to verify correctness of the copy constructor
      cout << "copySlot = GameBoardSlot(dotslot): " << endl
           << endl
           << "\tcopySlot.rowIndex()\t\t\t= " << copySlot.rowIndex() << "\t(SHOULD BE: 0)" << endl

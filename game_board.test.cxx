@@ -200,8 +200,9 @@ int main()
      cout << "(ACTUAL)" << endl
           << endl;
 
+     // Compute all slots of kind 'line' from the game board
      SimpleVector<GameBoardSlot> *lineSlots = gameBoard1.computeKindSlots(GameBoardSlot::SLOT_KIND::line);
-
+     // Iterate thorugh each slot in the computes line slots
      for (int index = 0; index < lineSlots->size(); index++)
      {
           GameBoardSlot &slot = lineSlots->at(index);
@@ -209,7 +210,7 @@ int main()
           cout << "(" << slot.rowIndex() << ", " << slot.columnIndex() << ")" << endl;
      }
 
-     //Cleans up dynamically allocated memory for vectors
+     // Cleans up dynamically allocated memory for vectors
      delete legalSlots1;
      delete legalSlots2;
      delete lineSlots;

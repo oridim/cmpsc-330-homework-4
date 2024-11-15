@@ -15,24 +15,30 @@ using namespace std;
 
 int main()
 {
+     // Indicate the start of the unit test
      cout << "=> [UNIT TEST: game_data.test.cxx]" << endl
           << endl;
 
+     // Open the input stream to read game data from the provided test file
      ifstream inputStream;
      inputStream.open("./Test Cases/GameData/game.professor-supplied.txt");
 
+     // Deserialize the game data from the input  stram into a GameData object
      GameData *gameData1 = GameData::deserializeGameData(inputStream);
      inputStream.close();
 
+     // Create an empty GameData object with no rows, columns, or turns
      SimpleVector<PlayerTurn> *turns2 = new SimpleVector<PlayerTurn>();
 
      GameData gameData2(0, 0, turns2);
 
+     // Display information about the first game data object
      cout << "*gameData1 = GameData::deserializeGameData(inputStream ['./Test Cases/GameData/game.professor-supplied.txt']): " << endl
           << endl
           << "\tgameData1->rows()\t\t= " << gameData1->rows() << "\t(SHOULD BE: 3)" << endl
           << "\tgameData1->columns()\t\t= " << gameData1->columns() << "\t(SHOULD BE: 8)" << endl;
 
+     // Display expected and actual player turns from gameData1
      cout << endl
           << "gameData1->turns():" << endl
           << endl
@@ -50,6 +56,7 @@ int main()
           << "\tgameData1->turns().get(11)\t= PlayerTurn(11, 3, 0, 'B')\t(SHOULD BE)" << endl
           << endl;
 
+     // Display actual player turn deatails from gameData1 using a loop
      for (int index = 0; index < gameData1->turns().size(); index++)
      {
           const PlayerTurn &playerTurn = gameData1->turns().get(index);
@@ -59,12 +66,14 @@ int main()
           char playerInitial = playerTurn.playerInitial();
           int rowIndex = playerTurn.rowIndex();
 
+          // Output the actual turn data for comparison
           cout
               << "\tgameData1->turns().get(" << index << ")\t= PlayerTurn("
               << turnIndex << ", " << rowIndex << ", " << columnIndex << ", '" << playerInitial
               << "')" << endl;
      }
 
+     // Test equality and inequality operators for GameData objects
      cout << endl
           << "GameData::operator==, GameData::operator!=" << endl
           << endl
@@ -74,6 +83,7 @@ int main()
           << "\t*gameData1 != gameData2:\t" << ((*gameData1 != gameData2) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
           << endl;
 
+     // Display the serialized game board from gameData1
      cout << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
 
@@ -91,6 +101,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
+     // Create a game board from gameData1 and serialize it.
      GameBoard *gameBoard1 = gameData1->makeGameBoard();
      gameBoard1->serializeGameBoard(cout);
 
@@ -114,6 +125,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
+     // Apply scorable captures and display the updated game board
      gameBoard1->applyScorableCaptures();
      gameBoard1->serializeGameBoard(cout);
 
