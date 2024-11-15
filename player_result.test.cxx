@@ -20,12 +20,9 @@ int main()
      cout << "playerResult1 = PlayerResult('O', 5, PlayerResult::WIN_KIND::winner): " << endl
           << endl
           << "\tplayerResult1.playerInitial()\t= '" << playerResult1.playerInitial() << "'\t(SHOULD BE: 'O')" << endl
-          // Check that the player initial for playerResult1 is 'O'
           << "\tplayerResult1.score()\t\t= " << playerResult1.score() << "\t(SHOULD BE: 5)" << endl
-          // Check that the score for playerResult1 is 5
           << "\tplayerResult1.winKind()\t\t= " << static_cast<int>(playerResult1.winKind()) << "\t(SHOULD BE: 2) [PlayerResult::WIN_KIND::winner]" << endl;
-          //Check that winKind for PlayerResult1 is 'winner', which should have an integer value of 2
-          
+
      // Testing ==, and != operators for PlayerResult object
      cout << endl
           << "PlayerResult::operator==, PlayerResult::operator!=" << endl

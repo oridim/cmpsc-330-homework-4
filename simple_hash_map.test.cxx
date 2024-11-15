@@ -20,6 +20,7 @@ int main()
 
     SimpleHashMap<char, char, 256> hashMap1;
 
+    // Test the at() and get() methods by assigning values to keys and verifying retrieval. 
     cout
         << "SimpleHashMap::at, SimpleHashMap::get" << endl
         << endl
@@ -28,15 +29,18 @@ int main()
         << "hashMap1.at(\"hello\")\t= 'w'" << endl
         << endl;
 
+    // Assign values to keys using at() method.
     hashMap1.at(0) = 'p';
     hashMap1.at('s') = 'u';
     hashMap1.at("hello") = 'w';
 
+    // Display assigned values and check if they match.
     cout
         << "\thashMap1.at(0):\t\t" << "'" << hashMap1.at(0) << "'" << "\t(SHOULD BE: 'p')" << endl
         << "\thashMap1.get('s'):\t" << "'" << hashMap1.get('s') << "'" << "\t(SHOULD BE: 'u')" << endl
         << "\thashMap1.at(\"hello\"):\t" << "'" << hashMap1.at("hello") << "'" << "\t(SHOULD BE: 'w')" << endl;
 
+    // Test the remove method by removing the key 's'.
     cout << endl
          << "SimpleMap::remove" << endl
          << endl
@@ -44,17 +48,20 @@ int main()
 
     hashMap1.remove('s');
 
+    // Test has() method to check if certain keys are still present
     cout
         << endl
         << "SimpleHashMap::has" << endl
         << endl;
 
+    // Retrieve all keys in hashMap1 using the keys() method and store in assignedKeys. 
     cout
         << "\thashMap1.has(0):\t" << (hashMap1.has(0) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
         << "\thashMap1.has('s'):\t" << (hashMap1.has('s') ? "true" : "false") << "\t(SHOULD BE: false)" << endl;
 
     SimpleVector<char> *assignedKeys = hashMap1.keys();
 
+    // Expected values output and Actual values ouput
     cout << endl
          << "assignedKeys = hashMap1.keys()" << endl
          << endl

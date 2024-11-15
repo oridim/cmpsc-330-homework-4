@@ -39,6 +39,7 @@ int main()
      BasicStrategyAIPlayer *basicStrategyAIPlayer1 = new BasicStrategyAIPlayer('D');
      BasicStrategyAIPlayer *basicStrategyAIPlayer2 = new BasicStrategyAIPlayer('O');
 
+     // Create a SimpleVector to hold a player set and add both players to the set.
      SimpleVector<const Player *> *playerSet = new SimpleVector<const Player *>();
 
      playerSet->push_back(basicStrategyAIPlayer1);
@@ -48,6 +49,8 @@ int main()
 
      PlayerTurn *playerTurn1 = gameSession.applyNextPlayerTurn(gameBoard);
 
+     // Display the details of the first turn to confirm correctness
+     //Each line prints a value from playerTurn1 and checks it against the expected output
      cout << "*playerTurn1 = gameSession.applyNextPlayerTurn(gameBoard): " << endl
           << endl
           << "\tplayerTurn1.turnIndex()\t\t= " << playerTurn1->turnIndex() << "\t(SHOULD BE: 0)" << endl
@@ -55,6 +58,7 @@ int main()
           << "\tplayerTurn1.column()\t\t= " << playerTurn1->columnIndex() << "\t(SHOULD BE: 6)" << endl
           << "\tplayerTurn1.playerInitial()\t= '" << playerTurn1->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
+     // Display the gameboard after the first move to check the board state visually.
      cout << endl
           << "gameBoard1.renderGameBoard():" << endl
           << endl;
@@ -75,8 +79,10 @@ int main()
 
      gameBoard.renderGameBoard();
 
+     // Applies the next player turn on the game board and store result in playerTurn2
      PlayerTurn *playerTurn2 = gameSession.applyNextPlayerTurn(gameBoard);
 
+     // Display details of the second turn, confirming each aspect of playerTurn2.
      cout << endl
           << endl
           << "*playerTurn2 = gameSession.applyNextPlayerTurn(gameBoard): " << endl
@@ -86,6 +92,7 @@ int main()
           << "\tplayerTurn2.column()\t\t= " << playerTurn2->columnIndex() << "\t(SHOULD BE: 8)" << endl
           << "\tplayerTurn2.playerInitial()\t= '" << playerTurn2->playerInitial() << "'" << "\t(SHOULD BE: 'O')" << endl;
 
+     // Display the game board after the second move, including the expected and actual output. 
      cout << endl
           << "gameBoard1.renderGameBoard():" << endl
           << endl;
@@ -106,6 +113,7 @@ int main()
 
      gameBoard.renderGameBoard();
 
+     // Apply the third player turn on the game board, which cycles back to the first player
      PlayerTurn *playerTurn3 = gameSession.applyNextPlayerTurn(gameBoard);
 
      cout << endl
@@ -117,6 +125,7 @@ int main()
           << "\tplayerTurn3.column()\t\t= " << playerTurn3->columnIndex() << "\t(SHOULD BE: 8)" << endl
           << "\tplayerTurn3.playerInitial()\t= '" << playerTurn3->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
+     // Display the game board after the third move, comparing expected and actual states. 
      cout << endl
           << "gameBoard1.renderGameBoard():" << endl
           << endl;
@@ -135,6 +144,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
+     // Render the actual game board for verification
      gameBoard.renderGameBoard();
 
      cout << endl;
