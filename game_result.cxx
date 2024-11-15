@@ -13,6 +13,7 @@
 
 #include "game_result.h"
 
+// Static method to compute the game result based on the current game session and board state. 
 GameResult *GameResult::computeGameResult(
     const GameSession &gameSession, const GameBoard &gameBoard)
 {
@@ -34,14 +35,17 @@ GameResult *GameResult::computeGameResult(
 
         PlayerResult &playerResult = resultLookup->at(playerInitial);
 
+        // Set default values for the player.
         playerResult._playerInitial = playerInitial;
         playerResult._score = 0;
         playerResult._winKind = PlayerResult::WIN_KIND::loser;
     }
 
+    // Retrieve scorable slots from the game board where initials indicate captured boxes.
     SimpleVector<GameBoardSlot> *initialBoardSlots =
         gameBoard.computeScorableSlots(GameBoardSlot::SLOT_KIND::initial);
 
+    // Update scores for players based on captured slots. 
     for (int index = 0; index < initialBoardSlots->size(); index++)
     {
         GameBoardSlot &initialBoardSlot = initialBoardSlots->at(index);
@@ -50,6 +54,7 @@ GameResult *GameResult::computeGameResult(
         char playerInitial = playerTurn.playerInitial();
         PlayerResult &playerResult = resultLookup->at(playerInitial);
 
+        // Increment the player's score and update the highest score if needed
         playerResult._score += 1;
         if (playerResult._score > highestScore)
         {
@@ -60,8 +65,10 @@ GameResult *GameResult::computeGameResult(
     int winnerCount = 0;
     WIN_KIND winKind = WIN_KIND::nocontest;
 
+    // Collect results from the lookup map
     SimpleVector<PlayerResult> *playerResults = resultLookup->values();
 
+    // Determine winners and their count if the highest score is greater than zero.
     if (highestScore > 0)
     {
         for (int index = 0; index < playerResults->size(); index++)
@@ -75,9 +82,11 @@ GameResult *GameResult::computeGameResult(
             }
         }
 
+        // Determine if the win is singular or a tie based on the number of winners.
         winKind = (winnerCount > 1) ? WIN_KIND::multiple : WIN_KIND::singular;
     }
 
+    // Sort results alphabetically by player initials.
     playerResults->sort([](const PlayerResult &a, const PlayerResult &b)
     {
         char aPlayerInitial = a.playerInitial();
@@ -92,9 +101,11 @@ GameResult *GameResult::computeGameResult(
 
     delete resultLookup;
 
+    // Create and return a new GameResult instance with computed results.
     return new GameResult(playerResults, winKind, highestScore);
 }
 
+// Constructor to initialize a GameResult object.
 GameResult::GameResult(SimpleVector<PlayerResult> *playerResults, WIN_KIND winKind, int highestScore)
 {
     this->_playerResults = playerResults;
@@ -102,6 +113,7 @@ GameResult::GameResult(SimpleVector<PlayerResult> *playerResults, WIN_KIND winKi
     this->_winKind = winKind;
 }
 
+// Copy constructor for GameResult.
 GameResult::GameResult(const GameResult &playerResult)
 {
     this->_playerResults = playerResult._playerResults;
@@ -109,26 +121,26 @@ GameResult::GameResult(const GameResult &playerResult)
     this->_winKind = playerResult._winKind;
 }
 
+// Destructor to clean up resources.
 GameResult::~GameResult()
 {
     delete this->_playerResults;
 }
 
+// Equality operator to compare GameResult objects by instance (nominal comparison).
 bool GameResult::operator==(const GameResult &rightHandResult) const
 {
-    // Usually the convention in most OOP languages I have done equality checking
-    // is done by default as nominal instances rather then structural values.
-    //
-    // So we will just compare pointers here for nominal instance checking.
+    
     return this == &rightHandResult;
 }
-
+// Inequality operator, opposite of the equality operator.
 bool GameResult::operator!=(const GameResult &rightHandResult) const
 {
     // See `GameResult::operator==` for reasoning.
     return this != &rightHandResult;
 }
 
+// Method to render the game result and print it to the console
 void GameResult::renderGameResult() const
 {
     SimpleVector<PlayerResult> *playerResults = this->_playerResults;
@@ -141,10 +153,12 @@ void GameResult::renderGameResult() const
         int score = playerResult.score();
         PlayerResult::WIN_KIND winKind = playerResult.winKind();
 
+        // Display the player's score and statue
         cout
             << "Player " << playerInitial
             << " has " << score << ((score == 1) ? " box" : " boxes");
 
+        // Display the win status for the player
         if (winKind == PlayerResult::WIN_KIND::winner)
         {
             switch (this->_winKind)
