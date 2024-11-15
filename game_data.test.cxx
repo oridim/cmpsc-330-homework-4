@@ -81,7 +81,7 @@ int main()
           << "\t*gameData1 != gameData2:\t" << ((*gameData1 != gameData2) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
           << endl;
 
-     cout << "gameBoard1.renderGameBoard():" << endl
+     cout << "gameBoard1.renderGameBoard(cout):" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -99,12 +99,12 @@ int main()
           << endl;
 
      GameBoard *gameBoard1 = gameData1->makeGameBoard();
-     gameBoard1->renderGameBoard();
+     gameBoard1->renderGameBoard(cout);
 
      cout << endl
           << endl
           << "gameBoard1.applyScorableCaptures()" << endl
-          << "gameBoard1.renderGameBoard()" << endl
+          << "gameBoard1.renderGameBoard(cout)" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -122,7 +122,7 @@ int main()
           << endl;
 
      gameBoard1->applyScorableCaptures();
-     gameBoard1->renderGameBoard();
+     gameBoard1->renderGameBoard(cout);
 
      cout << endl;
 

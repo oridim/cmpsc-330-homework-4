@@ -60,7 +60,7 @@ int main()
 
      // Display the gameboard after the first move to check the board state visually.
      cout << endl
-          << "gameBoard1.renderGameBoard():" << endl
+          << "gameBoard1.renderGameBoard(cout):" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -77,7 +77,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-     gameBoard.renderGameBoard();
+     gameBoard.renderGameBoard(cout);
 
      // Applies the next player turn on the game board and store result in playerTurn2
      PlayerTurn *playerTurn2 = gameSession.applyNextPlayerTurn(gameBoard);
@@ -94,7 +94,7 @@ int main()
 
      // Display the game board after the second move, including the expected and actual output. 
      cout << endl
-          << "gameBoard1.renderGameBoard():" << endl
+          << "gameBoard1.renderGameBoard(cout):" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -111,7 +111,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-     gameBoard.renderGameBoard();
+     gameBoard.renderGameBoard(cout);
 
      // Apply the third player turn on the game board, which cycles back to the first player
      PlayerTurn *playerTurn3 = gameSession.applyNextPlayerTurn(gameBoard);
@@ -127,7 +127,7 @@ int main()
 
      // Display the game board after the third move, comparing expected and actual states. 
      cout << endl
-          << "gameBoard1.renderGameBoard():" << endl
+          << "gameBoard1.renderGameBoard(cout):" << endl
           << endl;
 
      cout << "(SHOULD BE):" << endl
@@ -145,7 +145,7 @@ int main()
           << endl;
 
      // Render the actual game board for verification
-     gameBoard.renderGameBoard();
+     gameBoard.renderGameBoard(cout);
 
      cout << endl;
 
