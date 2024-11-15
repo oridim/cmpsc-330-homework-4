@@ -1,6 +1,5 @@
 #include <iostream>
 
-#include "player_result.h"
 #include "player_result.cxx"
 
 using namespace std;

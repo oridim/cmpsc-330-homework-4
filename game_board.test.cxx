@@ -2,19 +2,11 @@
 
 #include "simple_vector.h"
 
-#include "game_board_slot.h"
 #include "game_board_slot.cxx"
-
-#include "game_board.h"
 #include "game_board.cxx"
 
-#include "player_result.h"
-#include "player_result.cxx"
-
-#include "player_move.h"
 #include "player_move.cxx"
-
-#include "player_turn.h"
+#include "player_result.cxx"
 #include "player_turn.cxx"
 
 using namespace std;

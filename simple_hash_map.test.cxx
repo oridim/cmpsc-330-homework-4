@@ -4,7 +4,6 @@
 #include "simple_vector.h"
 #include "simple_hash_map.h"
 
-#include "player_result.h"
 #include "player_result.cxx"
 
 using namespace std;

@@ -4,32 +4,18 @@
 #include "simple_vector.h"
 #include "simple_hash_map.h"
 
-#include "game_board_slot.h"
 #include "game_board_slot.cxx"
-
-#include "game_board.h"
 #include "game_board.cxx"
 
-#include "dummy_player.h"
-#include "dummy_player.cxx"
-
-#include "game_data.h"
 #include "game_data.cxx"
-
-#include "game_session.h"
+#include "game_result.cxx"
 #include "game_session.cxx"
 
-#include "player_result.h"
-#include "player_result.cxx"
-
-#include "player_move.h"
 #include "player_move.cxx"
-
-#include "player_turn.h"
+#include "player_result.cxx"
 #include "player_turn.cxx"
 
-#include "game_result.h"
-#include "game_result.cxx"
+#include "dummy_player.cxx"
 
 using namespace std;
 

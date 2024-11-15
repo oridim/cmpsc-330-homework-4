@@ -1,22 +1,14 @@
 #include <iostream>
 
-#include "game_board.h"
 #include "game_board.cxx"
-
-#include "game_session.h"
-#include "game_session.cxx"
-
-#include "player.h"
-
-#include "player_move.h"
-#include "player_move.cxx"
-
-#include "player_turn.h"
-#include "player_turn.cxx"
-
 #include "game_board_slot.cxx"
 
-#include "random_ai_player.h"
+#include "game_session.cxx"
+
+#include "player_move.cxx"
+#include "player_turn.cxx"
+
+#include "player.h"
 #include "random_ai_player.cxx"
 
 using namespace std;
