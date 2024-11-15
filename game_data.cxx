@@ -18,7 +18,7 @@ GameData *GameData::deserializeGameData(istream &inputStream)
     int rows;
     SimpleVector<PlayerTurn> *turns = new SimpleVector<PlayerTurn>();
 
-    inputStream >> columns >> rows;
+    inputStream >> rows >> columns;
 
     int columnIndex;
     int rowIndex;
@@ -47,7 +47,7 @@ GameData *GameData::deserializeGameData(istream &inputStream)
         turnIndex += 1;
     }
 
-    return new GameData(columns, rows, turns);
+    return new GameData(rows, columns, turns);
 }
 
 // Constructor for the GameData class
