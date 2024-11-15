@@ -194,11 +194,11 @@ int main()
           << "(ACTUAL)" << endl
           << endl;
 
-     gameResult1->serializeGameResult();
+     gameResult1->serializeGameResult(cout);
 
      cout << endl
           << endl
-          << "gameResults2->serializeGameResult()" << endl
+          << "gameResults2->serializeGameResult(cout)" << endl
           << endl
           << "(SHOULD BE)" << endl
           << endl
@@ -209,11 +209,11 @@ int main()
           << "(ACTUAL)" << endl
           << endl;
 
-     gameResult2->serializeGameResult();
+     gameResult2->serializeGameResult(cout);
 
      cout << endl
           << endl
-          << "gameResults3->serializeGameResult()" << endl
+          << "gameResults3->serializeGameResult(cout)" << endl
           << endl
           << "(SHOULD BE)" << endl
           << endl
@@ -223,7 +223,7 @@ int main()
           << "(ACTUAL)" << endl
           << endl;
 
-     gameResult3->serializeGameResult();
+     gameResult3->serializeGameResult(cout);
 
      cout << endl;
 
