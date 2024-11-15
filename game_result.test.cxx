@@ -25,14 +25,13 @@ int main()
      cout << "=> [UNIT TEST: game_result.test.cxx]" << endl
           << endl;
 
-     // Input stream for the reading test case files
+     // Input stream is created to load the data for each test case.
      ifstream inputStream;
      inputStream.open("./Test Cases/GameData/game.professor-supplied.txt");
 
      GameData *gameData1 = GameData::deserializeGameData(inputStream);
      inputStream.close();
 
-     // Load test cases.
      inputStream.open("./Test Cases/GameData/game.two-winners.txt");
      GameData *gameData2 = GameData::deserializeGameData(inputStream);
      inputStream.close();
