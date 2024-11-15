@@ -19,7 +19,7 @@ int main()
           << endl;
 
      ifstream inputStream;
-     inputStream.open("./Test Cases/game.professor-supplied.txt");
+     inputStream.open("./Test Cases/GameData/game.professor-supplied.txt");
 
      GameData *gameData1 = GameData::deserializeGameData(inputStream);
      inputStream.close();
@@ -28,7 +28,7 @@ int main()
 
      GameData gameData2(0, 0, turns2);
 
-     cout << "*gameData1 = GameData::deserializeGameData(inputStream ['./Test Cases/game.professor-supplied.txt']): " << endl
+     cout << "*gameData1 = GameData::deserializeGameData(inputStream ['./Test Cases/GameData/game.professor-supplied.txt']): " << endl
           << endl
           << "\tgameData1->rows()\t\t= " << gameData1->rows() << "\t(SHOULD BE: 3)" << endl
           << "\tgameData1->columns()\t\t= " << gameData1->columns() << "\t(SHOULD BE: 8)" << endl;

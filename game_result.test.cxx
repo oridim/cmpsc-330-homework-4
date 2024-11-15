@@ -27,17 +27,17 @@ int main()
 
      // Input stream for the reading test case files
      ifstream inputStream;
-     inputStream.open("./Test Cases/game.professor-supplied.txt");
+     inputStream.open("./Test Cases/GameData/game.professor-supplied.txt");
 
      GameData *gameData1 = GameData::deserializeGameData(inputStream);
      inputStream.close();
 
      // Load test cases.
-     inputStream.open("./Test Cases/game.two-winners.txt");
+     inputStream.open("./Test Cases/GameData/game.two-winners.txt");
      GameData *gameData2 = GameData::deserializeGameData(inputStream);
      inputStream.close();
 
-     inputStream.open("./Test Cases/game.no-contest.txt");
+     inputStream.open("./Test Cases/GameData/game.no-contest.txt");
      GameData *gameData3 = GameData::deserializeGameData(inputStream);
      inputStream.close();
 
