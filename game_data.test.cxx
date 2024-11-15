@@ -43,18 +43,18 @@ int main()
      cout << endl
           << "gameData1->turns():" << endl
           << endl
-          << "\tgameData1->turns().get(0)\t= PlayerTurn(1, 1, 0, 'B')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(1)\t= PlayerTurn(2, 0, 1, 'R')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(2)\t= PlayerTurn(3, 3, 2, 'B')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(3)\t= PlayerTurn(4, 4, 1, 'R')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(4)\t= PlayerTurn(5, 1, 4, 'B')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(5)\t= PlayerTurn(6, 2, 3, 'R')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(6)\t= PlayerTurn(7, 4, 3, 'B')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(7)\t= PlayerTurn(8, 3, 4, 'R')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(8)\t= PlayerTurn(9, 0, 3, 'R')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(9)\t= PlayerTurn(10, 1, 2, 'B')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(10)\t= PlayerTurn(11, 2, 1, 'B')\t(SHOULD BE)" << endl
-          << "\tgameData1->turns().get(11)\t= PlayerTurn(12, 3, 0, 'B')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(0)\t= PlayerTurn(0, 1, 0, 'B')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(1)\t= PlayerTurn(1, 0, 1, 'R')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(2)\t= PlayerTurn(2, 3, 2, 'B')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(3)\t= PlayerTurn(3, 4, 1, 'R')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(4)\t= PlayerTurn(4, 1, 4, 'B')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(5)\t= PlayerTurn(5, 2, 3, 'R')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(6)\t= PlayerTurn(6, 4, 3, 'B')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(7)\t= PlayerTurn(7, 3, 4, 'R')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(8)\t= PlayerTurn(8, 0, 3, 'R')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(9)\t= PlayerTurn(9, 1, 2, 'B')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(10)\t= PlayerTurn(10, 2, 1, 'B')\t(SHOULD BE)" << endl
+          << "\tgameData1->turns().get(11)\t= PlayerTurn(11, 3, 0, 'B')\t(SHOULD BE)" << endl
           << endl;
 
      for (int index = 0; index < gameData1->turns().size(); index++)
