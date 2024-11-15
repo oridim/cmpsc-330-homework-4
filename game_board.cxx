@@ -328,7 +328,7 @@ const GameBoardSlot &GameBoard::getSlot(int rowIndex, int columnIndex) const
     return gridColumns.at(columnIndex);
 }
 
-void GameBoard::renderGameBoard() const
+void GameBoard::renderGameBoard(ostream &outputStream) const
 {
     //This method renders the entire game board, including row and column legends
     //
@@ -346,15 +346,15 @@ void GameBoard::renderGameBoard() const
 
         if (columnLegend == 0)
         {
-            cout << columnUberLegend;
+            outputStream << columnUberLegend;
         }
         else
         {
-            cout << ((columnIndex == 0) ? "   " : " ");
+            outputStream << ((columnIndex == 0) ? "   " : " ");
         }
     }
 
-    cout << endl;
+    outputStream << endl;
 
     // Print secondary column legend in a sequence of 0 to 9.
     for (int columnIndex = 0; columnIndex <= this->expandedColumns(); columnIndex++)
@@ -362,16 +362,16 @@ void GameBoard::renderGameBoard() const
         if (columnIndex == 0)
         {
             // Leave a blank space for row alignment.
-            cout << "   ";
+            outputStream << "   ";
             continue;
         }
 
         int columnLegend = (columnIndex - 1) % 10;
 
-        cout << columnLegend;
+        outputStream << columnLegend;
     }
 
-    cout << endl;
+    outputStream << endl;
 
     // Similar to the column legend, the rows have a prefixing legend in the same
     // format.
@@ -389,11 +389,11 @@ void GameBoard::renderGameBoard() const
 
         if (rowLegend == 0)
         {
-            cout << rowUberLegend << rowLegend << " ";
+            outputStream << rowUberLegend << rowLegend << " ";
         }
         else
         {
-            cout << " " << rowLegend << " ";
+            outputStream << " " << rowLegend << " ";
         }
 
         // Render the contents of the current row.
@@ -404,7 +404,7 @@ void GameBoard::renderGameBoard() const
             GameBoardSlot &gameBoardSlot = gridColumns.at(columnIndex);
             
             // Print the display character of each slot
-            cout << gameBoardSlot.displayCharacter();
+            outputStream << gameBoardSlot.displayCharacter();
         }
 
         // We only want to newline when we are looping every row before the
@@ -412,7 +412,7 @@ void GameBoard::renderGameBoard() const
         // new line on the output.
         if (rowIndex < (gridRows->size() - 1))
         {
-            cout << endl;
+            outputStream << endl;
         }
     }
 }

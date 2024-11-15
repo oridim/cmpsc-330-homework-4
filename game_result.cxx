@@ -141,7 +141,7 @@ bool GameResult::operator!=(const GameResult &rightHandResult) const
 }
 
 // Method to render the game result and print it to the console
-void GameResult::renderGameResult() const
+void GameResult::renderGameResult(ostream &outputStream) const
 {
     SimpleVector<PlayerResult> *playerResults = this->_playerResults;
 
@@ -164,11 +164,11 @@ void GameResult::renderGameResult() const
             switch (this->_winKind)
             {
             case WIN_KIND::singular:
-                cout << " (win)";
+                outputStream << " (win)";
                 break;
 
             case WIN_KIND::multiple:
-                cout << " (tie)";
+                outputStream << " (tie)";
                 break;
 
             default:
@@ -178,17 +178,17 @@ void GameResult::renderGameResult() const
         else if (
             this->_winKind == WIN_KIND::nocontest && winKind == PlayerResult::WIN_KIND::loser)
         {
-            cout << " (no contest)";
+            outputStream << " (no contest)";
         }
 
-        cout << ".";
+        outputStream << ".";
 
         // We only want to newline when we are looping every result before the
         // last one. The calling code should determine if they need a trailing
         // new line on the output.
         if (index < (playerResults->size() - 1))
         {
-            cout << endl;
+            outputStream << endl;
         }
     }
 }

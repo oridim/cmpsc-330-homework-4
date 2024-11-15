@@ -1,6 +1,8 @@
 #ifndef _GAME_RESULT_H_
 #define _GAME_RESULT_H_
 
+#include <iostream>
+
 #include "simple_vector.h"
 
 #include "player_result.h"
@@ -77,10 +79,10 @@ public:
     const SimpleVector<PlayerResult> &playerResults() const { return *this->_playerResults; }
     WIN_KIND winKind() const { return this->_winKind; }
 
-    // `void GameResult.renderGameBoard()`
+    // `void GameResult.renderGameBoard(ostream &outputStream)`
     //
     // Renders a Dots and Boxes game result to the terminal with pretty printing.
-    void renderGameResult() const;
+    void renderGameResult(ostream &outputStream) const;
 };
 
 #endif

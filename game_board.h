@@ -1,6 +1,8 @@
 #ifndef _GAME_BOARD_H_
 #define _GAME_BOARD_H_
 
+#include <iostream>
+
 #include "simple_vector.h"
 #include "simple_hash_map.h"
 
@@ -15,7 +17,7 @@
 // do its dynamic growth nature.
 //
 // There is a plus side how ever! I do not need to have like a `GameBoard._gridSize`
-// to track the size... 
+// to track the size...
 
 // `class GameBoard`
 //
@@ -161,10 +163,10 @@ public:
     // then thrown.
     const GameBoardSlot &getSlot(int rowIndex, int columnIndex) const;
 
-    // `void GameBoard.renderGameBoard()`
+    // `void GameBoard.renderGameBoard(ostream &outputStream)`
     //
     // Renders the gameboard grid to the terminal with pretty printing.
-    void renderGameBoard() const;
+    void renderGameBoard(ostream &outputStream) const;
 };
 
 #endif
