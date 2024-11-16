@@ -72,6 +72,7 @@ int main()
          << "(ACTUAL)" << endl
          << endl;
 
+    // Iterate over each assigned key in the hash map and print it
     for (int index = 0; index < assignedKeys->size(); index++)
     {
         int key = assignedKeys->at(index);
@@ -79,8 +80,10 @@ int main()
         cout << "\tassignedKeys->at(" << index << "):\t" << key << endl;
     }
 
+    // Retrieve the values from the hash map and store them in assignedValues
     SimpleVector<char> *assignedValues = hashMap1.values();
 
+    // Output information about the retrieved values
     cout << endl
          << "assignedValues = hashMap1.values()" << endl
          << endl
@@ -92,6 +95,7 @@ int main()
          << "(ACTUAL)" << endl
          << endl;
 
+    // Iterate over each assigned value in the assignedValues vector and print it
     for (int index = 0; index < assignedValues->size(); index++)
     {
         char value = assignedValues->at(index);
@@ -99,20 +103,19 @@ int main()
         cout << "\tassignedValues->at(" << index << "):\t'" << value << "'" << endl;
     }
 
-    // **NOTE**: We only need to test the ASCII character codes since we are
-    // only suppose to recieve initials as player identifiers.
-    //
-    // So, we just need to allocate a 128 internal dynamic array for the hashmap.
 
     SimpleHashMap<char, PlayerResult, 128> hashMap2;
 
+    // Add an entry for the player with initial 'D' and a score of 117, marking it as a winner
     cout
         << endl
         << "hashMap2.at('D')\t= PlayerResult('D', 117, PlayerResult::WIN_KIND::singular)" << endl;
 
+    // Assign a PlayerResult object to the hash map for player 'D'
     hashMap2.at('D') = PlayerResult('D', 117, PlayerResult::WIN_KIND::winner);
     PlayerResult &playerResult = hashMap2.at('D');
 
+    // Output the player result for 'D' and validate its attributes
     cout
         << endl
         << "playerResult = hashMap2.at('D'): " << endl
@@ -121,6 +124,7 @@ int main()
         << "\tplayerResult.score()\t\t= " << playerResult.score() << "\t(SHOULD BE: 117)" << endl
         << "\tplayerResult.winKind()\t\t= " << static_cast<int>(playerResult.winKind()) << "\t(SHOULD BE: 2)\t[PlayerResult::WIN_KIND::winner]" << endl;
 
+    // Clean up dynamically allocated memory
     delete assignedKeys;
     delete assignedValues;
 
