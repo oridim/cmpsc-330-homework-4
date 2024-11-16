@@ -15,41 +15,48 @@ using namespace std;
 
 int main()
 {
+      // Output indicating the start of the unit test for the RandomAIPlayer
      cout << "=> [UNIT TEST: random_ai_player.test.cxx]" << endl
           << endl;
 
-     // **NOTE**: We need to seed our randomness with a constant number here
-     // so our random AI players always generating the same moves.
-     //
-     // This allows us to check for correctness in the unit tests.
+
+     
      // srand(time(0));
+     // Fixed seed for reproducibilty. 
      srand(0);
 
      GameBoard gameBoard(3, 5);
 
+     // Create two RandomAIPlayer objects with different player initials ('D' and 'O')
      RandomAIPlayer *randomAIPlayer1 = new RandomAIPlayer('D');
      RandomAIPlayer *randomAIPlayer2 = new RandomAIPlayer('O');
 
+      // Create a vector to hold the players
      SimpleVector<const Player *> *playerSet = new SimpleVector<const Player *>();
 
+     // Apply the first player's turn and get the result (should be Player 'D')
      playerSet->push_back(randomAIPlayer1);
      playerSet->push_back(randomAIPlayer2);
 
+     // Create a GameSession object with the players
      GameSession gameSession(playerSet);
 
      PlayerTurn *playerTurn1 = gameSession.applyNextPlayerTurn(gameBoard);
 
+      // Output the results of the first player's turn
      cout << "*playerTurn1 = randomAIPlayer1.computePlayerTurn(gameBoard1): " << endl
           << endl
           << "\tplayerTurn1.turnIndex()\t\t= " << playerTurn1->turnIndex() << "\t(SHOULD BE: 0)" << endl
           << "\tplayerTurn1.row()\t\t= " << playerTurn1->rowIndex() << "\t(SHOULD BE: 3)" << endl
           << "\tplayerTurn1.column()\t\t= " << playerTurn1->columnIndex() << "\t(SHOULD BE: 0)" << endl
           << "\tplayerTurn1.playerInitial()\t= '" << playerTurn1->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
-
+     
+      // Display the current game board state
      cout << endl
           << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
-
+          
+     // Expected output: The game board with Player 'D' at row 3, column 0
      cout << "(SHOULD BE):" << endl
           << endl
           << "   0        " << endl
@@ -61,13 +68,17 @@ int main()
           << " 4 . . . . ." << endl
           << endl;
 
+     // Output the actual game board state after the first turn
      cout << "(ACTUAL):" << endl
           << endl;
 
+      // Serialize and print the actual game board
      gameBoard.serializeGameBoard(cout);
 
+     // Apply the second player's turn and get the result (should be Player 'O')
      PlayerTurn *playerTurn2 = gameSession.applyNextPlayerTurn(gameBoard);
 
+     // Output the results of the second player's turn
      cout << endl
           << endl
           << "*playerTurn2 = randomAIPlayer2.computePlayerTurn(gameBoard1): " << endl
@@ -77,10 +88,12 @@ int main()
           << "\tplayerTurn2.column()\t\t= " << playerTurn2->columnIndex() << "\t(SHOULD BE: 1)" << endl
           << "\tplayerTurn2.playerInitial()\t= '" << playerTurn2->playerInitial() << "'" << "\t(SHOULD BE: 'O')" << endl;
 
+     // Display the current game board state after the second player's turn
      cout << endl
           << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
 
+     // Expected output: The game board with Player 'O' at row 2, column 1
      cout << "(SHOULD BE):" << endl
           << endl
           << "   0        " << endl
@@ -92,13 +105,17 @@ int main()
           << " 4 . . . . ." << endl
           << endl;
 
+     // Output the actual game board state after the second turn
      cout << "(ACTUAL):" << endl
           << endl;
 
+      // Serialize and print the actual game board
      gameBoard.serializeGameBoard(cout);
 
+      // Apply the third player's turn and get the result (should be Player 'D')
      PlayerTurn *playerTurn3 = gameSession.applyNextPlayerTurn(gameBoard);
 
+     // Output the results of the third player's turn
      cout << endl
           << endl
           << "*playerTurn3 = randomAIPlayer1.computePlayerTurn(gameBoard1): " << endl
@@ -108,10 +125,12 @@ int main()
           << "\tplayerTurn3.column()\t\t= " << playerTurn3->columnIndex() << "\t(SHOULD BE: 4)" << endl
           << "\tplayerTurn3.playerInitial()\t= '" << playerTurn3->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
+     // Display the current game board state after the third player's turn
      cout << endl
           << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
 
+     // Expected output: The game board with Player 'D' at row 3, column 4
      cout << "(SHOULD BE):" << endl
           << endl
           << "   0        " << endl
@@ -123,9 +142,11 @@ int main()
           << " 4 . . . . ." << endl
           << endl;
 
+     // Output the actual game board state after the third turn
      cout << "(ACTUAL):" << endl
           << endl;
 
+     // Serialize and print the actual game board
      gameBoard.serializeGameBoard(cout);
 
      cout << endl;
