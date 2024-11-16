@@ -41,10 +41,6 @@ PlayerTurn::PlayerTurn(const PlayerTurn &playerTurn)
 // Equality operator to compare PlayerTurn object by instance (nominal instances)
 bool PlayerTurn::operator==(const PlayerTurn &rightHandTurn) const
 {
-    // Usually the convention in most OOP languages I have done equality checking
-    // is done by default as nominal instances rather then structural values.
-    //
-    // So we will just compare pointers here for nominal instance checking.
     return this == &rightHandTurn;
 }
 // Inequality operator, opposite of the equality operator.
