@@ -19,8 +19,10 @@ int main()
      cout << "=> [UNIT TEST: game_session.test.cxx]" << endl
           << endl;
 
+     // Create a dynamic vector to hold pointers to Player objects
      SimpleVector<const Player *> *playerSet = new SimpleVector<const Player *>();
 
+     // Add two DummyPlayer objects to the vector, one for each player
      playerSet->push_back(new DummyPlayer('D'));
      playerSet->push_back(new DummyPlayer('O'));
 
@@ -29,12 +31,14 @@ int main()
      GameSession gameSession1(playerSet);
      GameSession gameSession2 = GameSession();
 
+     // Output gameSession1's details
      cout << "gameSession1 = GameSession(playerSet): " << endl
           << endl
           << "\tgameSession1.turnIndex()\t= " << gameSession1.nextTurnIndex() << "\t(SHOULD BE: 0)" << endl
           << "\tgameSession1.players.size()\t= " << gameSession1.players().size() << "\t(SHOULD BE: 2)" << endl
           << "\tgameSession1.nextTurnIndex()\t= " << gameSession1.nextTurnIndex() << "\t(SHOULD BE: 0)" << endl;
 
+     // Output test results for equality and inequality operators
      cout << endl
           << "GameSession::operator==, GameSession::operator!=" << endl
           << endl
