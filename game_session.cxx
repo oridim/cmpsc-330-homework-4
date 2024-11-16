@@ -10,25 +10,27 @@
 
 #include "game_session.h"
 
+// Default constructor for GameSession
 GameSession::GameSession()
 {
     this->_players = new SimpleVector<const Player *>();
     this->_turns = new SimpleVector<const PlayerTurn *>();
 }
 
+// Constructor with player vector, initializes the game session with a list of players
 GameSession::GameSession(const SimpleVector<const Player *> *players)
 {
     this->_players = players;
     this->_turns = new SimpleVector<const PlayerTurn *>();
 }
 
+// Constructor with player vector and player turns, copies the turns into the session
 GameSession::GameSession(const SimpleVector<const Player *> *players, const SimpleVector<PlayerTurn> turns)
 {
     this->_players = players;
     this->_turns = new SimpleVector<const PlayerTurn *>(turns.size());
 
-    // `GameSession` takes ownership of its own vector of player turns. So,
-    // we need to clone the source vector provided.
+    // Clone the player turns from the provided vector to the session
     for (int index = 0; index < turns.size(); index++)
     {
         const PlayerTurn &oldPlayerTurn = turns.get(index);
@@ -38,39 +40,43 @@ GameSession::GameSession(const SimpleVector<const Player *> *players, const Simp
     }
 }
 
+// Destructor for GameSession, cleans up dynamically allocated memory.
 GameSession::~GameSession()
 {
-    // Because we have vectors of pointers, we need to manually handle the
-    // cleanup of the allocation.
+    // Clean up the memory allocated for player pointers
     for (int index = 0; index < this->_players->size(); index++)
     {
         delete this->_players->get(index);
     }
 
+    // Clean up the memory allocated for player turn pointers
     for (int index = 0; index < this->_turns->size(); index++)
     {
         delete this->_turns->at(index);
     }
 
+    // Delete the vectors
     delete this->_players;
     delete this->_turns;
 }
 
+// Equality operator comparing two GameSession objects
 bool GameSession::operator==(const GameSession &rightHandSession) const
 {
-    // Usually the convention in most OOP languages I have done equality checking
-    // is done by default as nominal instances rather then structural values.
-    //
-    // So we will just compare pointers here for nominal instance checking.
+    // Compare the current instance with the right-hand side using pointer comparison
+    // This checks for nominal equality 
+
     return this == &rightHandSession;
 }
 
+    // Inequality operator for comparing two GameSession objects.
 bool GameSession::operator!=(const GameSession &rightHandSession) const
 {
     // See `GameSession::operator==` for reasoning.
     return this != &rightHandSession;
 }
 
+// Determine the next player in the game based on the current turn index
 const Player &GameSession::_determineNextPlayer() const
 {
     const SimpleVector<const Player *> *players = this->_players;
@@ -79,6 +85,7 @@ const Player &GameSession::_determineNextPlayer() const
     return *players->get(playerIndex);
 }
 
+// Applies the next player turn to the game board
 PlayerTurn *GameSession::applyNextPlayerTurn(GameBoard &gameBoard)
 {
     PlayerTurn *playerTurn = this->computeNextPlayerTurn(gameBoard);
@@ -88,7 +95,9 @@ PlayerTurn *GameSession::applyNextPlayerTurn(GameBoard &gameBoard)
         return nullptr;
     }
 
+    // Apply the player's turn to the game board
     gameBoard.applyTurn(*playerTurn);
+    // Apply any scorable captures that may have occured as a result of the turn 
     gameBoard.applyScorableCaptures();
 
     this->_turns->push_back(playerTurn);
@@ -96,16 +105,20 @@ PlayerTurn *GameSession::applyNextPlayerTurn(GameBoard &gameBoard)
     return playerTurn;
 }
 
+// Computes the next player turn based on the current state of the game board
 PlayerTurn *GameSession::computeNextPlayerTurn(const GameBoard &gameBoard) const
 {
+    // Get the next player in the game
     const Player &player = this->_determineNextPlayer();
     PlayerMove *playerMove = player.computePlayerMove(*this, gameBoard);
 
+    // If there is no valid move, returm nullptr
     if (playerMove == nullptr)
     {
         return nullptr;
     }
 
+    // Create a new player turn based on the computed move
     PlayerTurn *playerTurn = new PlayerTurn(
         *playerMove, this->nextTurnIndex(), player.playerInitial());
 
