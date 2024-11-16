@@ -12,16 +12,15 @@
 
 #include "random_ai_player.h"
 
-// Constructor for RandomAIPlayer.
-// Initializes the player with the given player initial.
-// 'playerInitial': A character representing the player's identifier.
+
 RandomAIPlayer::RandomAIPlayer(char playerInitial)
 {
+    // Initializes the player with the given player initial.
+    // 'playerInitial': A character representing the player's identifier.
     this->_playerInitial = playerInitial;
 }
 
-// Computes the next move for the AI player using random selection.
-// Returns a 'PlayerMove' object representing the randomly chosen move, or 'nullptr' if no legal moves are available.
+
 PlayerMove *RandomAIPlayer::computePlayerMove(
     const GameSession &gameSession, const GameBoard &gameBoard) const
 {
@@ -29,6 +28,7 @@ PlayerMove *RandomAIPlayer::computePlayerMove(
     SimpleVector<GameBoardSlot> *legalSlots = gameBoard.computeLegalSlots();
     if (legalSlots->size() == 0)
     {
+        // Returns a 'PlayerMove' object representing the randomly chosen move, or 'nullptr' if no legal moves are available.
         return nullptr;
     }
     // Select a random legal slot index within the range of available slots.

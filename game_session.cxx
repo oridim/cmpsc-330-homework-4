@@ -10,23 +10,26 @@
 
 #include "game_session.h"
 
-// Default constructor for GameSession
+
 GameSession::GameSession()
 {
+    // Default constructor for GameSession
     this->_players = new SimpleVector<const Player *>();
     this->_turns = new SimpleVector<const PlayerTurn *>();
 }
 
-// Constructor with player vector, initializes the game session with a list of players
+
 GameSession::GameSession(const SimpleVector<const Player *> *players)
 {
+    // Constructor with player vector, initializes the game session with a list of players
     this->_players = players;
     this->_turns = new SimpleVector<const PlayerTurn *>();
 }
 
-// Constructor with player vector and player turns, copies the turns into the session
+
 GameSession::GameSession(const SimpleVector<const Player *> *players, const SimpleVector<PlayerTurn> turns)
 {
+    // Constructor with player vector and player turns, copies the turns into the session
     this->_players = players;
     this->_turns = new SimpleVector<const PlayerTurn *>(turns.size());
 
@@ -40,9 +43,10 @@ GameSession::GameSession(const SimpleVector<const Player *> *players, const Simp
     }
 }
 
-// Destructor for GameSession, cleans up dynamically allocated memory.
+
 GameSession::~GameSession()
 {
+    // Destructor for GameSession, cleans up dynamically allocated memory.
     // Clean up the memory allocated for player pointers
     for (int index = 0; index < this->_players->size(); index++)
     {
@@ -60,7 +64,7 @@ GameSession::~GameSession()
     delete this->_turns;
 }
 
-// Equality operator comparing two GameSession objects
+
 bool GameSession::operator==(const GameSession &rightHandSession) const
 {
     // Compare the current instance with the right-hand side using pointer comparison
@@ -69,25 +73,27 @@ bool GameSession::operator==(const GameSession &rightHandSession) const
     return this == &rightHandSession;
 }
 
-    // Inequality operator for comparing two GameSession objects.
+   
 bool GameSession::operator!=(const GameSession &rightHandSession) const
 {
-    // See `GameSession::operator==` for reasoning.
+     // Inequality operator for comparing two GameSession objects.
     return this != &rightHandSession;
 }
 
-// Determine the next player in the game based on the current turn index
+
 const Player &GameSession::_determineNextPlayer() const
 {
+    // Determine the next player in the game based on the current turn index
     const SimpleVector<const Player *> *players = this->_players;
     int playerIndex = this->nextTurnIndex() % players->size();
 
     return *players->get(playerIndex);
 }
 
-// Applies the next player turn to the game board
+
 PlayerTurn *GameSession::applyNextPlayerTurn(GameBoard &gameBoard)
 {
+    // Applies the next player turn to the game board
     PlayerTurn *playerTurn = this->computeNextPlayerTurn(gameBoard);
 
     if (playerTurn == nullptr)
@@ -105,9 +111,10 @@ PlayerTurn *GameSession::applyNextPlayerTurn(GameBoard &gameBoard)
     return playerTurn;
 }
 
-// Computes the next player turn based on the current state of the game board
+
 PlayerTurn *GameSession::computeNextPlayerTurn(const GameBoard &gameBoard) const
 {
+    // Computes the next player turn based on the current state of the game board
     // Get the next player in the game
     const Player &player = this->_determineNextPlayer();
     PlayerMove *playerMove = player.computePlayerMove(*this, gameBoard);
