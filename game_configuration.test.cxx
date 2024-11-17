@@ -55,7 +55,7 @@ int main()
 
           cout
               << "\tgameConfiguration1->players()->get('" << playerInitial << "')"
-              << "\t= \"" << static_cast<int>(playerKind) << '"' << endl;
+              << "\t= " << static_cast<int>(playerKind) << endl;
      }
 
      GameSession *gameSession = gameConfiguration1->makeGameSession();
