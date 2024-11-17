@@ -184,7 +184,7 @@ public:
     // then thrown.
     const GameBoardSlot &getSlot(int rowIndex, int columnIndex) const;
 
-    // `void GameBoard.serializeGameBoard(const ostream &outputStream)`
+    // `void GameBoard.serializeGameBoard(ostream &outputStream)`
     //
     // Serializes the gameboard's state to the supplied `outputStream`.
     void serializeGameBoard(ostream &outputStream) const;
