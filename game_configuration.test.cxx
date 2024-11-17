@@ -35,7 +35,7 @@ int main()
      const SimpleHashMap<char, GameConfiguration::PLAYER_KIND, 16UL> &playerLookup = gameConfiguration1->players();
      SimpleVector<char> *playerInitials = playerLookup.keys();
 
-     cout << "*gameConfiguration1 = GameConfiguration::deserializeGameConfiguration(inputStream ['./Test Cases/GameConfiguration/game.professor-supplied.txt']): " << endl
+     cout << "*gameConfiguration1 = GameConfiguration::deserializeGameConfiguration(inputStream ['./Test Cases/GameConfiguration/configuration.professor-supplied.txt']): " << endl
           << endl
           << "\tgameConfiguration1->rows()\t\t\t= " << gameConfiguration1->rows() << "\t(SHOULD BE: 3)" << endl
           << "\tgameConfiguration1->columns()\t\t\t= " << gameConfiguration1->columns() << "\t(SHOULD BE: 8)" << endl
