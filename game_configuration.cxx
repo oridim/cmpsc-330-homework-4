@@ -92,7 +92,7 @@ GameConfiguration::GameConfiguration(const GameConfiguration &gameConfiguration)
     this->_rows = gameConfiguration._rows;
 
     // Copy the players hash map (deep copy) from the provided GameConfiguration
-    this->_players = new SimpleHashMap<char, string, 16>(gameConfiguration._players);
+    this->_players = new SimpleHashMap<char, string, 16>(*gameConfiguration._players);
 }
 
 // Destructor for GameConfiguration, frees the dynamically allocated memory for players
