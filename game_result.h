@@ -79,7 +79,7 @@ public:
     const SimpleVector<PlayerResult> &playerResults() const { return *this->_playerResults; }
     WIN_KIND winKind() const { return this->_winKind; }
 
-    // `void GameResult.serializeGameBoard(ostream &outputStream)`
+    // `void GameResult.serializeGameBoard(const ostream &outputStream)`
     //
     // Serializes the game result to the supplied `outputStream`.
     void serializeGameResult(ostream &outputStream) const;
