@@ -48,6 +48,6 @@ public:
         const GameSession &gameSession, const GameBoard &gameBoard) const = 0;
 };
 
-Player::~Player() {}
+inline Player::~Player() {}
 
 #endif
