@@ -180,6 +180,8 @@ int GameBoard::applyScorableCaptures()
         capturesMade += 1;
     }
 
+    this->_capturesMade += capturesMade;
+
     delete scorableSlots;
     return capturesMade;
 }

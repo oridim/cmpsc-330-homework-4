@@ -26,6 +26,12 @@
 class GameBoard
 {
 private:
+    // `int GameBoard._capturesMade`
+    //
+    // Represents the amount of captures made on the Dots and Boxes gameboard
+    // grid.
+    int _capturesMade;
+
     // `int GameBoard._columns`
     //
     // Represents how many columns of dots there are in the Dots and Boxes
@@ -78,6 +84,7 @@ public:
     bool operator==(const GameBoard &rightHandBoard) const;
     bool operator!=(const GameBoard &rightHandBoard) const;
 
+    int capturesMade() const { return this->_capturesMade; }
     int columns() const { return this->_columns; }
     int rows() const { return this->_rows; }
 
