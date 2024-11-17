@@ -17,6 +17,8 @@ set -e
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_board_slot.test.cxx' -o './game_board_slot.test'
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_board.test.cxx' -o './game_board.test'
 
+
+/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_configuration.test.cxx' -o './game_configuration.test'
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_data.test.cxx' -o './game_data.test'
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_session.test.cxx' -o './game_session.test'
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_result.test.cxx' -o './game_result.test'
