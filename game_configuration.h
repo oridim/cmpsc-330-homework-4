@@ -47,11 +47,11 @@ public:
     static GameConfiguration *deserializeGameConfiguration(istream &inputStream);
 
 private:
-    // `PLAYER_KIND GameConfiguration::_determinePlayerKind(char *kindIdentifier)`
+    // `PLAYER_KIND GameConfiguration::_determinePlayerKind(string kindIdentifier)`
     //
     // Returns the matching `PLAYER_KIND` enum value in regards to the
     // serialized `kindIdentifier`.
-    static PLAYER_KIND _determinePlayerKind(char *kindIdentifier);
+    static PLAYER_KIND _determinePlayerKind(string kindIdentifier);
 
     // `Player *GameConfiguration::_makePlayerKind(PLAYER_KIND playerKind, char playerInitial)`
     //
@@ -72,15 +72,15 @@ private:
     // gameboard grid.
     int _rows;
 
-    // `SimpleHashMap<char, string, 16> *GameConfiguration._players`
+    // `SimpleHashMap<char, PLAYER_KIND, 16> *GameConfiguration._players`
     //
     // Represents players and their configured player kinds.
-    SimpleHashMap<char, string, 16> *_players;
+    SimpleHashMap<char, PLAYER_KIND, 16> *_players;
 
 public:
     GameConfiguration();
     GameConfiguration(
-        int rows, int columns, SimpleHashMap<char, string, 16> *players);
+        int rows, int columns, SimpleHashMap<char, PLAYER_KIND, 16> *players);
 
     GameConfiguration(const GameConfiguration &GameConfiguration);
 
@@ -90,7 +90,7 @@ public:
     bool operator!=(const GameConfiguration &rightHandResult) const;
 
     int columns() const { return this->_columns; }
-    const SimpleHashMap<char, string, 16> &players() const { return *this->_players; }
+    const SimpleHashMap<char, PLAYER_KIND, 16> &players() const { return *this->_players; }
     int rows() const { return this->_rows; }
 };
 

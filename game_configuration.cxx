@@ -10,14 +10,14 @@
 #include "game_configuration.h"
 
 // Determine the type of player based on the kind identifier
-GameConfiguration::PLAYER_KIND GameConfiguration::_determinePlayerKind(char *kindIdentifier)
+GameConfiguration::PLAYER_KIND GameConfiguration::_determinePlayerKind(string kindIdentifier)
 {
-    // Compares the string kindIdentifier with "Random" and "Strategic".
-    if (strcmp(kindIdentifier, "Random"))
+    // Switch statement to select the appropriate player kind based on the serialized input.
+    if (kindIdentifier == "Random")
     {
         return PLAYER_KIND::random;
     }
-    else if (strcmp(kindIdentifier, "Strategic"))
+    else if (kindIdentifier == "Strategic")
     {
         return PLAYER_KIND::strategic;
     }
@@ -52,7 +52,7 @@ GameConfiguration *GameConfiguration::deserializeGameConfiguration(istream &inpu
     int columns;
     int rows;
     // Create a SimpleHashMap to store the player's initial and their kind
-    SimpleHashMap<char, string, 16> *players = new SimpleHashMap<char, string, 16>();
+    SimpleHashMap<char, PLAYER_KIND, 16> *players = new SimpleHashMap<char, PLAYER_KIND, 16>();
 
     // Reading the number of rows and columns from the input stream
     inputStream >> rows >> columns;
@@ -71,7 +71,7 @@ GameConfiguration *GameConfiguration::deserializeGameConfiguration(istream &inpu
         inputStream >> kindIdentifier;
 
         // Store the player's kind in the hash map using their initial
-        players->at(toupper(playerInitial.at(0))) = kindIdentifier;
+        players->at(toupper(playerInitial.at(0))) = _determinePlayerKind(kindIdentifier);
     }
 
     // Return a new GameConfiguration object with the read values
@@ -83,11 +83,11 @@ GameConfiguration::GameConfiguration()
     this->_columns = -1;
     this->_rows = -1;
 
-    this->_players = new SimpleHashMap<char, string, 16>();
+    this->_players = new SimpleHashMap<char, PLAYER_KIND, 16>();
 }
 
 // Constructor for GameConfiguration
-GameConfiguration::GameConfiguration(int rows, int columns, SimpleHashMap<char, string, 16> *players)
+GameConfiguration::GameConfiguration(int rows, int columns, SimpleHashMap<char, PLAYER_KIND, 16> *players)
 {
     this->_columns = columns;
     this->_rows = rows;
@@ -102,7 +102,7 @@ GameConfiguration::GameConfiguration(const GameConfiguration &gameConfiguration)
     this->_rows = gameConfiguration._rows;
 
     // Copy the players hash map (deep copy) from the provided GameConfiguration
-    this->_players = new SimpleHashMap<char, string, 16>(*gameConfiguration._players);
+    this->_players = new SimpleHashMap<char, PLAYER_KIND, 16>(*gameConfiguration._players);
 }
 
 // Destructor for GameConfiguration, frees the dynamically allocated memory for players
