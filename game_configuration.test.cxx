@@ -85,10 +85,45 @@ int main()
               << "\t= Player('" << playerInitial << "')" << endl;
      }
 
+     GameBoard *gameBoard = gameConfiguration1->makeGameBoard();
+
+     cout << endl
+          << "*gameBoard = gameConfiguration1->makeGameBoard(): " << endl
+          << endl
+          << "\tgameBoard->rows()\t\t= " << gameBoard->rows() << "\t(SHOULD BE: 3)" << endl
+          << "\tgameBoard->columns()\t\t= " << gameBoard->columns() << "\t(SHOULD BE: 8)" << endl
+          << endl
+          << "\tgameBoard->rowPadding()\t\t= " << gameBoard->rowPadding() << "\t(SHOULD BE: 2)" << endl
+          << "\tgameBoard->columnPadding()\t= " << gameBoard->columnPadding() << "\t(SHOULD BE: 7)" << endl
+          << endl
+          << "\tgameBoard->expandedRows()\t= " << gameBoard->expandedRows() << "\t(SHOULD BE: 5)" << endl
+          << "\tgameBoard->expandedColumns()\t= " << gameBoard->expandedColumns() << "\t(SHOULD BE: 15)" << endl
+          << endl;
+
+     cout << "gameBoard.serializeGameBoard(cout):" << endl
+          << endl;
+
+     cout << "(SHOULD BE):" << endl
+          << endl
+          << "   0         1    " << endl
+          << "   012345678901234" << endl
+          << "00 . . . . . . . ." << endl
+          << " 1                " << endl
+          << " 2 . . . . . . . ." << endl
+          << " 3                " << endl
+          << " 4 . . . . . . . ." << endl
+          << endl;
+
+     cout << "(ACTUAL):" << endl
+          << endl;
+
+     gameBoard->serializeGameBoard(cout);
+
      GameConfiguration gameConfiguration2 = GameConfiguration();
 
      // Output test results for equality and inequality operators
      cout << endl
+          << endl
           << "GameConfiguration::operator==, GameConfiguration::operator!=" << endl
           << endl
           << "\tgameConfiguration1 == gameConfiguration1:\t" << ((*gameConfiguration1 == *gameConfiguration1) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
@@ -97,6 +132,7 @@ int main()
           << "\tgameConfiguration1 != gameConfiguration2:\t" << ((*gameConfiguration1 != gameConfiguration2) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
           << endl;
 
+     delete gameBoard;
      delete gameSession;
      delete playerInitials;
      delete gameConfiguration1;
