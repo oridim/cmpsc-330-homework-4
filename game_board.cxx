@@ -141,10 +141,12 @@ const PlayerTurn *GameBoard::_determineCapturePriorityTurn(int rowIndex, int col
     return priorityTurn;
 }
 
-void GameBoard::applyScorableCaptures()
+int GameBoard::applyScorableCaptures()
 {
     // This method iterates through all scorable slots on the game board and applies captures
     // if a specific player has priority based on game rules. 
+
+    int capturesMade = 0;
 
     // Retrieve the grid and compute all scorable slots.
     SimpleVector<SimpleVector<GameBoardSlot>> *gridRows = this->_grid;
@@ -174,9 +176,12 @@ void GameBoard::applyScorableCaptures()
 
         oldGameBoardSlot._applyUpdate(
             GameBoardSlot::SLOT_KIND::initial, *priorityTurn);
+
+        capturesMade += 1;
     }
 
     delete scorableSlots;
+    return capturesMade;
 }
 
 void GameBoard::applyTurn(const PlayerTurn &playerTurn)

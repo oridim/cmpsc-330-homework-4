@@ -105,7 +105,7 @@ public:
     // padding to provide space for line spacers and scorable boxes.
     int expandedRows() const;
 
-    // `void GameBoard.applyScorableCaptures`
+    // `int GameBoard.applyScorableCaptures()`
     //
     // Computes available `GameBoardSlot`'s instances in the gameboard grid
     // that have their `GameBoardSlot.kind` set to `GameBoardSlot::SLOT_KIND::scorable`.
@@ -120,7 +120,9 @@ public:
     //
     // Finally, the scorable box slot has its `GameBoardSlot.kind` updated
     // to `GameBoardSlot::SLOT_KIND::initial`.
-    void applyScorableCaptures();
+    //
+    // The amount of captures made is returned.
+    int applyScorableCaptures();
 
     // `void GameBoard.applyTurn(const PlayerTurn &turn)`
     //
