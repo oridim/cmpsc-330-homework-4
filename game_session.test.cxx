@@ -34,7 +34,6 @@ int main()
      // Output gameSession1's details
      cout << "gameSession1 = GameSession(playerSet): " << endl
           << endl
-          << "\tgameSession1.turnIndex()\t= " << gameSession1.nextTurnIndex() << "\t(SHOULD BE: 0)" << endl
           << "\tgameSession1.players.size()\t= " << gameSession1.players().size() << "\t(SHOULD BE: 2)" << endl
           << "\tgameSession1.nextTurnIndex()\t= " << gameSession1.nextTurnIndex() << "\t(SHOULD BE: 0)" << endl;
 
