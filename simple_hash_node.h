@@ -15,6 +15,12 @@ public:
         this->_key = key;
     }
 
+    SimpleHashNode(const SimpleHashNode &hashNode)
+    {
+        this->_key = hashNode._key;
+        this->_value = hashNode._value;
+    }
+
     K &key() { return this->_key; }
     V &value() { return this->_value; }
 };

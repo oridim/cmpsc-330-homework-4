@@ -66,7 +66,12 @@ public:
 
         for (size_t index = 0; index < elementsSize; index++)
         {
-            elements[index] = hashMap._elements[index];
+            SimpleHashNode<K, V> *hashNode = hashMap._elements[index];
+
+            if (hashNode != nullptr)
+            {
+                elements[index] = new SimpleHashNode<K, V>(*hashNode);
+            }
         }
 
         this->_elements = elements;
