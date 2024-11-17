@@ -7,6 +7,7 @@
 
 #include "player.h"
 
+#include "game_board.h"
 #include "game_session.h"
 
 // `class GameConfiguration`
@@ -92,6 +93,18 @@ public:
     int columns() const { return this->_columns; }
     const SimpleHashMap<char, PLAYER_KIND, 16> &players() const { return *this->_players; }
     int rows() const { return this->_rows; }
+
+    // `GameBoard *GameConfiguration.makeGameBoard()`
+    //
+    // Returns a new `GameBoard` instance that had `GameConfiguration`'s
+    // loaded settings initialized with it.
+    GameBoard *makeGameBoard();
+
+    // `GameSession *GameConfiguration.makeGameSession()`
+    //
+    // Returns a new `GameSession` instance that had `GameConfiguration`'s
+    // loaded players initialized with it.
+    GameSession *makeGameSession();
 };
 
 #endif

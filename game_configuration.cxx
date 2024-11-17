@@ -1,7 +1,11 @@
 #include <iostream>
 #include <string>
 
+#include "simple_vector.h"
 #include "simple_hash_map.h"
+
+#include "game_board.h"
+#include "game_session.h"
 
 #include "player.h"
 #include "basic_strategy_ai_player.h"
@@ -122,4 +126,31 @@ bool GameConfiguration::operator!=(const GameConfiguration &rightHandConfigurati
 {
     // See `GameConfiguration::operator==` for reasoning.
     return this != &rightHandConfiguration;
+}
+
+GameBoard *GameConfiguration::makeGameBoard()
+{
+    return new GameBoard(this->_rows, this->_columns);
+}
+
+GameSession *GameConfiguration::makeGameSession()
+{
+    SimpleHashMap<char, PLAYER_KIND, 16> *playerLookup = this->_players;
+    SimpleVector<char> *playerInitials = playerLookup->keys();
+
+    SimpleVector<const Player *> *players = new SimpleVector<const Player *>();
+
+    for (int index = 0; index < playerInitials->size(); index++)
+    {
+        char playerInitial = playerInitials->at(index);
+        PLAYER_KIND &playerKind = playerLookup->at(playerInitial);
+
+        Player *player = GameConfiguration::_makePlayerKind(playerKind, playerInitial);
+        players->push_back(player);
+    }
+
+    GameSession *gameSession = new GameSession(players);
+
+    delete playerInitials;
+    return gameSession;
 }
