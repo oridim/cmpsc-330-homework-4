@@ -45,7 +45,11 @@ public:
         strategic
     };
 
-    static GameConfiguration *deserializeGameConfiguration(istream &inputStream);
+    // `GameConfiguration *GameConfiguration::deserializeGameConfiguration(const istream &inputStream)`
+    //
+    // Returns the pointer to a new `GameConfiguration` instance that was configured
+    // from the supplied `inputStream`.
+    static GameConfiguration *deserializeGameConfiguration(const istream &inputStream);
 
 private:
     // `PLAYER_KIND GameConfiguration::_determinePlayerKind(string kindIdentifier)`

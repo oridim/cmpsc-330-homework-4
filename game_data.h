@@ -35,6 +35,10 @@ private:
     SimpleVector<PlayerTurn> *_turns;
 
 public:
+    // `GameData *GameData::deserializeGameData(const istream &inputStream)`
+    //
+    // Returns the pointer to a new `GameData` instance that was configured
+    // from the supplied `inputStream`.
     static GameData *deserializeGameData(istream &inputStream);
 
 public:
