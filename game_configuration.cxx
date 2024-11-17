@@ -37,9 +37,10 @@ Player *GameConfiguration::_makePlayerKind(PLAYER_KIND playerKind, char playerIn
 
     case PLAYER_KIND::strategic:
         return new BasicStrategyAIPlayer(playerInitial);
-    }
 
-    throw string("bad argument #0 to 'GameConfiguration::_makePlayerKind(PLAYER_KIND, char)' (player kind ") + to_string(static_cast<int>(playerKind)) + string(" is not supported)");
+    default:
+        throw string("bad argument #0 to 'GameConfiguration::_makePlayerKind(PLAYER_KIND, char)' (player kind ") + to_string(static_cast<int>(playerKind)) + string(" is not supported)");
+    }
 }
 
 // Deserialize a gmae configuration from an imput stream
