@@ -31,6 +31,10 @@ int main()
           << endl
           << "\tgameBoard1.expandedRows()\t= " << gameBoard1.expandedRows() << "\t(SHOULD BE: 5)" << endl
           << "\tgameBoard1.expandedColumns()\t= " << gameBoard1.expandedColumns() << "\t(SHOULD BE: 9)" << endl
+          << endl
+          << "\tgameBoard1.capturesMade()\t= " << gameBoard1.capturesMade() << "\t(SHOULD BE: 0)" << endl
+          << "\tgameBoard1.remainingCaptures()\t= " << gameBoard1.remainingCaptures() << "\t(SHOULD BE: 8)" << endl
+          << "\tgameBoard1.totalCaptures()\t= " << gameBoard1.totalCaptures() << "\t(SHOULD BE: 8)" << endl
           << endl;
 
      //Render and display the initial Gameboard layout
@@ -221,7 +225,10 @@ int main()
      cout << endl
           << "gameBoard1: " << endl
           << endl
-          << "\tgameBoard1.applyScorableCaptures()\t\t= " << capturesMade << "\t(SHOULD BE: 1)" << endl;
+          << "\tgameBoard1.applyScorableCaptures()\t= " << capturesMade << "\t(SHOULD BE: 1)" << endl
+          << endl
+          << "\tgameBoard1.capturesMade()\t\t= " << gameBoard1.capturesMade() << "\t(SHOULD BE: 1)" << endl
+          << "\tgameBoard1.remainingCaptures()\t\t= " << gameBoard1.remainingCaptures() << "\t(SHOULD BE: 7)" << endl;
 
      cout << endl
           << "(SHOULD BE):" << endl
