@@ -60,6 +60,18 @@ public:
         this->_elements = elements;
     }
 
+    SimpleHashMap(const SimpleHashMap<K, V, elementsSize> &hashMap)
+    {
+        SimpleHashNode<K, V> **elements = new SimpleHashNode<K, V> *[elementsSize];
+
+        for (size_t index = 0; index < elementsSize; index++)
+        {
+            elements[index] = hashMap._elements[index];
+        }
+
+        this->_elements = elements;
+    }
+
     ~SimpleHashMap()
     {
         SimpleHashNode<K, V> **elements = this->_elements;
