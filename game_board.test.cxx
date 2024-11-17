@@ -108,22 +108,22 @@ int main()
 
      //Applies turn to gameBoard1 and observes changes in legal slots
      cout << endl
-          << "gameBoard1.applyTurn(playerTurn1...6)"
+          << "gameBoard1.applyTurn(playerTurn0...1)"
           << endl;
 
-     PlayerTurn playerTurn1(0, 0, 7, 'A');
-     PlayerTurn playerTurn2(1, 1, 4, 'B');
-     PlayerTurn playerTurn3(2, 2, 3, 'C');
-     PlayerTurn playerTurn4(3, 3, 8, 'A');
-     PlayerTurn playerTurn5(4, 4, 5, 'B');
-     PlayerTurn playerTurn6(5, 3, 6, 'C');
+     PlayerTurn playerTurn0(0, 0, 7, 'A');
+     PlayerTurn playerTurn1(1, 1, 4, 'B');
+     PlayerTurn playerTurn2(2, 2, 3, 'C');
+     PlayerTurn playerTurn3(3, 3, 8, 'A');
+     PlayerTurn playerTurn4(4, 4, 5, 'B');
+     PlayerTurn playerTurn5(5, 3, 6, 'C');
 
+     gameBoard1.applyTurn(playerTurn0);
      gameBoard1.applyTurn(playerTurn1);
      gameBoard1.applyTurn(playerTurn2);
      gameBoard1.applyTurn(playerTurn3);
      gameBoard1.applyTurn(playerTurn4);
      gameBoard1.applyTurn(playerTurn5);
-     gameBoard1.applyTurn(playerTurn6);
 
      //Display the updates legal slots after turns have been applies
      cout << endl
