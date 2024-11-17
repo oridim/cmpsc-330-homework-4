@@ -37,6 +37,7 @@ set -e
 ./game_board_slot.test
 ./game_board.test
 
+./game_configuration
 ./game_data.test
 ./game_session.test
 ./game_result.test
