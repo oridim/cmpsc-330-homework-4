@@ -13,10 +13,11 @@
 
 #include "game_result.h"
 
-// Static method to compute the game result based on the current game session and board state. 
+
 GameResult *GameResult::computeGameResult(
     const GameSession &gameSession, const GameBoard &gameBoard)
 {
+    // Static method to compute the game result based on the current game session and board state. 
     int highestScore = 0;
 
     // **NOTE**: We only need to test the ASCII character codes since we are
@@ -105,44 +106,48 @@ GameResult *GameResult::computeGameResult(
     return new GameResult(playerResults, winKind, highestScore);
 }
 
-// Constructor to initialize a GameResult object.
+
 GameResult::GameResult(SimpleVector<PlayerResult> *playerResults, WIN_KIND winKind, int highestScore)
 {
+    // Constructor to initialize a GameResult object.
     this->_playerResults = playerResults;
     this->_highestScore = highestScore;
     this->_winKind = winKind;
 }
 
-// Copy constructor for GameResult.
+
 GameResult::GameResult(const GameResult &playerResult)
 {
+    // Copy Constructor for game result
     this->_playerResults = playerResult._playerResults;
     this->_highestScore = playerResult._highestScore;
     this->_winKind = playerResult._winKind;
 }
 
-// Destructor to clean up resources.
+
 GameResult::~GameResult()
 {
+    // Destructor to clean up resources.
     delete this->_playerResults;
 }
 
-// Equality operator to compare GameResult objects by instance (nominal comparison).
+
 bool GameResult::operator==(const GameResult &rightHandResult) const
 {
-    
+    // Equality operator to compare GameResult objects by instance (nominal comparison).
     return this == &rightHandResult;
 }
-// Inequality operator, opposite of the equality operator.
+
 bool GameResult::operator!=(const GameResult &rightHandResult) const
 {
     // See `GameResult::operator==` for reasoning.
     return this != &rightHandResult;
 }
 
-// Method to serialize the game result and print it to the console
+
 void GameResult::serializeGameResult(ostream &outputStream) const
 {
+    // Method to serialize the game result and print it to the console
     SimpleVector<PlayerResult> *playerResults = this->_playerResults;
 
     for (int index = 0; index < playerResults->size(); index++)
