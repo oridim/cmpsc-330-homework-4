@@ -4,7 +4,7 @@
 
 set -e
 
-# Compile Unit Tests
+# Compile Dots and Boxes Entry Point
 
 /usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g \
     "./basic_strategy_ai_player.cxx" \
