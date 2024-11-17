@@ -30,7 +30,7 @@ int main()
          GameConfiguration::deserializeGameConfiguration(inputStream);
      inputStream.close();
 
-     const SimpleHashMap<char, string, 16UL> &players = gameConfiguration1->players();
+     const SimpleHashMap<char, GameConfiguration::PLAYER_KIND, 16UL> &players = gameConfiguration1->players();
      SimpleVector<char> *playerInitials = players.keys();
 
      cout << "*gameConfiguration1 = GameConfiguration::deserializeGameConfiguration(inputStream ['./Test Cases/GameConfiguration/game.professor-supplied.txt']): " << endl
@@ -42,18 +42,18 @@ int main()
      cout << endl
           << "gameConfiguration1->players():" << endl
           << endl
-          << "\tgameConfiguration1->players()->get('B')\t= \"Random\"\t(SHOULD BE)" << endl
-          << "\tgameConfiguration1->players()->get('R')\t= \"Strategic\"\t(SHOULD BE)" << endl
+          << "\tgameConfiguration1->players()->get('B')\t= 2\t(SHOULD BE)\t[GameConfiguration::PLAYER_KIND::random]" << endl
+          << "\tgameConfiguration1->players()->get('R')\t= 3\t(SHOULD BE)\t[GameConfiguration::PLAYER_KIND::strategic]" << endl
           << endl;
 
      for (int index = 0; index < playerInitials->size(); index++)
      {
           char playerInitial = playerInitials->at(index);
-          string kindIdentifier = players.get(playerInitial);
+          GameConfiguration::PLAYER_KIND playerKind = players.get(playerInitial);
 
           cout
               << "\tgameConfiguration1->players()->get('" << playerInitial << "')"
-              << "\t= \"" << kindIdentifier << '"' << endl;
+              << "\t= \"" << static_cast<int>(playerKind) << '"' << endl;
      }
 
      GameConfiguration gameConfiguration2 = GameConfiguration();
