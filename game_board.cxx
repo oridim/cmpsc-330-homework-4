@@ -94,6 +94,19 @@ int GameBoard::expandedRows() const
     return this->_rows + this->rowPadding();
 }
 
+int GameBoard::remainingCaptures() const
+{
+    return this->totalCaptures() - this->_capturesMade;
+}
+
+int GameBoard::totalCaptures() const
+{
+    int expandedColumns = this->columnPadding();
+    int expandedRows = this->rowPadding();
+
+    return expandedColumns * expandedRows;
+}
+
 const PlayerTurn *GameBoard::_determineCapturePriorityTurn(int rowIndex, int columnIndex)
 {
     // Determine the PlayerTurn with the highest priority for a potential capture.
@@ -409,7 +422,7 @@ void GameBoard::serializeGameBoard(ostream &outputStream) const
         for (int columnIndex = 0; columnIndex < gridColumns.size(); columnIndex++)
         {
             GameBoardSlot &gameBoardSlot = gridColumns.at(columnIndex);
-            
+
             // Print the display character of each slot
             outputStream << gameBoardSlot.displayCharacter();
         }

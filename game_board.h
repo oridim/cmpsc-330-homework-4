@@ -112,6 +112,18 @@ public:
     // padding to provide space for line spacers and scorable boxes.
     int expandedRows() const;
 
+    // `int GameBoard.remainingCaptures()`
+    //
+    // Returns the amount of available scorable gameboard grid still remaining
+    // players can still capture.
+    int remainingCaptures() const;
+
+    // `int GameBoard.totalCaptures()`
+    //
+    // Returns the total amount of captures (including captured gameboard grid slots)
+    // that the gameboard provides.
+    int totalCaptures() const;
+
     // `int GameBoard.applyScorableCaptures()`
     //
     // Computes available `GameBoardSlot`'s instances in the gameboard grid
