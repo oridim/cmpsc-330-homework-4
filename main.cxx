@@ -17,7 +17,6 @@
 //
 //---------------------------------------------------------------------
 
-#include <fstream>
 #include <iostream>
 
 #include "game_configuration.h"
@@ -28,23 +27,8 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    ifstream inputStream;
-    char *fileName = argv[1];
-
-    inputStream.open(fileName);
-    if (inputStream.is_open())
-    {
-        // If the file provided by the end-user was not reachable, then we error
-        // error out with a non-zero exit code.
-        cerr
-            << "error: file '" << fileName << "' was not available for reading"
-            << endl;
-
-        return 1;
-    }
-
     GameConfiguration *gameConfiguration =
-        GameConfiguration::deserializeGameConfiguration(inputStream);
+        GameConfiguration::deserializeGameConfiguration(cin);
 
     GameBoard *gameBoard = gameConfiguration->makeGameBoard();
     GameSession *gameSession = gameConfiguration->makeGameSession();
