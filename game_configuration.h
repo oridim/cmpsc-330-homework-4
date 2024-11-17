@@ -78,6 +78,7 @@ private:
     SimpleHashMap<char, string, 16> *_players;
 
 public:
+    GameConfiguration();
     GameConfiguration(
         int rows, int columns, SimpleHashMap<char, string, 16> *players);
 

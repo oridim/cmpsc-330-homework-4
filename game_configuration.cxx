@@ -77,6 +77,15 @@ GameConfiguration *GameConfiguration::deserializeGameConfiguration(istream &inpu
     // Return a new GameConfiguration object with the read values
     return new GameConfiguration(rows, columns, players);
 }
+
+GameConfiguration::GameConfiguration()
+{
+    this->_columns = -1;
+    this->_rows = -1;
+
+    this->_players = new SimpleHashMap<char, string, 16>();
+}
+
 // Constructor for GameConfiguration
 GameConfiguration::GameConfiguration(int rows, int columns, SimpleHashMap<char, string, 16> *players)
 {
