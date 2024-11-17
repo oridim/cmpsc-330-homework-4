@@ -210,6 +210,36 @@ int main()
           cout << "(" << slot.rowIndex() << ", " << slot.columnIndex() << ")" << endl;
      }
 
+     PlayerTurn playerTurn6(6, 2, 7, 'A');
+     PlayerTurn playerTurn7(7, 4, 7, 'B');
+
+     gameBoard1.applyTurn(playerTurn6);
+     gameBoard1.applyTurn(playerTurn7);
+
+     int capturesMade = gameBoard1.applyScorableCaptures();
+
+     cout << endl
+          << "gameBoard1: " << endl
+          << endl
+          << "\tgameBoard1.applyScorableCaptures()\t\t= " << capturesMade << "\t(SHOULD BE: 1)" << endl;
+
+     cout << endl
+          << "(SHOULD BE):" << endl
+          << endl
+          << "   0        " << endl
+          << "   012345678" << endl
+          << "00 . . . .a." << endl
+          << " 1     b    " << endl
+          << " 2 . .c. .a." << endl
+          << " 3       cBa" << endl
+          << " 4 . . .b.b." << endl
+          << endl;
+
+     cout << "(ACTUAL):" << endl
+          << endl;
+
+     gameBoard1.serializeGameBoard(cout);
+
      // Cleans up dynamically allocated memory for vectors
      delete legalSlots1;
      delete legalSlots2;
