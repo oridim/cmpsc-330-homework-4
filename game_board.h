@@ -186,7 +186,7 @@ public:
 
     // `void GameBoard.serializeGameBoard(ostream &outputStream)`
     //
-    // Serializes the gameboard's state to the suuplied `outputStream`.
+    // Serializes the gameboard's state to the supplied `outputStream`.
     void serializeGameBoard(ostream &outputStream) const;
 };
 
