@@ -1,3 +1,4 @@
+#include <cmath>
 #include <random>
 
 #include "simple_vector.h"
@@ -26,7 +27,7 @@ int BasicStrategyAIPlayer::_computeSurroundingLineCount(
         {
             // We are approximating a unique identifier for the `GameBoardSlot`
             // so we can look its legal moves up later.
-            int boardSlotID = columnIndex + ',' + rowIndex;
+            int boardSlotID = pow(columnIndex, rowIndex);
             SimpleVector<const GameBoardSlot *> &legalSlots = legalSlotsLookup.at(boardSlotID);
 
             legalSlots.push_back(&deltaBoardSlot);
@@ -43,7 +44,7 @@ int BasicStrategyAIPlayer::_computeSurroundingLineCount(
 
         if (deltaBoardSlot.isLegalMove())
         {
-            int boardSlotID = columnIndex + ',' + rowIndex;
+            int boardSlotID = pow(columnIndex, rowIndex);
             SimpleVector<const GameBoardSlot *> &legalSlots = legalSlotsLookup.at(boardSlotID);
 
             legalSlots.push_back(&deltaBoardSlot);
@@ -161,7 +162,7 @@ PlayerMove *BasicStrategyAIPlayer::computePlayerMove(
     int scorableIndex = rand() % scorableBoardSlots->size();
     GameBoardSlot *scorableBoardSlot = scorableBoardSlots->at(scorableIndex);
 
-    int boardSlotID = scorableBoardSlot->columnIndex() + ',' + scorableBoardSlot->rowIndex();
+    int boardSlotID = pow(scorableBoardSlot->columnIndex(), scorableBoardSlot->rowIndex());
     SimpleVector<const GameBoardSlot *> &legalBoardSlots = legalSlotsLookup.at(boardSlotID);
 
     // Yay, poor choices again! Woo!
