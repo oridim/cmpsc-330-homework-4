@@ -18,18 +18,6 @@ private:
         return key % elementsSize;
     }
 
-    static int _key(const char *key)
-    {
-        int sum = 0;
-
-        for (int index = 0; index < strlen(key); index++)
-        {
-            sum += key[index];
-        }
-
-        return sum;
-    }
-
 private:
     SimpleHashNode<K, V> **_elements;
 
