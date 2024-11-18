@@ -15,6 +15,15 @@ public:
 
     RandomAIPlayer(char playerInitial);
 
+    // `PlayerMove RandomAIPlayer.computePlayerMove(const GameSession &gameSession, const GameBoard &gameBoard)`
+    //
+    // Returns a pointer to a new `PlayerMove` instance if the `RandomAIPlayer`
+    // instance was able to compute a move to make.
+    //
+    // Otherwise, `nullptr` is returned.
+    //
+    // It computes the move by selecting a randomly available gameboard grid
+    // slot that is open and is a legal move.
     virtual PlayerMove *computePlayerMove(
         const GameSession &gameSession, const GameBoard &gameBoard) const override;
 };

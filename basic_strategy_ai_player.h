@@ -16,6 +16,13 @@
 class BasicStrategyAIPlayer : public Player
 {
 private:
+    // `int BasicStrategyAIPlayer::_computeSurroundingLineCount(const GameBoard &gameBoard, int rowIndex, int columnIndex, SimpleHashMap<int, SimpleVector<const GameBoardSlot *>, 99 * 99> &legalSlotsLookup)`
+    //
+    // Returns the number of lines surrounding a particular slot in the gameboard
+    // grid.
+    //
+    // The lines are computed by iterating searching +-1 horizontally and
+    // +-1 vertically from the supplied `rowIndex` and `columnIndex` respectively.
     static int _computeSurroundingLineCount(
         const GameBoard &gameBoard, int rowIndex, int columnIndex, SimpleHashMap<int, SimpleVector<const GameBoardSlot *>, 99 * 99> &legalSlotsLookup);
 
@@ -24,6 +31,27 @@ public:
 
     BasicStrategyAIPlayer(char playerInitial);
 
+    // `PlayerMove RandomAIPlayer.computePlayerMove(const GameSession &gameSession, const GameBoard &gameBoard)`
+    //
+    // Returns a pointer to a new `PlayerMove` instance if the `BasicStrategyAIPlayer`
+    // instance was able to compute a move to make.
+    //
+    // Otherwise, `nullptr` is returned.
+    //
+    // It computes the move by utilizing a prioritization system to select a
+    // scorable box to draw a line around.
+    //
+    // 1. If the highest line count around scorable boxes is 3, then a random
+    //    box from that pool is selected.
+    // 2. If the highest line count around scorable boxes is 1, then the random
+    //    randomly pulled from the pools of 0 and 1 line surrounded scorable boxes.
+    // 3. If the highest line count around scorable boxes is 0, then a random box
+    //    is selected.
+    // 4. If the highest line count around scorable boxes is 2, then a random
+    //    box from that pool is selected.
+    //
+    // Once a scorable box is selected a random line is drawn on an available
+    // space around it.
     virtual PlayerMove *computePlayerMove(
         const GameSession &gameSession, const GameBoard &gameBoard) const override;
 };
