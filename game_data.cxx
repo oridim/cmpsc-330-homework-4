@@ -95,3 +95,27 @@ GameBoard *GameData::makeGameBoard()
 
     return gameBoard;
 }
+
+void GameData::serializeGameData(ostream &outputStream) const
+{
+    outputStream
+        << this->_rows << " " << this->_columns << endl;
+
+    SimpleVector<PlayerTurn> *turns = this->_turns;
+
+    for (int index = 0; index < turns->size(); index++)
+    {
+        PlayerTurn &playerTurn = turns->at(index);
+
+        cout << playerTurn.playerInitial() << " "
+             << playerTurn.rowIndex() << " " << playerTurn.columnIndex();
+
+        // We only want to newline when we are looping every turn before the
+        // last one. The calling code should determine if they need a trailing
+        // new line on the output.
+        if (index < (turns->size() - 1))
+        {
+            outputStream << endl;
+        }
+    }
+}

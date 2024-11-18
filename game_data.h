@@ -58,6 +58,11 @@ public:
     // Returns a new `GameBoard` instance that had `GameData`'s loaded settings
     // and turns applied to it.
     GameBoard *makeGameBoard();
+
+    // `void GameResult.serializeGameBoard(ostream &outputStream)`
+    //
+    // Serializes the game data to the supplied `outputStream`.
+    void serializeGameData(ostream &outputStream) const;
 };
 
 #endif
