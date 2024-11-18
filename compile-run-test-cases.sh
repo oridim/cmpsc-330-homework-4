@@ -39,7 +39,7 @@ set -e
 # Illegal Move Test Cases
 
 ./dotsandboxes "./Test Cases/game.bad-move.txt" > "./Test Cases/game.bad-move.stdout.txt"
-# **NOTE:** We were not expected to error handle malformed data, so we should be capturing a segmentation fault below. 
+# **NOTE**: We were not expected to error handle malformed data, so we should be capturing a segmentation fault below. 
 { ./dotsandboxes "./Test Cases/game.out-of-bounds.txt"; } 2> "./Test Cases/game.out-of-bounds.stderr.txt"
 
 # Player Count Test Cases
