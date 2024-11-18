@@ -15,11 +15,14 @@
 
 DummyPlayer::DummyPlayer(char playerInitial)
 {
+    // Constructor for DummyPlayer
     this->_playerInitial = playerInitial;
 }
 
 PlayerMove *DummyPlayer::computePlayerMove(
     const GameSession &gameSession, const GameBoard &gameBoard) const
 {
+    // Since this is a dummy player, the method throws an exception to indicate that
+    // it is not yet implemented or usable in its current form
     throw string("bad argument #0 to 'DummyPlayer.computePlayerMove(const GameSession &, const GameBoard &)' (not implemented)");
 }

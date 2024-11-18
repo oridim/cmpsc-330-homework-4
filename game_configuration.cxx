@@ -51,7 +51,7 @@ Player *GameConfiguration::_makePlayerKind(PLAYER_KIND playerKind, char playerIn
 
 GameConfiguration *GameConfiguration::deserializeGameConfiguration(istream &inputStream)
 {
-    // Deserialize a gmae configuration from an imput stream
+    // Deserialize a game configuration from an input stream
 
     // The SimpleHashMap used here does not dynamically resize.
     // The map is set to have a fixed size of 16 to handle up to 16 players (just in case).
