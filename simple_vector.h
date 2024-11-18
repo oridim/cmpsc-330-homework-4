@@ -2,7 +2,6 @@
 #define _SIMPLE_VECTOR_H_
 
 #include <algorithm>
-#include <cstdio>
 #include <functional>
 #include <string>
 
@@ -13,6 +12,10 @@ using namespace std;
 // will perform potentially expensive cloning reallocations instead of being able to
 // just swap pointers.
 
+// `SimpleVector<V>`
+//
+// Represents a container use to store sequences of items in a dynamically
+// allocated array that can grow as capacity is exceeded.
 template <typename V>
 class SimpleVector
 {
