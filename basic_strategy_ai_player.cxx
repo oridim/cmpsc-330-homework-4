@@ -57,7 +57,8 @@ int BasicStrategyAIPlayer::_computeSurroundingLineCount(
     return lineCount;
 }
 
-BasicStrategyAIPlayer::BasicStrategyAIPlayer(char playerInitial) {
+BasicStrategyAIPlayer::BasicStrategyAIPlayer(char playerInitial)
+{
     this->_playerInitial = playerInitial;
 }
 
