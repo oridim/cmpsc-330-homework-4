@@ -9,9 +9,10 @@
 
 #include "game_data.h"
 
-// Function to read game data from input stream and create new GameData object.
 GameData *GameData::deserializeGameData(istream &inputStream)
 {
+    // Function to read game data from input stream and create new GameData object.
+
     // Variables to store the number of columns and rows in the game board.
     // Creation of a new SimpleVector to store the sequence of player turns. 
     int columns;
@@ -50,38 +51,23 @@ GameData *GameData::deserializeGameData(istream &inputStream)
     return new GameData(rows, columns, turns);
 }
 
-// Constructor for the GameData class
 GameData::GameData(int rows, int columns, SimpleVector<PlayerTurn> *turns)
 {
+// Constructor for the GameData class
     this->_columns = columns;
     this->_rows = rows;
 
     this->_turns = turns;
 }
 
-GameData::GameData(const GameSession &gameSession, const GameBoard &gameBoard)
-{
-    this->_columns = gameBoard.columns();
-    this->_rows = gameBoard.rows();
 
-    const SimpleVector<const PlayerTurn *> &sessionTurns = gameSession.turns();
-    SimpleVector<PlayerTurn> *dataTurns = new SimpleVector<PlayerTurn>(sessionTurns.size());
-
-    for (int index = 0; index < sessionTurns.size(); index++)
-    {
-        dataTurns->at(index) = PlayerTurn(*sessionTurns.get(index));
-    }
-
-    this->_turns = dataTurns;
-}
-
-// Destructor for the GameData class
 GameData::~GameData()
 {
+    // Destructor for the GameData class
     delete this->_turns;
 }
 
-// Equality operator for GameData objects
+
 bool GameData::operator==(const GameData &rightHandData) const
 {
 
@@ -90,16 +76,18 @@ bool GameData::operator==(const GameData &rightHandData) const
     return this == &rightHandData;
 }
 
-// Inequality operator for GameData
+
 bool GameData::operator!=(const GameData &rightHandData) const
 {
+    // Inequality operator for GameData
     // See `GameData::operator==` for reasoning.
     return this != &rightHandData;
 }
 
-// Function to create a GameBoard object from the stored game data
+
 GameBoard *GameData::makeGameBoard()
 {
+    // Function to create a GameBoard object from the stored game data
     GameBoard *gameBoard = new GameBoard(this->_rows, this->_columns);
 
     // Apply each player turn from the stored turns verctor to the Gameboard.

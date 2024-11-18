@@ -13,9 +13,10 @@
 
 #include "game_configuration.h"
 
-// Determine the type of player based on the kind identifier
+
 GameConfiguration::PLAYER_KIND GameConfiguration::_determinePlayerKind(string kindIdentifier)
 {
+    // Determine the type of player based on the kind identifier
     // Switch statement to select the appropriate player kind based on the serialized input.
     if (kindIdentifier == "Random")
     {
@@ -30,9 +31,10 @@ GameConfiguration::PLAYER_KIND GameConfiguration::_determinePlayerKind(string ki
     throw string("bad argument #0 to 'GameConfiguration::_determinePlayerKind(char *)' (player identifier '") + string(kindIdentifier) + string("' is not supported)");
 }
 
-// Creates a player based on the type (Random or Strategic) and their initial
+
 Player *GameConfiguration::_makePlayerKind(PLAYER_KIND playerKind, char playerInitial)
 {
+    // Creates a player based on the type (Random or Strategic) and their initial
     // Switch statement to create the appropriate player based on the player kind
     switch (playerKind)
     {
@@ -47,9 +49,10 @@ Player *GameConfiguration::_makePlayerKind(PLAYER_KIND playerKind, char playerIn
     }
 }
 
-// Deserialize a gmae configuration from an imput stream
 GameConfiguration *GameConfiguration::deserializeGameConfiguration(istream &inputStream)
 {
+    // Deserialize a gmae configuration from an imput stream
+
     // The SimpleHashMap used here does not dynamically resize.
     // The map is set to have a fixed size of 16 to handle up to 16 players (just in case).
 
@@ -90,18 +93,20 @@ GameConfiguration::GameConfiguration()
     this->_players = new SimpleHashMap<char, PLAYER_KIND, 16>();
 }
 
-// Constructor for GameConfiguration
+
 GameConfiguration::GameConfiguration(int rows, int columns, SimpleHashMap<char, PLAYER_KIND, 16> *players)
 {
+    // Constructor for GameConfiguration
     this->_columns = columns;
     this->_rows = rows;
 
     this->_players = players;
 }
 
-// Copy Constructor for GameConfiguration
+
 GameConfiguration::GameConfiguration(const GameConfiguration &gameConfiguration)
 {
+    // Copy Constructor for GameConfiguration
     this->_columns = gameConfiguration._columns;
     this->_rows = gameConfiguration._rows;
 
@@ -109,22 +114,24 @@ GameConfiguration::GameConfiguration(const GameConfiguration &gameConfiguration)
     this->_players = new SimpleHashMap<char, PLAYER_KIND, 16>(*gameConfiguration._players);
 }
 
-// Destructor for GameConfiguration, frees the dynamically allocated memory for players
+
 GameConfiguration::~GameConfiguration()
 {
+    // Destructor for GameConfiguration, frees the dynamically allocated memory for players
     delete this->_players;
 }
 
-// Equality operator for comparing two GameConfiguration objects
+
 bool GameConfiguration::operator==(const GameConfiguration &rightHandConfiguration) const
 {
+    // Equality operator for comparing two GameConfiguration objects
     return this == &rightHandConfiguration;
 }
 
-// Inequality operator for comparing two GameConfiguration objects
+
 bool GameConfiguration::operator!=(const GameConfiguration &rightHandConfiguration) const
 {
-    // See `GameConfiguration::operator==` for reasoning.
+    // Inequality operator for comparing two GameConfiguration objects
     return this != &rightHandConfiguration;
 }
 
