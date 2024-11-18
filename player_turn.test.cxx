@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-      // Output to indicate the start of the unit test
+     // Output to indicate the start of the unit test
      cout << "=> [UNIT TEST: player_turn.test.cxx]" << endl
           << endl;
 
@@ -23,7 +23,7 @@ int main()
           << "\tplayerTurn1.column()\t\t= " << playerTurn1.columnIndex() << "\t(SHOULD BE: 4)" << endl
           << "\tplayerTurn1.playerInitial()\t= '" << playerTurn1.playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
-      // Test the equality and inequality operators
+     // Test the equality and inequality operators
      cout << endl
           << "PlayerTurn::operator==, PlayerTurn::operator!=" << endl
           << endl

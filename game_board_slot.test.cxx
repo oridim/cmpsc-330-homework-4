@@ -16,14 +16,14 @@ int main()
 
      GameBoardSlot undefinedSlot(0, 0); // Default slot with no specific kind, tests undefined state
 
-     GameBoardSlot dotSlot(0, 1, GameBoardSlot::SLOT_KIND::dot); // Dot slot for formatting?
-     GameBoardSlot scorableSlot(2, 1, GameBoardSlot::SLOT_KIND::scorable);// Slot that is scorable
-     GameBoardSlot spacerSlot(3, 4, GameBoardSlot::SLOT_KIND::spacer); // Spacer slot for formatting
+     GameBoardSlot dotSlot(0, 1, GameBoardSlot::SLOT_KIND::dot);           // Dot slot for visualizing boundaries
+     GameBoardSlot scorableSlot(2, 1, GameBoardSlot::SLOT_KIND::scorable); // Slot that is scorable
+     GameBoardSlot spacerSlot(3, 4, GameBoardSlot::SLOT_KIND::spacer);     // Spacer slot for formatting
 
      GameBoardSlot initialSlot(5, 6, GameBoardSlot::SLOT_KIND::initial, playerTurn); // Slot for starting position with player turn
      GameBoardSlot lineSlot(7, 8, GameBoardSlot::SLOT_KIND::line, playerTurn);
 
-     //Test GameBoardSlot::determineSlotKind method, verifying correct slot kinds
+     // Test GameBoardSlot::determineSlotKind method, verifying correct slot kinds
      cout << "GameBoardSlot::determineSlotKind:" << endl
           << endl
           << "determineSlotKind(0, 0)\t= " << static_cast<int>(GameBoardSlot::determineSlotKind(0, 0)) << "\t(SHOULD BE: 1) [GameBoardSlot::SLOT_KIND::dot]" << endl
@@ -31,7 +31,7 @@ int main()
           << "determineSlotKind(1, 1)\t= " << static_cast<int>(GameBoardSlot::determineSlotKind(1, 1)) << "\t(SHOULD BE: 2) [GameBoardSlot::SLOT_KIND::scorable]" << endl
           << endl;
 
-     //Test properties of the undefined slot object
+     // Test properties of the undefined slot object
      cout << "undefinedSlot = GameBoardSlot(0, 0): " << endl
           << endl
           << "\tundefinedSlot.rowIndex()\t\t\t= " << undefinedSlot.rowIndex() << "\t(SHOULD BE: 0)" << endl
@@ -41,7 +41,7 @@ int main()
           << "\tundefinedSlot.playerTurn() == playerTurn\t= " << ((undefinedSlot.playerTurn() == playerTurn) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
           << endl;
 
-     //Test properties of the dot slot object
+     // Test properties of the dot slot object
      cout << "dotSlot = GameBoardSlot(0, 1, SLOT_KIND::dot): " << endl
           << endl
           << "\tdotSlot.rowIndex()\t\t\t= " << dotSlot.rowIndex() << "\t(SHOULD BE: 0)" << endl
@@ -50,7 +50,7 @@ int main()
           << "\tdotSlot.displayCharacter()\t\t= " << "'" << dotSlot.displayCharacter() << "'" << "\t(SHOULD BE: '.')" << endl
           << "\tdotSlot.playerTurn() == playerTurn\t= " << ((dotSlot.playerTurn() == playerTurn) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
           << endl;
-     //Test properties of the scorable slot object
+     // Test properties of the scorable slot object
      cout << "scorableSlot = GameBoardSlot(2, 1, SLOT_KIND::scorable): " << endl
           << endl
           << "\tscorableSlot.rowIndex()\t\t\t= " << scorableSlot.rowIndex() << "\t(SHOULD BE: 2)" << endl
@@ -60,7 +60,7 @@ int main()
           << "\tscorableSlot.playerTurn() == playerTurn\t= " << ((scorableSlot.playerTurn() == playerTurn) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
           << endl;
 
-     //Test properties of the spacer slot object
+     // Test properties of the spacer slot object
      cout << "spacerSlot = GameBoardSlot(3, 4, SLOT_KIND::spacer): " << endl
           << endl
           << "\tspacerSlot.rowIndex()\t\t\t= " << spacerSlot.rowIndex() << "\t(SHOULD BE: 3)" << endl
@@ -70,7 +70,7 @@ int main()
           << "\tspacerSlot.playerTurn() == playerTurn\t= " << ((spacerSlot.playerTurn() == playerTurn) ? "true" : "false") << "\t(SHOULD BE: false)" << endl
           << endl;
 
-     //Test properties of the initial slot object
+     // Test properties of the initial slot object
      cout << "initialSlot = GameBoardSlot(5, 6, SLOT_KIND::initial, &playerTurn): " << endl
           << endl
           << "\tinitialSlot.rowIndex()\t\t\t= " << initialSlot.rowIndex() << "\t(SHOULD BE: 5)" << endl
@@ -80,7 +80,7 @@ int main()
           << "\tinitialSlot.playerTurn() == playerTurn\t= " << ((initialSlot.playerTurn() == playerTurn) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
           << endl;
 
-     //Test properties of the line slot object
+     // Test properties of the line slot object
      cout << "lineSlot = GameBoardSlot(7, 8, SLOT_KIND::line, &playerTurn): " << endl
           << endl
           << "\tlineSlot.rowIndex()\t\t\t= " << lineSlot.rowIndex() << "\t(SHOULD BE: 7)" << endl
@@ -90,7 +90,7 @@ int main()
           << "\tlineSlot.playerTurn() == playerTurn\t= " << ((lineSlot.playerTurn() == playerTurn) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
           << endl;
 
-     //Test operator overloads for equality and inequality
+     // Test operator overloads for equality and inequality
      cout << endl
           << "GameBoardSlot::operator==, GameBoardSlot::operator!=" << endl
           << endl

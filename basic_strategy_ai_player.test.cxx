@@ -41,7 +41,7 @@ int main()
      PlayerTurn *playerTurn1 = gameSession.applyNextPlayerTurn(gameBoard);
 
      // Display the details of the first turn to confirm correctness
-     //Each line prints a value from playerTurn1 and checks it against the expected output
+     // Each line prints a value from playerTurn1 and checks it against the expected output
      cout << "*playerTurn1 = gameSession.applyNextPlayerTurn(gameBoard): " << endl
           << endl
           << "\tplayerTurn1.turnIndex()\t\t= " << playerTurn1->turnIndex() << "\t(SHOULD BE: 0)" << endl
@@ -83,7 +83,7 @@ int main()
           << "\tplayerTurn2.column()\t\t= " << playerTurn2->columnIndex() << "\t(SHOULD BE: 8)" << endl
           << "\tplayerTurn2.playerInitial()\t= '" << playerTurn2->playerInitial() << "'" << "\t(SHOULD BE: 'O')" << endl;
 
-     // Display the game board after the second move, including the expected and actual output. 
+     // Display the game board after the second move, including the expected and actual output.
      cout << endl
           << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
@@ -116,7 +116,7 @@ int main()
           << "\tplayerTurn3.column()\t\t= " << playerTurn3->columnIndex() << "\t(SHOULD BE: 8)" << endl
           << "\tplayerTurn3.playerInitial()\t= '" << playerTurn3->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
-     // Display the game board after the third move, comparing expected and actual states. 
+     // Display the game board after the third move, comparing expected and actual states.
      cout << endl
           << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;

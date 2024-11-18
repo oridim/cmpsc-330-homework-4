@@ -18,7 +18,7 @@ int main()
 
     SimpleHashMap<char, char, 256> hashMap1;
 
-    // Test the at() and get() methods by assigning values to keys and verifying retrieval. 
+    // Test the at() and get() methods by assigning values to keys and verifying retrieval.
     cout
         << "SimpleHashMap::at, SimpleHashMap::get" << endl
         << endl
@@ -50,7 +50,7 @@ int main()
         << "SimpleHashMap::has" << endl
         << endl;
 
-    // Retrieve all keys in hashMap1 using the keys() method and store in assignedKeys. 
+    // Retrieve all keys in hashMap1 using the keys() method and store in assignedKeys.
     cout
         << "\thashMap1.has(0):\t" << (hashMap1.has(0) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
         << "\thashMap1.has('s'):\t" << (hashMap1.has('s') ? "true" : "false") << "\t(SHOULD BE: false)" << endl;
@@ -99,7 +99,6 @@ int main()
 
         cout << "\tassignedValues->at(" << index << "):\t'" << value << "'" << endl;
     }
-
 
     SimpleHashMap<char, PlayerResult, 128> hashMap2;
 

@@ -15,7 +15,7 @@ int main()
      PlayerResult playerResult1('O', 5, PlayerResult::WIN_KIND::winner);
      PlayerResult playerResult2('O', 5, PlayerResult::WIN_KIND::winner);
 
-     //Print and verify properties of playerResult1
+     // Print and verify properties of playerResult1
      cout << "playerResult1 = PlayerResult('O', 5, PlayerResult::WIN_KIND::winner): " << endl
           << endl
           << "\tplayerResult1.playerInitial()\t= '" << playerResult1.playerInitial() << "'\t(SHOULD BE: 'O')" << endl
@@ -32,10 +32,10 @@ int main()
           << "\tplayerResult1 != playerResult2:\t" << ((playerResult1 != playerResult2) ? "true" : "false") << "\t(SHOULD BE: true)" << endl
           << endl;
 
-     //Create a copy of playerResult1 to verify copy constructor
+     // Create a copy of playerResult1 to verify copy constructor
      PlayerResult playerResultCopy(playerResult1);
 
-     //Print and verify properties of playerResultCopy to ensure they match playerResult1
+     // Print and verify properties of playerResultCopy to ensure they match playerResult1
      cout << "playerResultCopy = PlayerResult(playerResult1): " << endl
           << endl
           << "\tplayerResultCopy.playerInitial()\t= '" << playerResultCopy.playerInitial() << "'\t(SHOULD BE: 'O')" << endl

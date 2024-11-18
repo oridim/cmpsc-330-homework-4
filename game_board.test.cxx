@@ -16,11 +16,11 @@ int main()
      cout << "=> [UNIT TEST: game_board.test.cxx]" << endl
           << endl;
 
-     //Initialize two GameBoard objects with 3 rows and 5 columns
+     // Initialize two GameBoard objects with 3 rows and 5 columns
      GameBoard gameBoard1(3, 5);
      GameBoard gameBoard2(3, 5);
 
-     //Display gameBoard1 properties and check its expected values for dimensions and paddings
+     // Display gameBoard1 properties and check its expected values for dimensions and paddings
      cout << "gameBoard1 = GameBoard(3, 5): " << endl
           << endl
           << "\tgameBoard1.rows()\t\t= " << gameBoard1.rows() << "\t(SHOULD BE: 3)" << endl
@@ -37,8 +37,8 @@ int main()
           << "\tgameBoard1.totalCaptures()\t= " << gameBoard1.totalCaptures() << "\t(SHOULD BE: 8)" << endl
           << endl;
 
-     //Render and display the initial Gameboard layout
-     //Expected vs. Actual
+     // Render and display the initial Gameboard layout
+     // Expected vs. Actual
      cout << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
 
@@ -58,7 +58,7 @@ int main()
 
      gameBoard1.serializeGameBoard(cout);
 
-     //Test equality and inequality operators
+     // Test equality and inequality operators
      cout << endl
           << endl
           << "GameBoard::operator==, GameBoard::operator!=" << endl
@@ -71,7 +71,7 @@ int main()
 
      SimpleVector<GameBoardSlot> *legalSlots1 = gameBoard1.computeLegalSlots();
 
-     //Compute the legal slots for gameBoard1 and display
+     // Compute the legal slots for gameBoard1 and display
      cout << "legalSlots1 = gameBoard1.computeLegalSlots()" << endl
           << endl
           << "(SHOULD BE)" << endl
@@ -110,7 +110,7 @@ int main()
           cout << "(" << slot.rowIndex() << ", " << slot.columnIndex() << ")" << endl;
      }
 
-     //Applies turn to gameBoard1 and observes changes in legal slots
+     // Applies turn to gameBoard1 and observes changes in legal slots
      cout << endl
           << "gameBoard1.applyTurn(playerTurn0...1)"
           << endl;
@@ -129,7 +129,7 @@ int main()
      gameBoard1.applyTurn(playerTurn4);
      gameBoard1.applyTurn(playerTurn5);
 
-     //Display the updates legal slots after turns have been applies
+     // Display the updates legal slots after turns have been applies
      cout << endl
           << "legalSlots2 = gameBoard1.computeLegalSlots()" << endl
           << endl
@@ -165,7 +165,7 @@ int main()
           cout << "(" << slot.rowIndex() << ", " << slot.columnIndex() << ")" << endl;
      }
 
-     //Render and display updated gameBoard1 layout after turns applied
+     // Render and display updated gameBoard1 layout after turns applied
      cout << endl
           << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
@@ -186,7 +186,7 @@ int main()
 
      gameBoard1.serializeGameBoard(cout);
 
-     //Compute and display slots of GameBoard::SLOT_KIND::line kind
+     // Compute and display slots of GameBoard::SLOT_KIND::line kind
      cout << endl
           << endl
           << "lineSlots = gameBoard1.computeKindSlots(GameBoardSlot::SLOT_KIND::line)" << endl

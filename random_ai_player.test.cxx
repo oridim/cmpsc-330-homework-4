@@ -15,14 +15,12 @@ using namespace std;
 
 int main()
 {
-      // Output indicating the start of the unit test for the RandomAIPlayer
+     // Output indicating the start of the unit test for the RandomAIPlayer
      cout << "=> [UNIT TEST: random_ai_player.test.cxx]" << endl
           << endl;
 
-
-     
      // srand(time(0));
-     // Fixed seed for reproducibilty. 
+     // Fixed seed for reproducibilty.
      srand(0);
 
      GameBoard gameBoard(3, 5);
@@ -31,7 +29,7 @@ int main()
      RandomAIPlayer *randomAIPlayer1 = new RandomAIPlayer('D');
      RandomAIPlayer *randomAIPlayer2 = new RandomAIPlayer('O');
 
-      // Create a vector to hold the players
+     // Create a vector to hold the players
      SimpleVector<const Player *> *playerSet = new SimpleVector<const Player *>();
 
      // Apply the first player's turn and get the result (should be Player 'D')
@@ -43,19 +41,19 @@ int main()
 
      PlayerTurn *playerTurn1 = gameSession.applyNextPlayerTurn(gameBoard);
 
-      // Output the results of the first player's turn
+     // Output the results of the first player's turn
      cout << "*playerTurn1 = randomAIPlayer1.computePlayerTurn(gameBoard1): " << endl
           << endl
           << "\tplayerTurn1.turnIndex()\t\t= " << playerTurn1->turnIndex() << "\t(SHOULD BE: 0)" << endl
           << "\tplayerTurn1.row()\t\t= " << playerTurn1->rowIndex() << "\t(SHOULD BE: 3)" << endl
           << "\tplayerTurn1.column()\t\t= " << playerTurn1->columnIndex() << "\t(SHOULD BE: 0)" << endl
           << "\tplayerTurn1.playerInitial()\t= '" << playerTurn1->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
-     
-      // Display the current game board state
+
+     // Display the current game board state
      cout << endl
           << "gameBoard1.serializeGameBoard(cout):" << endl
           << endl;
-          
+
      // Expected output: The game board with Player 'D' at row 3, column 0
      cout << "(SHOULD BE):" << endl
           << endl
@@ -72,7 +70,7 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-      // Serialize and print the actual game board
+     // Serialize and print the actual game board
      gameBoard.serializeGameBoard(cout);
 
      // Apply the second player's turn and get the result (should be Player 'O')
@@ -109,10 +107,10 @@ int main()
      cout << "(ACTUAL):" << endl
           << endl;
 
-      // Serialize and print the actual game board
+     // Serialize and print the actual game board
      gameBoard.serializeGameBoard(cout);
 
-      // Apply the third player's turn and get the result (should be Player 'D')
+     // Apply the third player's turn and get the result (should be Player 'D')
      PlayerTurn *playerTurn3 = gameSession.applyNextPlayerTurn(gameBoard);
 
      // Output the results of the third player's turn

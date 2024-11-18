@@ -8,7 +8,7 @@ int main()
 {
      cout << "=> [UNIT TEST: simple_vector.test.cxx]" << endl
           << endl;
-     
+
      // Create a SimpleVector instance to hold integers
      SimpleVector<int> integers;
 
@@ -93,11 +93,11 @@ int main()
 
      // Sort integersCopy in ascending order using lambda function comparator
      cout
-          << endl
-          << "SORT SimpleVector BY NUMBER SIZE"
-          << endl
-          << endl
-          << "integersCopy LIST ELEMENTS:" << "\t(SHOULD BE: 5, 24, 42, 255)" << endl;
+         << endl
+         << "SORT SimpleVector BY NUMBER SIZE"
+         << endl
+         << endl
+         << "integersCopy LIST ELEMENTS:" << "\t(SHOULD BE: 5, 24, 42, 255)" << endl;
 
      integersCopy.sort([](const int &a, const int &b)
           {
