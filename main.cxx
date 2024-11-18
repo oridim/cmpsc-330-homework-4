@@ -18,6 +18,7 @@
 //---------------------------------------------------------------------
 
 #include <iostream>
+#include <random>
 
 #include "game_configuration.h"
 #include "game_board.h"
@@ -27,6 +28,9 @@ using namespace std;
 
 int main()
 {
+    // We are seeding the number generator with the current clock time.
+    srand(time(nullptr));
+
     GameConfiguration *gameConfiguration =
         GameConfiguration::deserializeGameConfiguration(cin);
 
