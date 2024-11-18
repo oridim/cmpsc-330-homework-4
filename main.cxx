@@ -22,7 +22,10 @@
 
 #include "game_configuration.h"
 #include "game_board.h"
+#include "game_data.h"
 #include "game_session.h"
+#include "game_result.h"
+#include "player_turn.h"
 
 using namespace std;
 
@@ -37,6 +40,41 @@ int main()
     GameBoard *gameBoard = gameConfiguration->makeGameBoard();
     GameSession *gameSession = gameConfiguration->makeGameSession();
 
+    while (gameBoard->remainingCaptures() > 0)
+    {
+        PlayerTurn *playerTurn = gameSession->applyNextPlayerTurn(*gameBoard);
+        if (playerTurn == nullptr)
+        {
+            // **HACK**: This should never be a possible return given we are checking
+            // for the remaining captures.
+            //
+            // But just in case...
+            break;
+        }
+
+        gameBoard->serializeGameBoard(cout);
+        cout << endl
+             << endl;
+    }
+
+    GameResult *gameResult =
+        GameResult::computeGameResult(*gameSession, *gameBoard);
+
+    GameData gameData = GameData(*gameSession, *gameBoard);
+
+    gameData.serializeGameData(cout);
+    cout << endl
+         << "END" << endl // **QUESTION:** Do we need this here?
+         << endl;
+
+    gameBoard->serializeGameBoard(cout);
+    cout << endl
+         << endl;
+
+    gameResult->serializeGameResult(cout);
+    cout << endl;
+
+    delete gameResult;
     delete gameSession;
     delete gameBoard;
     delete gameConfiguration;
