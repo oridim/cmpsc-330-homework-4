@@ -55,7 +55,24 @@ GameData::GameData(int rows, int columns, SimpleVector<PlayerTurn> *turns)
 {
     this->_columns = columns;
     this->_rows = rows;
+
     this->_turns = turns;
+}
+
+GameData::GameData(const GameSession &gameSession, const GameBoard &gameBoard)
+{
+    this->_columns = gameBoard.columns();
+    this->_rows = gameBoard.rows();
+
+    const SimpleVector<const PlayerTurn *> &sessionTurns = gameSession.turns();
+    SimpleVector<PlayerTurn> *dataTurns = new SimpleVector<PlayerTurn>(sessionTurns.size());
+
+    for (int index = 0; index < sessionTurns.size(); index++)
+    {
+        dataTurns->at(index) = PlayerTurn(*sessionTurns.get(index));
+    }
+
+    this->_turns = dataTurns;
 }
 
 // Destructor for the GameData class

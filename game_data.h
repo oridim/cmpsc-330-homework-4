@@ -6,6 +6,7 @@
 #include "simple_vector.h"
 #include "player_turn.h"
 #include "game_board.h"
+#include "game_session.h"
 
 using namespace std;
 
@@ -43,6 +44,7 @@ public:
 
 public:
     GameData(int rows, int columns, SimpleVector<PlayerTurn> *turns);
+    GameData(const GameSession &gameSession, const GameBoard &gameBoard);
 
     ~GameData();
 
