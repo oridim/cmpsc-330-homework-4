@@ -24,13 +24,14 @@ RandomAIPlayer::RandomAIPlayer(char playerInitial)
 PlayerMove *RandomAIPlayer::computePlayerMove(
     const GameSession &gameSession, const GameBoard &gameBoard) const
 {
-    // Compute all legal slots
-    SimpleVector<GameBoardSlot> *legalSlots = gameBoard.computeLegalSlots();
-    if (legalSlots->size() == 0)
+    if (gameBoard.remainingCaptures() == 0)
     {
         // Returns a 'PlayerMove' object representing the randomly chosen move, or 'nullptr' if no legal moves are available.
         return nullptr;
     }
+
+    SimpleVector<GameBoardSlot> *legalSlots = gameBoard.computeLegalSlots();
+
     // Select a random legal slot index within the range of available slots.
     int index = rand() % legalSlots->size();
     GameBoardSlot &gameBoardSlot = legalSlots->at(index);

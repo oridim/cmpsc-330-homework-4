@@ -64,13 +64,13 @@ BasicStrategyAIPlayer::BasicStrategyAIPlayer(char playerInitial) {
 PlayerMove *BasicStrategyAIPlayer::computePlayerMove(
     const GameSession &gameSession, const GameBoard &gameBoard) const
 {
-    SimpleVector<GameBoardSlot> *scorableSlots = gameBoard.computeScorableSlots();
-    if (scorableSlots->size() == 0)
+    if (gameBoard.remainingCaptures() == 0)
     {
         return nullptr;
     }
 
     int highestLineCount = 0;
+    SimpleVector<GameBoardSlot> *scorableSlots = gameBoard.computeScorableSlots();
 
     // **HACK**: Preallocating a 99x99 hash table is, uh, stupidly inefficient to
     // say the least. But, that is the max grid size given to us by Dr. Na.
