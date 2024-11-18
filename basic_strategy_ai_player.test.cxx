@@ -112,7 +112,7 @@ int main()
           << "*playerTurn3 = gameSession.applyNextPlayerTurn(gameBoard): " << endl
           << endl
           << "\tplayerTurn3.turnIndex()\t\t= " << playerTurn3->turnIndex() << "\t(SHOULD BE: 2)" << endl
-          << "\tplayerTurn3.row()\t\t= " << playerTurn3->rowIndex() << "\t(SHOULD BE: 1)" << endl
+          << "\tplayerTurn3.row()\t\t= " << playerTurn3->rowIndex() << "\t(SHOULD BE: 4)" << endl
           << "\tplayerTurn3.column()\t\t= " << playerTurn3->columnIndex() << "\t(SHOULD BE: 8)" << endl
           << "\tplayerTurn3.playerInitial()\t= '" << playerTurn3->playerInitial() << "'" << "\t(SHOULD BE: 'D')" << endl;
 
@@ -126,10 +126,10 @@ int main()
           << "   0        " << endl
           << "   012345678" << endl
           << "00 . . . . ." << endl
-          << " 1         d" << endl
+          << " 1          " << endl
           << " 2 . . . . ." << endl
           << " 3       d o" << endl
-          << " 4 . . . . ." << endl
+          << " 4 . . .d. ." << endl
           << endl;
 
      cout << "(ACTUAL):" << endl
