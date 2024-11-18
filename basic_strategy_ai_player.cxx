@@ -80,7 +80,7 @@ PlayerMove *BasicStrategyAIPlayer::computePlayerMove(
     // elements allocation that can grow in size.
     //
     // Need to remake it using a bucket system.
-    SimpleHashMap<int, SimpleVector<GameBoardSlot *>, 3> lineCountLookup;
+    SimpleHashMap<int, SimpleVector<GameBoardSlot *>, 4> lineCountLookup;
     SimpleHashMap<int, SimpleVector<const GameBoardSlot *>, 99 * 99> legalSlotsLookup;
 
     for (int index = 0; index < scorableSlots->size(); index++)
