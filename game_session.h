@@ -24,7 +24,7 @@ private:
     const Player &_determineNextPlayer() const;
 
 protected:
-    // `SimpleVector<Player *> GameSession._players`
+    // `SimpleVector<const Player *> GameSession._players`
     //
     // Represents the players who are participating in the Dots and Boxes game.
     //
