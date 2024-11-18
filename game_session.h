@@ -8,12 +8,6 @@
 #include "player.h"
 #include "player_turn.h"
 
-// TODO: `GameSession` does not track turns player take in a vector or anything of
-// that nature.
-//
-// If we need undos in the future or want to serialize this data, we should fix
-// that.
-
 // `class GameSession`
 //
 // Represents a game session of a Dots and Boxes game. It handles the keeping of
@@ -25,6 +19,12 @@ private:
     //
     // Returns the next player in the turn order queue.
     const Player &_determineNextPlayer() const;
+
+    // `void GameSession._shiftTurnOrder()`
+    //
+    // Pops the player in the front of the turn order queue
+    // and pushes them into the back.
+    void _shiftTurnOrder();
 
 protected:
     // `SimpleVector<const Player *> GameSession._players`

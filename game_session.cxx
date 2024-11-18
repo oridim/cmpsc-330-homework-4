@@ -76,11 +76,21 @@ bool GameSession::operator!=(const GameSession &rightHandSession) const
 
 const Player &GameSession::_determineNextPlayer() const
 {
-    // Determine the next player in the game based on the current turn index
-    const SimpleVector<const Player *> *players = this->_players;
-    int playerIndex = this->nextTurnIndex() % players->size();
+    // Determine the next player in the game based on the first entry of the vector
+    return *this->_players->at(0);
+}
 
-    return *players->get(playerIndex);
+void GameSession::_shiftTurnOrder()
+{
+    SimpleVector<const Player *> *players = this->_players;
+    const Player *frontPlayer = players->at(0);
+
+    for (int index = 0; index < (players->size() - 1); index++)
+    {
+        players->at(index) = players->at(index + 1);
+    }
+
+    players->at(players->size() - 1) = frontPlayer;
 }
 
 PlayerTurn *GameSession::applyNextPlayerTurn(GameBoard &gameBoard)
@@ -96,7 +106,14 @@ PlayerTurn *GameSession::applyNextPlayerTurn(GameBoard &gameBoard)
     // Apply the player's turn to the game board
     gameBoard.applyTurn(*playerTurn);
     // Apply any scorable captures that may have occured as a result of the turn
-    gameBoard.applyScorableCaptures();
+    int capturesMade = gameBoard.applyScorableCaptures();
+
+    // If captures were not made by player we need to shift them to the back
+    // of the turn order.
+    if (capturesMade == 0)
+    {
+        _shiftTurnOrder();
+    }
 
     this->_turns->push_back(playerTurn);
 
