@@ -25,7 +25,7 @@
 
 using namespace std;
 
-int main(int argc, char *argv[])
+int main()
 {
     GameConfiguration *gameConfiguration =
         GameConfiguration::deserializeGameConfiguration(cin);
