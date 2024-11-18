@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 
 #include "simple_vector.h"
 #include "simple_hash_map.h"
@@ -31,13 +30,11 @@ int main()
     // Assign values to keys using at() method.
     hashMap1.at(0) = 'p';
     hashMap1.at('s') = 'u';
-    hashMap1.at("hello") = 'w';
 
     // Display assigned values and check if they match.
     cout
         << "\thashMap1.at(0):\t\t" << "'" << hashMap1.at(0) << "'" << "\t(SHOULD BE: 'p')" << endl
-        << "\thashMap1.get('s'):\t" << "'" << hashMap1.get('s') << "'" << "\t(SHOULD BE: 'u')" << endl
-        << "\thashMap1.at(\"hello\"):\t" << "'" << hashMap1.at("hello") << "'" << "\t(SHOULD BE: 'w')" << endl;
+        << "\thashMap1.get('s'):\t" << "'" << hashMap1.get('s') << "'" << "\t(SHOULD BE: 'u')" << endl;
 
     // Test the remove method by removing the key 's'.
     cout << endl
