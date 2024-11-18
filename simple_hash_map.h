@@ -9,10 +9,17 @@
 
 using namespace std;
 
+// `SimpleHashMap<K, V, elementsSize>
+//
+// Represents a container used to store key-value pairs into a fixed-size
+// dynamically allocated block of memory.
 template <typename K, typename V, int elementsSize>
 class SimpleHashMap
 {
 private:
+    // `SimpleHashMap::_hash(int key)`
+    //
+    // Returns the hash of the supplied `key` integer.
     static int _hash(const int key)
     {
         return key % elementsSize;
@@ -21,6 +28,15 @@ private:
 private:
     SimpleHashNode<K, V> **_elements;
 
+    // `SimpleHashMap::_locate_hash_node(int key, int &hash, SimpleHashNode<K, V> *&hashNode)`
+    //
+    // Loops through every element in the hashmap starting with the supplied `key`
+    // that is first hashed.
+    //
+    // If there was a non-matching hashnode found at the hashed `key`, then the
+    // next element is looked at.
+    //
+    // The results are stored in the suppled `hash` and `hashNode` references. 
     void _locate_hash_node(int key, int &hash, SimpleHashNode<K, V> *&hashNode) const
     {
         SimpleHashNode<K, V> **elements = this->_elements;
@@ -97,6 +113,9 @@ public:
         return this != &rightHandMap;
     }
 
+    // `T &SimpleHashMap.at(int key)`
+    //
+    // Returns a reference to the hashnode's value at the given `key`.
     V &at(int key)
     {
         SimpleHashNode<K, V> **elements = this->_elements;
@@ -115,6 +134,9 @@ public:
         return hashNode->value();
     }
 
+    // `const T &SimpleHashMap.get(int key)`
+    //
+    // Returns a const-reference to the hashnode's value at the given `key`.
     const V &get(int key) const
     {
         int hash;
@@ -130,6 +152,10 @@ public:
         return hashNode->value();
     }
 
+    // `bool SimpleHashMap.has(int key)`
+    //
+    // Returns `true` if the supplied `key` was found associated with a
+    // hashnode in the hashmap.
     bool has(int key) const
     {
         int hash;
@@ -140,6 +166,10 @@ public:
         return hashNode != nullptr;
     }
 
+    // `SimpleVector<K> *SimpleHashMap.keys()`
+    //
+    // Returns a pointer to a new `SimpleVector<K>` instance that contains
+    // all the initialized keys in the hashmap.
     SimpleVector<K> *keys() const
     {
         SimpleVector<K> *keys = new SimpleVector<K>();
@@ -158,6 +188,10 @@ public:
         return keys;
     }
 
+    // `void SimpleHashMap.remove(int key)`
+    //
+    // Removes the hashnode associated with the associated key if found
+    // from the hashmap.
     void remove(int key)
     {
         SimpleHashNode<K, V> **elements = this->_elements;
@@ -174,6 +208,10 @@ public:
         }
     }
 
+    // `SimpleVector<K> *SimpleHashMap.values()`
+    //
+    // Returns a pointer to a new `SimpleVector<K>` instance that contains
+    // all the initialized values in the hashmap.
     SimpleVector<V> *values() const
     {
         SimpleVector<V> *values = new SimpleVector<V>();
