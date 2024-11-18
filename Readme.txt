@@ -71,7 +71,7 @@ Program Structures: List of classes and their roles
         7.2. Store and track the highest score and win state of the game.
              Store results for each player, including their score and win state.
              Provide functionality to compute the game result based on the session and board data, and serialize the results.
-             
+
     8. GameSession
         8.1. Represents an ongoing session of the Dots and Boxes game, managing the players, turn order, and game flow.
         8.2. Maintain a list of players and their respective turns.
@@ -104,7 +104,7 @@ Program Structures: List of classes and their roles
     13. RandomAIPlayer
         13.1. Represents an AI player that makes completely random moves during its turn, selecting from the list of available moves.
         13.2. Override the 'computePlayerMove' method to randomly choose a move from the valid options.
-            Serve as a simple AI implementation with no strategic logic.
+              Serve as a simple AI implementation with no strategic logic.
     
     14. SimpleHashMap
         14.1. Implements a simple hash table that maps keys (K) to values (V) using an array of hash nodes. 
