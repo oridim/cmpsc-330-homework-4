@@ -17,14 +17,14 @@ GameSession::GameSession()
     this->_turns = new SimpleVector<const PlayerTurn *>();
 }
 
-GameSession::GameSession(const SimpleVector<const Player *> *players)
+GameSession::GameSession(SimpleVector<const Player *> *players)
 {
     // Constructor with player vector, initializes the game session with a list of players
     this->_players = players;
     this->_turns = new SimpleVector<const PlayerTurn *>();
 }
 
-GameSession::GameSession(const SimpleVector<const Player *> *players, const SimpleVector<PlayerTurn> turns)
+GameSession::GameSession(SimpleVector<const Player *> *players, const SimpleVector<PlayerTurn> turns)
 {
     // Constructor with player vector and player turns, copies the turns into the session
     this->_players = players;

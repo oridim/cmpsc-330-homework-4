@@ -37,7 +37,7 @@ protected:
     // `GameSession`.
     //
     // It would just make new instances of `Player` instead of the subclass.
-    const SimpleVector<const Player *> *_players;
+    SimpleVector<const Player *> *_players;
 
     // `SimpleVector<const PlayerTurn *> GameSession._turns`
     //
@@ -46,8 +46,8 @@ protected:
 
 public:
     GameSession();
-    GameSession(const SimpleVector<const Player *> *players);
-    GameSession(const SimpleVector<const Player *> *players, const SimpleVector<PlayerTurn> turns);
+    GameSession(SimpleVector<const Player *> *players);
+    GameSession(SimpleVector<const Player *> *players, const SimpleVector<PlayerTurn> turns);
 
     ~GameSession();
 
