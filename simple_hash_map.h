@@ -9,20 +9,20 @@
 
 using namespace std;
 
-template <typename K, typename V, size_t elementsSize>
+template <typename K, typename V, int elementsSize>
 class SimpleHashMap
 {
 private:
-    static size_t _hash(const size_t key)
+    static int _hash(const int key)
     {
         return key % elementsSize;
     }
 
-    static size_t _key(const char *key)
+    static int _key(const char *key)
     {
-        size_t sum = 0;
+        int sum = 0;
 
-        for (size_t index = 0; index < strlen(key); index++)
+        for (int index = 0; index < strlen(key); index++)
         {
             sum += key[index];
         }
@@ -33,7 +33,7 @@ private:
 private:
     SimpleHashNode<K, V> **_elements;
 
-    void _locate_hash_node(size_t key, size_t &hash, SimpleHashNode<K, V> *&hashNode) const
+    void _locate_hash_node(int key, int &hash, SimpleHashNode<K, V> *&hashNode) const
     {
         SimpleHashNode<K, V> **elements = this->_elements;
 
@@ -52,7 +52,7 @@ public:
     {
         SimpleHashNode<K, V> **elements = new SimpleHashNode<K, V> *[elementsSize];
 
-        for (size_t index = 0; index < elementsSize; index++)
+        for (int index = 0; index < elementsSize; index++)
         {
             elements[index] = nullptr;
         }
@@ -64,7 +64,7 @@ public:
     {
         SimpleHashNode<K, V> **elements = new SimpleHashNode<K, V> *[elementsSize];
 
-        for (size_t index = 0; index < elementsSize; index++)
+        for (int index = 0; index < elementsSize; index++)
         {
             SimpleHashNode<K, V> *hashNode = hashMap._elements[index];
 
@@ -81,7 +81,7 @@ public:
     {
         SimpleHashNode<K, V> **elements = this->_elements;
 
-        for (size_t index = 0; index < elementsSize; index++)
+        for (int index = 0; index < elementsSize; index++)
         {
             SimpleHashNode<K, V> *hashNode = elements[index];
 
@@ -109,11 +109,11 @@ public:
         return this != &rightHandMap;
     }
 
-    V &at(size_t key)
+    V &at(int key)
     {
         SimpleHashNode<K, V> **elements = this->_elements;
 
-        size_t hash;
+        int hash;
         SimpleHashNode<K, V> *hashNode;
 
         this->_locate_hash_node(key, hash, hashNode);
@@ -127,21 +127,9 @@ public:
         return hashNode->value();
     }
 
-    V &at(int key)
+    const V &get(int key) const
     {
-        return this->at(static_cast<size_t>(key));
-    }
-
-    V &at(const char *key)
-    {
-        size_t sum = this->_key(key);
-
-        return this->at(sum);
-    }
-
-    const V &get(size_t key) const
-    {
-        size_t hash;
+        int hash;
         SimpleHashNode<K, V> *hashNode;
 
         this->_locate_hash_node(key, hash, hashNode);
@@ -154,21 +142,9 @@ public:
         return hashNode->value();
     }
 
-    const V &get(int key) const
+    bool has(int key) const
     {
-        return this->get(static_cast<size_t>(key));
-    }
-
-    const V &get(const char *key) const
-    {
-        size_t sum = this->_key(key);
-
-        return this->get(sum);
-    }
-
-    bool has(size_t key) const
-    {
-        size_t hash;
+        int hash;
         SimpleHashNode<K, V> *hashNode;
 
         this->_locate_hash_node(key, hash, hashNode);
@@ -176,24 +152,12 @@ public:
         return hashNode != nullptr;
     }
 
-    bool has(int key) const
-    {
-        return this->has(static_cast<size_t>(key));
-    }
-
-    bool has(const char *key) const
-    {
-        size_t sum = this->_key(key);
-
-        return this->has(sum);
-    }
-
     SimpleVector<K> *keys() const
     {
         SimpleVector<K> *keys = new SimpleVector<K>();
         SimpleHashNode<K, V> **elements = this->_elements;
 
-        for (size_t index = 0; index < elementsSize; index++)
+        for (int index = 0; index < elementsSize; index++)
         {
             SimpleHashNode<K, V> *hashNode = elements[index];
 
@@ -206,11 +170,11 @@ public:
         return keys;
     }
 
-    void remove(size_t key)
+    void remove(int key)
     {
         SimpleHashNode<K, V> **elements = this->_elements;
 
-        size_t hash;
+        int hash;
         SimpleHashNode<K, V> *hashNode;
 
         this->_locate_hash_node(key, hash, hashNode);
@@ -222,24 +186,12 @@ public:
         }
     }
 
-    void remove(int key)
-    {
-        return this->remove(static_cast<size_t>(key));
-    }
-
-    void remove(const char *key)
-    {
-        size_t sum = this->_key(key);
-
-        return this->remove(sum);
-    }
-
     SimpleVector<V> *values() const
     {
         SimpleVector<V> *values = new SimpleVector<V>();
         SimpleHashNode<K, V> **elements = this->_elements;
 
-        for (size_t index = 0; index < elementsSize; index++)
+        for (int index = 0; index < elementsSize; index++)
         {
             SimpleHashNode<K, V> *hashNode = elements[index];
 
