@@ -12,14 +12,12 @@
 
 #include "random_ai_player.h"
 
-
 RandomAIPlayer::RandomAIPlayer(char playerInitial)
 {
     // Initializes the player with the given player initial.
     // 'playerInitial': A character representing the player's identifier.
     this->_playerInitial = playerInitial;
 }
-
 
 PlayerMove *RandomAIPlayer::computePlayerMove(
     const GameSession &gameSession, const GameBoard &gameBoard) const

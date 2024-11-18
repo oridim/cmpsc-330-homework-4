@@ -1,6 +1,5 @@
 #include "player_move.h"
 
-
 PlayerMove::PlayerMove()
 {
     // Default constructor for PlayerMove, initalizes row and column indices to -1
@@ -8,14 +7,12 @@ PlayerMove::PlayerMove()
     this->_rowIndex = -1;
 }
 
-
 PlayerMove::PlayerMove(int rowIndex, int columnIndex)
 {
     // Constructor for PlayerMovie with specific row and column indices
     this->_columnIndex = columnIndex;
     this->_rowIndex = rowIndex;
 }
-
 
 PlayerMove::PlayerMove(const PlayerMove &playerTurn)
 {
@@ -32,6 +29,6 @@ bool PlayerMove::operator==(const PlayerMove &rightHandMove) const
 
 bool PlayerMove::operator!=(const PlayerMove &rightHandMove) const
 {
-    // Use the equality operator to determine if the objects are not equal. 
+    // Use the equality operator to determine if the objects are not equal.
     return this != &rightHandMove;
 }

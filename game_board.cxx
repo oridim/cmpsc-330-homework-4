@@ -17,7 +17,7 @@ using namespace std;
 
 GameBoard::GameBoard(int rows, int columns)
 {
-    // Initialize the rows and columns of the game board. 
+    // Initialize the rows and columns of the game board.
     // These values must be set before computing derived properties
     this->_columns = columns;
     this->_rows = rows;
@@ -113,7 +113,7 @@ const PlayerTurn *GameBoard::_determineCapturePriorityTurn(int rowIndex, int col
     const PlayerTurn *priorityTurn = nullptr;
     SimpleVector<SimpleVector<GameBoardSlot>> *gridRows = this->_grid;
 
-    // Check the rows above and below the current position for valid line slots. 
+    // Check the rows above and below the current position for valid line slots.
     for (int deltaRowIndex = -1; deltaRowIndex <= 1; deltaRowIndex += 2)
     {
         SimpleVector<GameBoardSlot> &gridColumns = gridRows->at(rowIndex + deltaRowIndex);
@@ -132,7 +132,7 @@ const PlayerTurn *GameBoard::_determineCapturePriorityTurn(int rowIndex, int col
         }
     }
 
-    // Check the columns left and right of the current position for the valid line slots. 
+    // Check the columns left and right of the current position for the valid line slots.
     for (int deltaColumnIndex = -1; deltaColumnIndex <= 1; deltaColumnIndex += 2)
     {
         SimpleVector<GameBoardSlot> &gridColumns = gridRows->at(rowIndex);
@@ -157,7 +157,7 @@ const PlayerTurn *GameBoard::_determineCapturePriorityTurn(int rowIndex, int col
 int GameBoard::applyScorableCaptures()
 {
     // This method iterates through all scorable slots on the game board and applies captures
-    // if a specific player has priority based on game rules. 
+    // if a specific player has priority based on game rules.
 
     int capturesMade = 0;
 
@@ -228,7 +228,7 @@ SimpleVector<GameBoardSlot> *GameBoard::computeKindSlots(
 {
     // This method retrieves all slots of a specific kind from the game board.
 
-    // Allocate memory for storing the matching slots. 
+    // Allocate memory for storing the matching slots.
     SimpleVector<SimpleVector<GameBoardSlot>> *gridRows = this->_grid;
     SimpleVector<GameBoardSlot> *kindSlots = new SimpleVector<GameBoardSlot>();
 
@@ -350,7 +350,7 @@ const GameBoardSlot &GameBoard::getSlot(int rowIndex, int columnIndex) const
 
 void GameBoard::serializeGameBoard(ostream &outputStream) const
 {
-    //This method serialize the entire game board, including row and column legends
+    // This method serialize the entire game board, including row and column legends
     //
     // We create a prefixing line that contains a legend along the top of columns of
     // the gameboard grid.

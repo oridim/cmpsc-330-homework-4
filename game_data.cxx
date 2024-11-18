@@ -14,7 +14,7 @@ GameData *GameData::deserializeGameData(istream &inputStream)
     // Function to read game data from input stream and create new GameData object.
 
     // Variables to store the number of columns and rows in the game board.
-    // Creation of a new SimpleVector to store the sequence of player turns. 
+    // Creation of a new SimpleVector to store the sequence of player turns.
     int columns;
     int rows;
     SimpleVector<PlayerTurn> *turns = new SimpleVector<PlayerTurn>();
@@ -28,7 +28,7 @@ GameData *GameData::deserializeGameData(istream &inputStream)
     string playerInitial;
     int turnIndex = 0;
 
-    // Loop to read player turns from the input stram until "END" is encountered. 
+    // Loop to read player turns from the input stram until "END" is encountered.
     while (inputStream >> playerInitial)
     {
         if (playerInitial == "END")
@@ -53,7 +53,7 @@ GameData *GameData::deserializeGameData(istream &inputStream)
 
 GameData::GameData(int rows, int columns, SimpleVector<PlayerTurn> *turns)
 {
-// Constructor for the GameData class
+    // Constructor for the GameData class
     this->_columns = columns;
     this->_rows = rows;
 
@@ -80,7 +80,6 @@ GameData::~GameData()
     delete this->_turns;
 }
 
-
 bool GameData::operator==(const GameData &rightHandData) const
 {
 
@@ -89,14 +88,12 @@ bool GameData::operator==(const GameData &rightHandData) const
     return this == &rightHandData;
 }
 
-
 bool GameData::operator!=(const GameData &rightHandData) const
 {
     // Inequality operator for GameData
     // See `GameData::operator==` for reasoning.
     return this != &rightHandData;
 }
-
 
 GameBoard *GameData::makeGameBoard()
 {

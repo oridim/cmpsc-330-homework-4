@@ -13,11 +13,10 @@
 
 #include "game_result.h"
 
-
 GameResult *GameResult::computeGameResult(
     const GameSession &gameSession, const GameBoard &gameBoard)
 {
-    // Static method to compute the game result based on the current game session and board state. 
+    // Static method to compute the game result based on the current game session and board state.
     int highestScore = 0;
 
     // **NOTE**: We only need to test the ASCII character codes since we are
@@ -46,7 +45,7 @@ GameResult *GameResult::computeGameResult(
     SimpleVector<GameBoardSlot> *initialBoardSlots =
         gameBoard.computeScorableSlots(GameBoardSlot::SLOT_KIND::initial);
 
-    // Update scores for players based on captured slots. 
+    // Update scores for players based on captured slots.
     for (int index = 0; index < initialBoardSlots->size(); index++)
     {
         GameBoardSlot &initialBoardSlot = initialBoardSlots->at(index);
@@ -106,7 +105,6 @@ GameResult *GameResult::computeGameResult(
     return new GameResult(playerResults, winKind, highestScore);
 }
 
-
 GameResult::GameResult(SimpleVector<PlayerResult> *playerResults, WIN_KIND winKind, int highestScore)
 {
     // Constructor to initialize a GameResult object.
@@ -114,7 +112,6 @@ GameResult::GameResult(SimpleVector<PlayerResult> *playerResults, WIN_KIND winKi
     this->_highestScore = highestScore;
     this->_winKind = winKind;
 }
-
 
 GameResult::GameResult(const GameResult &playerResult)
 {
@@ -124,13 +121,11 @@ GameResult::GameResult(const GameResult &playerResult)
     this->_winKind = playerResult._winKind;
 }
 
-
 GameResult::~GameResult()
 {
     // Destructor to clean up resources.
     delete this->_playerResults;
 }
-
 
 bool GameResult::operator==(const GameResult &rightHandResult) const
 {
@@ -143,7 +138,6 @@ bool GameResult::operator!=(const GameResult &rightHandResult) const
     // See `GameResult::operator==` for reasoning.
     return this != &rightHandResult;
 }
-
 
 void GameResult::serializeGameResult(ostream &outputStream) const
 {

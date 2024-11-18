@@ -10,7 +10,6 @@
 
 #include "game_session.h"
 
-
 GameSession::GameSession()
 {
     // Default constructor for GameSession
@@ -18,14 +17,12 @@ GameSession::GameSession()
     this->_turns = new SimpleVector<const PlayerTurn *>();
 }
 
-
 GameSession::GameSession(const SimpleVector<const Player *> *players)
 {
     // Constructor with player vector, initializes the game session with a list of players
     this->_players = players;
     this->_turns = new SimpleVector<const PlayerTurn *>();
 }
-
 
 GameSession::GameSession(const SimpleVector<const Player *> *players, const SimpleVector<PlayerTurn> turns)
 {
@@ -42,7 +39,6 @@ GameSession::GameSession(const SimpleVector<const Player *> *players, const Simp
         this->_turns->at(index) = newPlayerTurn;
     }
 }
-
 
 GameSession::~GameSession()
 {
@@ -64,22 +60,19 @@ GameSession::~GameSession()
     delete this->_turns;
 }
 
-
 bool GameSession::operator==(const GameSession &rightHandSession) const
 {
     // Compare the current instance with the right-hand side using pointer comparison
-    // This checks for nominal equality 
+    // This checks for nominal equality
 
     return this == &rightHandSession;
 }
 
-   
 bool GameSession::operator!=(const GameSession &rightHandSession) const
 {
-     // Inequality operator for comparing two GameSession objects.
+    // Inequality operator for comparing two GameSession objects.
     return this != &rightHandSession;
 }
-
 
 const Player &GameSession::_determineNextPlayer() const
 {
@@ -89,7 +82,6 @@ const Player &GameSession::_determineNextPlayer() const
 
     return *players->get(playerIndex);
 }
-
 
 PlayerTurn *GameSession::applyNextPlayerTurn(GameBoard &gameBoard)
 {
@@ -103,14 +95,13 @@ PlayerTurn *GameSession::applyNextPlayerTurn(GameBoard &gameBoard)
 
     // Apply the player's turn to the game board
     gameBoard.applyTurn(*playerTurn);
-    // Apply any scorable captures that may have occured as a result of the turn 
+    // Apply any scorable captures that may have occured as a result of the turn
     gameBoard.applyScorableCaptures();
 
     this->_turns->push_back(playerTurn);
 
     return playerTurn;
 }
-
 
 PlayerTurn *GameSession::computeNextPlayerTurn(const GameBoard &gameBoard) const
 {

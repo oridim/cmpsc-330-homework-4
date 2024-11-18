@@ -2,7 +2,6 @@
 
 #include "player_turn.h"
 
-
 PlayerTurn::PlayerTurn()
 {
     // Default constructor for PlayerTurn
@@ -30,7 +29,6 @@ PlayerTurn::PlayerTurn(const PlayerMove &playerMove, int turnIndex, char playerI
     this->_turnIndex = turnIndex;
 }
 
-
 PlayerTurn::PlayerTurn(const PlayerTurn &playerTurn)
 {
     // Copies constructor for PlayerTurn
@@ -39,7 +37,6 @@ PlayerTurn::PlayerTurn(const PlayerTurn &playerTurn)
     this->_playerInitial = playerTurn._playerInitial;
     this->_turnIndex = playerTurn._turnIndex;
 }
-
 
 bool PlayerTurn::operator==(const PlayerTurn &rightHandTurn) const
 {

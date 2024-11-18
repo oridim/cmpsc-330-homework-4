@@ -22,7 +22,6 @@ GameBoardSlot::SLOT_KIND GameBoardSlot::determineSlotKind(int rowIndex, int colu
     return SLOT_KIND::spacer;
 }
 
-
 GameBoardSlot::GameBoardSlot()
 {
     this->_columnIndex = -1;
@@ -34,7 +33,6 @@ GameBoardSlot::GameBoardSlot()
     this->_playerTurn = nullptr;
 }
 
-
 GameBoardSlot::GameBoardSlot(int rowIndex, int columnIndex)
 {
     this->_columnIndex = columnIndex;
@@ -45,16 +43,14 @@ GameBoardSlot::GameBoardSlot(int rowIndex, int columnIndex)
     this->_playerTurn = nullptr;
 }
 
-
 GameBoardSlot::GameBoardSlot(int rowIndex, int columnIndex, SLOT_KIND slotKind)
 {
     this->_columnIndex = columnIndex;
     this->_rowIndex = rowIndex;
-    
+
     // Update properties based on the slot kind.
     this->_applyUpdate(slotKind);
 }
-
 
 GameBoardSlot::GameBoardSlot(int rowIndex, int columnIndex, SLOT_KIND slotKind, const PlayerTurn &playerTurn)
 {
@@ -63,7 +59,6 @@ GameBoardSlot::GameBoardSlot(int rowIndex, int columnIndex, SLOT_KIND slotKind, 
 
     this->_applyUpdate(slotKind, playerTurn);
 }
-
 
 GameBoardSlot::GameBoardSlot(const GameBoardSlot &gameBoardSlot)
 {
@@ -75,7 +70,6 @@ GameBoardSlot::GameBoardSlot(const GameBoardSlot &gameBoardSlot)
 
     this->_playerTurn = gameBoardSlot._playerTurn;
 }
-
 
 bool GameBoardSlot::operator==(const GameBoardSlot &rightHandSlot) const
 {
@@ -91,7 +85,6 @@ bool GameBoardSlot::operator!=(const GameBoardSlot &rightHandSlot) const
     // See `GameBoardSlot::operator==` for reasoning.
     return this != &rightHandSlot;
 }
-
 
 void GameBoardSlot::_applyUpdate(SLOT_KIND slotKind)
 {
@@ -116,7 +109,6 @@ void GameBoardSlot::_applyUpdate(SLOT_KIND slotKind)
     this->_playerTurn = nullptr;
 }
 
-
 void GameBoardSlot::_applyUpdate(SLOT_KIND slotKind, const PlayerTurn &playerTurn)
 {
     switch (slotKind)
@@ -137,12 +129,10 @@ void GameBoardSlot::_applyUpdate(SLOT_KIND slotKind, const PlayerTurn &playerTur
     this->_playerTurn = &playerTurn;
 }
 
-
 bool GameBoardSlot::isLegalMove() const
 {
     return this->_slotKind == SLOT_KIND::spacer && this->_playerTurn == nullptr;
 }
-
 
 bool GameBoardSlot::wasMovePerformed() const
 {

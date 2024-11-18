@@ -1,14 +1,12 @@
 #include "player_result.h"
 
-
-PlayerResult::PlayerResult() 
+PlayerResult::PlayerResult()
 {
     // Default constructor for PlayerResult, initializes the player's result with default values
     this->_playerInitial = '\0';
     this->_score = -1;
     this->_winKind = WIN_KIND::undefined;
 }
-
 
 PlayerResult::PlayerResult(char playerInitial, int score, WIN_KIND winKind)
 {
@@ -18,7 +16,6 @@ PlayerResult::PlayerResult(char playerInitial, int score, WIN_KIND winKind)
     this->_winKind = winKind;
 }
 
-
 PlayerResult::PlayerResult(const PlayerResult &playerResult)
 {
     // Copy constructor for PlayerResult, creates a copy of an exixting PlayerResult object
@@ -27,16 +24,14 @@ PlayerResult::PlayerResult(const PlayerResult &playerResult)
     this->_winKind = playerResult._winKind;
 }
 
-
 bool PlayerResult::operator==(const PlayerResult &rightHandResult) const
 {
     // Compare the current object with the other object by checking if they are the same instance (pointer comparison)
     return this == &rightHandResult;
 }
 
-
 bool PlayerResult::operator!=(const PlayerResult &rightHandResult) const
 {
-     // Compare the current object with the other object by using the negation of the equality operator
+    // Compare the current object with the other object by using the negation of the equality operator
     return this != &rightHandResult;
 }

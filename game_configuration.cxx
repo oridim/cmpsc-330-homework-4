@@ -13,7 +13,6 @@
 
 #include "game_configuration.h"
 
-
 GameConfiguration::PLAYER_KIND GameConfiguration::_determinePlayerKind(string kindIdentifier)
 {
     // Determine the type of player based on the kind identifier
@@ -30,7 +29,6 @@ GameConfiguration::PLAYER_KIND GameConfiguration::_determinePlayerKind(string ki
     // Throws an error if the identifier is not recognized
     throw string("bad argument #0 to 'GameConfiguration::_determinePlayerKind(char *)' (player identifier '") + string(kindIdentifier) + string("' is not supported)");
 }
-
 
 Player *GameConfiguration::_makePlayerKind(PLAYER_KIND playerKind, char playerInitial)
 {
@@ -93,7 +91,6 @@ GameConfiguration::GameConfiguration()
     this->_players = new SimpleHashMap<char, PLAYER_KIND, 16>();
 }
 
-
 GameConfiguration::GameConfiguration(int rows, int columns, SimpleHashMap<char, PLAYER_KIND, 16> *players)
 {
     // Constructor for GameConfiguration
@@ -102,7 +99,6 @@ GameConfiguration::GameConfiguration(int rows, int columns, SimpleHashMap<char, 
 
     this->_players = players;
 }
-
 
 GameConfiguration::GameConfiguration(const GameConfiguration &gameConfiguration)
 {
@@ -114,20 +110,17 @@ GameConfiguration::GameConfiguration(const GameConfiguration &gameConfiguration)
     this->_players = new SimpleHashMap<char, PLAYER_KIND, 16>(*gameConfiguration._players);
 }
 
-
 GameConfiguration::~GameConfiguration()
 {
     // Destructor for GameConfiguration, frees the dynamically allocated memory for players
     delete this->_players;
 }
 
-
 bool GameConfiguration::operator==(const GameConfiguration &rightHandConfiguration) const
 {
     // Equality operator for comparing two GameConfiguration objects
     return this == &rightHandConfiguration;
 }
-
 
 bool GameConfiguration::operator!=(const GameConfiguration &rightHandConfiguration) const
 {
