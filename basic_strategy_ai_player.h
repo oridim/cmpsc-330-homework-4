@@ -12,7 +12,7 @@
 // Represents a player controller that performs basic heuristics
 // to locate where to draw lines.
 //
-// TODO: add example illustrations
+// **TODO**: add example illustrations
 class BasicStrategyAIPlayer : public Player
 {
 private:

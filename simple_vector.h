@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// TODO: redo `SimpleVector` to utilize a `V **SimpleVector._elements` like
+// **TODO**: redo `SimpleVector` to utilize a `V **SimpleVector._elements` like
 // `SimpleHashTable`. Otherwise, expensive operations like `SimpleVector.sort`
 // will perform potentially expensive cloning reallocations instead of being able to
 // just swap pointers.
