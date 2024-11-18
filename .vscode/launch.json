@@ -6,7 +6,10 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/dotsandboxes",
-            "args": ["Test Cases/game.professor-supplied.txt"],
+            "args": [
+                "<",
+                "./Test Cases/GameConfiguration/configuration.professor-supplied.txt"
+            ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
