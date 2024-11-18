@@ -36,7 +36,7 @@ private:
     // If there was a non-matching hashnode found at the hashed `key`, then the
     // next element is looked at.
     //
-    // The results are stored in the suppled `hash` and `hashNode` references. 
+    // The results are stored in the suppled `hash` and `hashNode` references.
     void _locate_hash_node(int key, int &hash, SimpleHashNode<K, V> *&hashNode) const
     {
         SimpleHashNode<K, V> **elements = this->_elements;
