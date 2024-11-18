@@ -21,6 +21,9 @@
 class GameSession
 {
 private:
+    // `const Player &GameSession._determineNextPlayer()`
+    //
+    // Returns the next player in the turn order queue.
     const Player &_determineNextPlayer() const;
 
 protected:
