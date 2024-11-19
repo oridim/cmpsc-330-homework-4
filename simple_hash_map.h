@@ -1,3 +1,23 @@
+//---------------------------------------------------------------------
+//
+// Name: Ozge Selin Ak + Dimitri Orion Nearchos
+// Email: osa5177@psu.edu + don5092@psu.edu
+// Class: CMPSC 330
+// Section: 001
+//
+// Assignment: Homework 4
+// Due Date: November 19th, 2024
+//
+// Description:
+//
+//     * TODO
+//
+// Acknowledgments:
+//
+//     * TODO
+//
+//---------------------------------------------------------------------
+
 #ifndef _SIMPLE_HASH_MAP_H_
 #define _SIMPLE_HASH_MAP_H_
 
