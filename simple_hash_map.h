@@ -22,8 +22,7 @@
 #ifndef _SIMPLE_HASH_MAP_H_
 #define _SIMPLE_HASH_MAP_H_
 
-#include <algorithm>
-#include <cstring>
+#include <string>
 
 #include "simple_vector.h"
 #include "simple_hash_node.h"
