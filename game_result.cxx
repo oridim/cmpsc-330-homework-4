@@ -153,7 +153,7 @@ void GameResult::serializeGameResult(ostream &outputStream) const
         PlayerResult::WIN_KIND winKind = playerResult.winKind();
 
         // Display the player's score and statue
-        cout
+        outputStream
             << "Player " << playerInitial
             << " has " << score << ((score == 1) ? " box" : " boxes");
 

@@ -122,7 +122,7 @@ void GameData::serializeGameData(ostream &outputStream) const
     {
         PlayerTurn &playerTurn = turns->at(index);
 
-        cout << playerTurn.playerInitial() << " "
+        outputStream << playerTurn.playerInitial() << " "
              << playerTurn.rowIndex() << " " << playerTurn.columnIndex();
 
         // We only want to newline when we are looping every turn before the
