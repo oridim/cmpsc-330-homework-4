@@ -10,11 +10,12 @@
 //
 // Description:
 //
-//     * TODO
+//     * This file implements a collection of key-value pairs container class.
 //
 // Acknowledgments:
 //
-//     * TODO
+//     1. I based my API off of the STL `vector` class referenced by:
+//        https://cplusplus.com/reference/unordered_map/unordered_map/
 //
 //---------------------------------------------------------------------
 

@@ -10,11 +10,8 @@
 //
 // Description:
 //
-//     * TODO
-//
-// Acknowledgments:
-//
-//     * TODO
+//     * This file implements a helper class for a collection of key-value
+//       pairs container class.
 //
 //---------------------------------------------------------------------
 

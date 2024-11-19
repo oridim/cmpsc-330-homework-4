@@ -10,11 +10,12 @@
 //
 // Description:
 //
-//     * TODO
+//     * This file implements a collection of sequenced items container class.
 //
 // Acknowledgments:
 //
-//     * TODO
+//     1. I based my API off of the STL `vector` class referenced by:
+//        https://cplusplus.com/reference/vector/vector/
 //
 //---------------------------------------------------------------------
 
