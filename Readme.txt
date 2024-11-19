@@ -16,7 +16,13 @@ Run Commands:
 
 Acknowledgments:
 
-    > See each individual source file for their acknowledgments.
+    > See each individual source file for their individual acknowledgments, if any.
+
+    1. Generally, we (Ozge and Dimitri) used C++ reference documentation provided by:
+       https://cplusplus.com/reference
+
+    2. Unless stated otherwise, we (Ozge and Dimitri) implemented everything in the
+       source code from scratch.
 
 Program Structures:
 
