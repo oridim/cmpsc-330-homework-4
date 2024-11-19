@@ -1,4 +1,3 @@
 3 8
 B Random
 R Strategic
-END

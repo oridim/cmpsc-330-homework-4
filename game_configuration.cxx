@@ -66,14 +66,16 @@ GameConfiguration *GameConfiguration::deserializeGameConfiguration(istream &inpu
     string kindIdentifier;
 
     // Looping through the input stream to read player information
-    while (inputStream >> playerInitial)
+    // **NOTE**: We were told by Dr. Na that we should only ever get _2_ players.
+    for (int counter = 1; counter < 3; counter++)
+    // while (inputStream >> playerInitial)
     {
-        if (playerInitial == "END")
-        {
-            break;
-        }
+        //if (playerInitial == "END")
+        //{
+        //    break;
+        //}
 
-        inputStream >> kindIdentifier;
+        inputStream >> playerInitial >> kindIdentifier;
 
         // Store the player's kind in the hash map using their initial
         players->at(toupper(playerInitial.at(0))) = _determinePlayerKind(kindIdentifier);
