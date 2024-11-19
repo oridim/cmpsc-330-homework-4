@@ -10,11 +10,8 @@
 //
 // Description:
 //
-//     * TODO
-//
-// Acknowledgments:
-//
-//     * TODO
+//     * This file implements an AI Dots and Boxes player who uses a
+//       basic prioritization system of heuristics to place lines.
 //
 //---------------------------------------------------------------------
 

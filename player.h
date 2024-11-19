@@ -10,11 +10,8 @@
 //
 // Description:
 //
-//     * TODO
-//
-// Acknowledgments:
-//
-//     * TODO
+//     * This file provides common type definitions for subclass AI
+//       Dots and Boxes players to implement.
 //
 //---------------------------------------------------------------------
 

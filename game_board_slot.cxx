@@ -10,11 +10,8 @@
 //
 // Description:
 //
-//     * TODO
-//
-// Acknowledgments:
-//
-//     * TODO
+//     * This file implements a data structure that contains data for
+//       a gameboard grid slot from a Dots and Boxes game.
 //
 //---------------------------------------------------------------------
 

@@ -10,11 +10,8 @@
 //
 // Description:
 //
-//     * TODO
-//
-// Acknowledgments:
-//
-//     * TODO
+//     * This file provides the type definitions of an AI Dots and Boxes
+//       player who has no compute capabilities and is used for testing.
 //
 //---------------------------------------------------------------------
 
