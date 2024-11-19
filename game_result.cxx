@@ -10,11 +10,8 @@
 //
 // Description:
 //
-//     * TODO
-//
-// Acknowledgments:
-//
-//     * TODO
+//     * This implements a data structure that contains data about the
+//       end result of a Dots and Boxes game.
 //
 //---------------------------------------------------------------------
 
