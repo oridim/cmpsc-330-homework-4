@@ -10,7 +10,7 @@
 //
 // Description:
 //
-//     * This file provides type definitions about a data structure that
+//     * This file provides type definitions for a data structure that
 //       contains data about a player's score and if they were a winner.
 //
 //---------------------------------------------------------------------

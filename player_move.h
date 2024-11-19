@@ -10,7 +10,7 @@
 //
 // Description:
 //
-//     * This file provides type definitions about a data structure that
+//     * This file provides type definitions for a data structure that
 //       contains data about a move a player is about to make.
 //
 //---------------------------------------------------------------------
