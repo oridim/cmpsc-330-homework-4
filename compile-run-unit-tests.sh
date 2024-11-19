@@ -8,23 +8,23 @@ set -e
 
 # Compile Unit Tests
 
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './simple_vector.test.cxx' -o './simple_vector.test'
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './simple_hash_map.test.cxx' -o './simple_hash_map.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './simple_vector.test.cxx' -o './simple_vector.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './simple_hash_map.test.cxx' -o './simple_hash_map.test'
 
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './player_result.test.cxx' -o './player_result.test'
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './player_turn.test.cxx' -o './player_turn.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './player_result.test.cxx' -o './player_result.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './player_turn.test.cxx' -o './player_turn.test'
 
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_board_slot.test.cxx' -o './game_board_slot.test'
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_board.test.cxx' -o './game_board.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './game_board_slot.test.cxx' -o './game_board_slot.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './game_board.test.cxx' -o './game_board.test'
 
 
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_configuration.test.cxx' -o './game_configuration.test'
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_data.test.cxx' -o './game_data.test'
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_session.test.cxx' -o './game_session.test'
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './game_result.test.cxx' -o './game_result.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './game_configuration.test.cxx' -o './game_configuration.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './game_data.test.cxx' -o './game_data.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './game_session.test.cxx' -o './game_session.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './game_result.test.cxx' -o './game_result.test'
 
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './basic_strategy_ai_player.test.cxx' -o './basic_strategy_ai_player.test'
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g './random_ai_player.test.cxx' -o './random_ai_player.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './basic_strategy_ai_player.test.cxx' -o './basic_strategy_ai_player.test'
+g++ -ansi -pedantic -std=c++14 -Wall -g './random_ai_player.test.cxx' -o './random_ai_player.test'
 
 # Run Unit Tests
 

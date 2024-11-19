@@ -6,7 +6,7 @@ set -e
 
 # Compile Dots and Boxes Entry Point
 
-/usr/bin/g++-11 -ansi -pedantic -std=c++14 -Wall -g \
+g++ -ansi -pedantic -std=c++14 -Wall -g \
     "./basic_strategy_ai_player.cxx" \
     "./game_configuration.cxx" \
     "./game_board.cxx" \
