@@ -10,11 +10,8 @@
 //
 // Description:
 //
-//     * TODO
-//
-// Acknowledgments:
-//
-//     * TODO
+//     * This file provides type definitions about a data structure that
+//       contains data about a move a player is about to make.
 //
 //---------------------------------------------------------------------
 

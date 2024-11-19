@@ -10,11 +10,8 @@
 //
 // Description:
 //
-//     * TODO
-//
-// Acknowledgments:
-//
-//     * TODO
+//     * This file provides the type definitions of an AI Dots and Boxes
+//       player who lines to place on the gameboard grid at random.
 //
 //---------------------------------------------------------------------
 
