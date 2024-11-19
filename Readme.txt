@@ -150,3 +150,113 @@ Program Structures:
 
         16.2. Manage a resizable collection of elements.
               Allow efficient access and iteration over stored objects.
+
+Program Flowchart:
+
++---------------------------+
+| Program Enter (main.cxx)  |
++---------------------------+
+             |
+             v
++--------------------------------------+
+| GameConfiguration                    |
+| (Deserialize from input via cin)     |
++--------------------------------------+
+             |
+             v
+  +---------------------+    +--------------------+
+  | Create GameBoard    | <--| GameConfiguration  |
+  +---------------------+    +--------------------+
+             |
+             v
+  +---------------------+    +--------------------+
+  | Create GameSession  | <--| GameConfiguration  |
+  +---------------------+    +--------------------+
+             |
+             v
+  +------------------------------------+
+  | Seed RNG (time)                    |
+  +------------------------------------+
+             |
+             v
+  +------------------------------------+
+  | Game Loop                          |
+  | (while captures remain)            |
+  +------------------------------------+
+             |
+             v
+  +-----------------------+     +-------------------------+
+  | Check available       |---> | If no captures: break   |---+
+  | captures in GameBoard |     +-------------------------+   |
+  +-----------------------+                                   |
+             |      ⌃----------------------------------+      |
+             v                                         |      |
+  +------------------------------------------------+   |      |
+  | Select Next Player from GameSession turn order |   |      |
+  +------------------------------------------------+   |      |
+             |                                         |      |
+             v                                         |      |
+  +-------------------------------------------+        |      |
+  | Player computes a turn, if possible:      |        |      |
+  | - Determines best move                    |        |      |
+  | - Updates the GameBoard with new captures |        |      |
+  +-------------------------------------------+        |      |
+             |                                         |      |
+             v                                         |      |
+  +-------------------------------------------+        |      |
+  | Update Player Queue:                      |        |      |
+  | - If captures: Player takes another turn  |--------+      |
+  | - If no captures: Player moved to back    |               |
+  +-------------------------------------------+               |
+             |                                                |
+             v                                                |
+  +-----------------------------+                             |
+  | Serialize GameBoard state   | <---------------------------+
+  +-----------------------------+
+             |
+             |
+             |
+             v
+  +----------------------------------------------+
+  | Write serialized GameBoard state to terminal |
+  | (intermediate state output)                  |
+  +----------------------------------------------+
+             |
+             |
+             v
+  +------------------------------------+
+  | End of Loop                        |
+  +------------------------------------+
+             |
+             v
+  +--------------------------------------+
+  | Compute GameResult using             |
+  | GameSession and GameBoard            |
+  +--------------------------------------+
+             |
+             v
+  +--------------------------------------+
+  | Serialize Final States:              |
+  | - GameData                           |
+  | - Final GameBoard state              |
+  | - GameResult                         |
+  +--------------------------------------+
+             |
+             |
+             |
+             v
+  +-------------------------+
+  | Write serialized data   |
+  | to terminal (output)    |
+  +-------------------------+
+             |
+             v
+  +--------------------------------------+
+  | Clean up dynamically allocated       |
+  | objects (delete pointers)            |
+  +--------------------------------------+
+             |
+             v
+  +---------------------------+
+  |        Program Exit       |
+  +---------------------------+
