@@ -208,8 +208,8 @@ Program Flowchart:
   | - If captures: Player takes another turn  |--------+      |
   | - If no captures: Player moved to back    |               |
   +-------------------------------------------+               |
-             |                                                |
-             v                                                |
+                                                              |
+                                                              |
   +-----------------------------+                             |
   | Serialize GameBoard state   | <---------------------------+
   +-----------------------------+
